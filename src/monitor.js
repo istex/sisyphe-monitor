@@ -5,7 +5,7 @@ const Promise = require('bluebird');
 const redis = require('redis');
 Promise.promisifyAll(redis.RedisClient.prototype);
 Promise.promisifyAll(redis.Multi.prototype);
-const client = redis.createClient();
+
 
 /**
  * Its role is to manage the refreshments loop and inject the data in the controller
@@ -18,6 +18,8 @@ function Monitor (options = {}) {
   this.workers = [];
   this.redisKeys = {};
   this.prefix = options.prefix;
+  this.host = options.host
+  this.client = redis.createClient({host: this.host})
   return this;
 }
 
@@ -57,9 +59,9 @@ Monitor.prototype.launch = function () {
 
 Monitor.prototype.getMonitoring = async function () {
   const monitoring = {};
-  const keys = await client.hkeysAsync('monitoring');
+  const keys = await this.client.hkeysAsync('monitoring');
   await Promise.map(keys, async key => {
-    monitoring[key] = JSON.parse(await client.hgetAsync('monitoring', key));
+    monitoring[key] = JSON.parse(await this.client.hgetAsync('monitoring', key));
   });
   return monitoring;
 };
@@ -73,11 +75,12 @@ Monitor.prototype.getQueue = async function (workers) {
     if (!this.redisKeys[worker]) {
       this.redisKeys[worker] = {};
       const queue = new Queue(worker, {
+        redis: {port: 6379, host: this.host},
         prefix: this.prefix
       });
       this.workers.push(queue);
     }
-    this.redisKeys[worker].maxFile = await client.getAsync(`${this.prefix}:${worker}:id`);
+    this.redisKeys[worker].maxFile = await this.client.getAsync(`${this.prefix}:${worker}:id`);
   });
   return this.workers;
 };
