@@ -7,7 +7,6 @@ temp/*
 config/temp/*
 xpaths
 checksum
-**/package-lock.json
 
 # Runtime data
 pids
@@ -38,7 +37,6 @@ jspm_packages
 
 # Optional npm cache directory
 .npm
-package-lock.json
 
 # Optional REPL history
 .node_repl_history
@@ -222,12 +220,7 @@ jspm_packages
 sftp-config.json
 
 # Package control specific files
-Package Control.last-run
-Package Control.ca-list
-Package Control.ca-bundle
-Package Control.system-ca-bundle
-Package Control.cache/
-Package Control.ca-certs/
+Package Control.last-run Package Control.ca-list Package Control.ca-bundle Package Control.system-ca-bundle Package Control.cache/ Package Control.ca-certs/ 
 bh_unicode_properties.cache
 
 # Sublime-github package stores a github token in this file
