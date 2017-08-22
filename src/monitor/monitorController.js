@@ -102,8 +102,10 @@ MonitorController.prototype.updateView = function () {
   });
 
   this.workersView.walker.setContent('Walker-fs has found ' + this.maxFile.toString() + ' files');
-
+  const days = (this.time.getDate() === 31 ) ? 0 : this.time.getDate()
   this.workersView.time.setContent(
+    days +
+    ' days\n' +
     this.time.getHours() +
       ' hours \n' +
       this.time.getMinutes() +

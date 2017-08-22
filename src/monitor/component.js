@@ -9,7 +9,7 @@ module.exports.loadInterface = function(grid) {
     content: "Waiting for a job...",
     left: 'center'
   });
-  components.waitingModules = grid.set(2, 0, 10, 4, contrib.table, {
+  components.waitingModules = grid.set(2, 0, 8, 4, contrib.table, {
     fg: 'green',
     interactive: false,
     label: 'Waiting modules',
@@ -19,7 +19,7 @@ module.exports.loadInterface = function(grid) {
     border: 'dashed',
     fillCellBorders: true
   });
-  components.doneModules = grid.set(2, 12, 10, 4, contrib.table, {
+  components.doneModules = grid.set(2, 12, 8, 4, contrib.table, {
     fg: 'green',
     interactive: false,
     label: 'Done modules',
@@ -29,7 +29,7 @@ module.exports.loadInterface = function(grid) {
     border: 'dashed',
     fillCellBorders: true
   });
-  components.currentModule = grid.set(2, 4, 7, 8, contrib.table, {
+  components.currentModule = grid.set(2, 4,5, 8, contrib.table, {
     fg: 'green',
     interactive: false,
     label: 'Current module',
@@ -39,7 +39,7 @@ module.exports.loadInterface = function(grid) {
     border: 'dashed',
     fillCellBorders: true
   });
-  components.progress = grid.set(9, 4, 3, 8, contrib.gauge, {
+  components.progress = grid.set(7, 4, 3, 8, contrib.gauge, {
     label: 'Current module progress',
     stroke: 'green',
     fill: 'white'
@@ -56,12 +56,12 @@ module.exports.loadInterface = function(grid) {
       color: 'red'
     }]
   });
-  components.time = grid.set(14, 12, 2, 2, blessed.box, {
+  components.time = grid.set(12, 12, 4, 2, blessed.box, {
     label: 'Time',
     content: "0",
     left: 'center'
   });
-  components.logs = grid.set(12, 0, 4, 12, blessed.box, {
+  components.logs = grid.set(10, 0, 6, 12, blessed.box, {
     label: 'Logs',
     content: "0",
     left: 'center',
@@ -73,7 +73,7 @@ module.exports.loadInterface = function(grid) {
       inverse: true
     }
   });
-  components.loadAverage = grid.set(12, 12, 2, 2, blessed.box, {
+  components.loadAverage = grid.set(10, 12, 2, 4, blessed.box, {
     label: 'Load Average',
     content: "0",
     left: 'center'
