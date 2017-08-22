@@ -1,10 +1,12 @@
 const blessed = require('blessed')
 const contrib = require('blessed-contrib')
+const path = require('path')
+
 
 module.exports.loadInterface = function(grid) {
   const components = {}
   components.walker = grid.set(0, 0, 2, 16, blessed.box, {
-    content: "sisyphe is starting",
+    content: "Waiting for a job...",
     left: 'center'
   });
   components.waitingModules = grid.set(2, 0, 10, 4, contrib.table, {
@@ -64,8 +66,8 @@ module.exports.loadInterface = function(grid) {
     content: "0",
     left: 'center',
     keys: true,
-    scrollable:true,
-    focused:true,
+    scrollable: true,
+    focused: true,
     scrollbar: {
       ch: ' ',
       inverse: true

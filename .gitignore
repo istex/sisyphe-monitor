@@ -54,7 +54,7 @@ package-lock.json
 
 # Docs
 documentation
-confJsdoc.conf
+jsdoc.conf
 
 # Created by https://www.gitignore.io/api/macos,linux,webstorm,node,java,osx,sublimetext
 

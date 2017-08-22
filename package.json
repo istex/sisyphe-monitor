@@ -2,8 +2,9 @@
   "name": "sisyphe-monitor",
   "version": "1.0.0",
   "description": "",
-  "main": "appMonitor.js",
+  "main": "app.js",
   "scripts": {
+    "start": "node app.js",
     "test": "mocha"
   },
   "author": "",
