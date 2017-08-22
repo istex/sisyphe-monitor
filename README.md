@@ -15,6 +15,10 @@ Test with NodeJS@8.1, Redis@3.2.6
 2. Just do : `npm install`
 3. ... that's it.
 
+### Documentations
+
+You can view technical documentation [here](https://istex.github.io/sisyphe-monitor/)
+
 ### Test
 
 `npm run test` Will test sisyphe-monitor

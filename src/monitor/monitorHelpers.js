@@ -102,9 +102,10 @@ MonitorHelpers.prototype.nbProperty = function (object) {
  */
 MonitorHelpers.prototype.getTimeBetween = function (startDateInMs, endDateInMs) {
   const time = new Date();
-  time.setSeconds(endDateInMs / 1000 - startDateInMs / 1000);
-  time.setMinutes(endDateInMs / (1000 * 60) - startDateInMs / (1000 * 60));
-  time.setHours(endDateInMs / (1000 * 60 * 60) - startDateInMs / (1000 * 60 * 60));
+  time.setSeconds((endDateInMs-startDateInMs) /(1000));
+  time.setMinutes((endDateInMs-startDateInMs) /(1000*60));
+  time.setHours((endDateInMs-startDateInMs) /(1000*60*60));
+  time.setDate(~~((endDateInMs-startDateInMs) /(1000*60*60*24)));
   return time;
 };
 
