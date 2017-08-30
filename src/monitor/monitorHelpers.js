@@ -34,7 +34,16 @@ MonitorHelpers.prototype.getColorLog = function (logs) {
     formatedLogs.push(getColor(type, '┌─────────────────────'));
     formatedLogs.push(getColor(type, '├─ ' + type + ':'));
     for (var j = 0; j < logs[type].length; j++) {
-      formatedLogs.push(getColor(type, '├─── ' + logs[type][j]));
+      const text = logs[type][j]
+      // console.log(text)
+      formatedLogs.push(getColor(type, '├─── ' + logs[type][j].split('##')[0]));
+      if (text.includes('##')) {
+        text.split('##').map((info, index)=>{
+          if(index !== 0){
+            formatedLogs.push(getColor(type, '├───── ' + info))
+          }
+        })
+      }
     }
     formatedLogs.push(getColor(type, '└─────────────────────'));
   }

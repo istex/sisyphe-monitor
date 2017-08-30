@@ -114,7 +114,7 @@ MonitorController.prototype.updateView = function () {
       ' seconds\n'
   );
   const logs = monitorHelpers.getColorLog(this.logs);
-  this.workersView.logs.setContent(logs.join('\n'));
+  this.workersView.logs.setContent(logs.join('\n'))
 
   const percent = ~~((this.maxFile - this.workersData.currentModule.waiting) * 100 / this.maxFile);
   this.workersView.progress.setStack([
