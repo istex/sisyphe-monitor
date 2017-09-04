@@ -3,7 +3,7 @@ const contrib = require('blessed-contrib')
 const path = require('path')
 
 
-module.exports.loadInterface = function(grid) {
+module.exports.loadInterface = function (grid) {
   const components = {}
   components.walker = grid.set(0, 0, 2, 16, blessed.box, {
     content: "Waiting for a job...",
@@ -14,7 +14,7 @@ module.exports.loadInterface = function(grid) {
     interactive: false,
     label: 'Waiting modules',
     columnSpacing: 1,
-    columnWidth: [24, 10],
+    columnWidth: [15, 10, 10, 10],
     noCellBorders: false,
     border: 'dashed',
     fillCellBorders: true
@@ -24,12 +24,12 @@ module.exports.loadInterface = function(grid) {
     interactive: false,
     label: 'Done modules',
     columnSpacing: 1,
-    columnWidth: [24, 10],
+    columnWidth: [15, 10, 10, 10],
     noCellBorders: false,
     border: 'dashed',
     fillCellBorders: true
   });
-  components.currentModule = grid.set(2, 4,5, 8, contrib.table, {
+  components.currentModule = grid.set(2, 4, 5, 8, contrib.table, {
     fg: 'green',
     interactive: false,
     label: 'Current module',

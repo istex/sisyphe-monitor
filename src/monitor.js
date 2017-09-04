@@ -31,11 +31,9 @@ Monitor.prototype.launch = function () {
   this.monitorController = new MonitorController();
   this.intervalLoop = setInterval(async() => {
     const monitoring = await this.getMonitoring();
-    if (!monitoring.hasOwnProperty('workers')) {
-      return;
-    }
+    if (!monitoring.hasOwnProperty('workers')) return;
     const queues = await this.getQueue(monitoring.workers);
-
+    const workers={}
     await Promise.map(queues, async(queue) => {
       const jobsCount = await queue.getJobCounts();
       jobsCount.name = queue.name;
@@ -43,15 +41,18 @@ Monitor.prototype.launch = function () {
       delete jobsCount.delayed;
       delete jobsCount.active;
       delete jobsCount.completed;
-      return jobsCount;
+      workers[queue.name] = jobsCount
     }).then(async(data) => {
       this.monitorController.refresh({
-        data,
+        workers,
         startDate: monitoring.start,
         endDate: monitoring.end,
-        log: monitoring.log
+        log: monitoring.log,
+        workersError: monitoring.workersError
       });
       return data;
+    }).catch(err=>{
+      console.log(err)
     });
   }, this.refresh);
   return this;

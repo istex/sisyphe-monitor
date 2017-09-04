@@ -3,7 +3,7 @@ const colors = require('colors/safe');
  * List of help function
  * @constructor
  */
-function MonitorHelpers () {}
+function MonitorHelpers() { }
 
 /**
  * Convert an object to an array with array of properties inside
@@ -14,7 +14,7 @@ MonitorHelpers.prototype.propertyToArray = function (object) {
   const arrayWaitingModules = [];
   for (var value in object) {
     if (object.hasOwnProperty(value)) {
-      arrayWaitingModules.push([value]);
+      arrayWaitingModules.push([value, getColor('info', object[value].waiting), getColor('error', object[value].failed)]);
     }
   }
   return arrayWaitingModules;
@@ -35,11 +35,10 @@ MonitorHelpers.prototype.getColorLog = function (logs) {
     formatedLogs.push(getColor(type, '├─ ' + type + ':'));
     for (var j = 0; j < logs[type].length; j++) {
       const text = logs[type][j]
-      // console.log(text)
       formatedLogs.push(getColor(type, '├─── ' + logs[type][j].split('##')[0]));
       if (text.includes('##')) {
-        text.split('##').map((info, index)=>{
-          if(index !== 0){
+        text.split('##').map((info, index) => {
+          if (index !== 0) {
             formatedLogs.push(getColor(type, '├───── ' + info))
           }
         })
@@ -47,24 +46,27 @@ MonitorHelpers.prototype.getColorLog = function (logs) {
     }
     formatedLogs.push(getColor(type, '└─────────────────────'));
   }
-
-  function getColor (type, string) {
-    switch (type) {
-      case 'warning':
-        return colors.yellow(string);
-        break;
-      case 'error':
-        return colors.red(string);
-        break;
-      case 'info':
-        return colors.blue(string);
-        break;
-      default:
-        return string;
-    }
-  }
   return formatedLogs;
 };
+
+function getColor(type, string) {
+  switch (type) {
+    case 'warning':
+      return colors.yellow(string);
+      break;
+    case 'error':
+      return colors.red(string);
+      break;
+    case 'info':
+      return colors.blue(string);
+      break;
+    case 'completed':
+      return colors.green(string);
+      break;
+    default:
+      return string;
+  }
+}
 
 /**
  * Returns a color corresponding to the percentage
@@ -111,10 +113,10 @@ MonitorHelpers.prototype.nbProperty = function (object) {
  */
 MonitorHelpers.prototype.getTimeBetween = function (startDateInMs, endDateInMs) {
   const time = new Date();
-  time.setSeconds((endDateInMs-startDateInMs) /(1000));
-  time.setMinutes((endDateInMs-startDateInMs) /(1000*60));
-  time.setHours((endDateInMs-startDateInMs) /(1000*60*60));
-  time.setDate(~~((endDateInMs-startDateInMs) /(1000*60*60*24)));
+  time.setSeconds((endDateInMs - startDateInMs) / (1000));
+  time.setMinutes((endDateInMs - startDateInMs) / (1000 * 60));
+  time.setHours((endDateInMs - startDateInMs) / (1000 * 60 * 60));
+  time.setDate(~~((endDateInMs - startDateInMs) / (1000 * 60 * 60 * 24)));
   return time;
 };
 
