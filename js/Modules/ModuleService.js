@@ -13,12 +13,12 @@ const MonitorController = require("./monitor/monitorController");
  * @return {Object} this object
  */
 function Monitor(options = {}) {
-  options = {}
+  options = options || {}
   this.refresh = options.refresh && options.refresh > 40 ? options.refresh : 40;
   this.workers = [];
   this.redisKeys = {};
-  this.prefix = 'bull';
-  this.host = 'localhost';
+  this.prefix = options.prefix || 'bull';
+  this.host = options.host || 'localhost';
   this.client = redis.createClient({ host: this.host });
   this.redisConnection = false
   this.client.info((err, response)=>{
@@ -73,7 +73,6 @@ Monitor.prototype.getMonitoring = async function() {
   });
   return monitoring;
 };
-
 /**
  * Searches all keys in redis and stores them in the local object
  * @return {Promise} Promise resolve with all key in redis
@@ -105,6 +104,13 @@ Monitor.prototype.getDones = function() {
 };
 Monitor.prototype.getLogs = function() {
   return this.monitorController.logs;
+};
+
+Monitor.prototype.changeHost = function(host) {
+  this.redisConnection = false;
+  this.host = host
+  this.client = redis.createClient({ host: this.host });
+  this.client.info((err, response) => this.redisConnection = true);
 };
 
 Monitor.prototype.getCurrentPercent = function() {

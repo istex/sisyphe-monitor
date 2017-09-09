@@ -1,4 +1,5 @@
 const ModuleService = require("./js/Modules/ModuleService");
+const ConfigService = require("./js/ConfigService");
 const ModulesController = require("./js/Modules/ModulesController");
 const HomeController = require("./js/HomeController");
 const LogsController = require("./js/Logs/LogsController");
@@ -9,6 +10,7 @@ let app = angular
   .module("sisyphe", ["ngResource", "ui.router"])
   .constant("contant", constant)
   .service("Modules", ModuleService)
+  .service("ConfigService", ConfigService)
   .controller("HomeCtrl", HomeController)
   .controller("LogsCtrl", LogsController)
   .controller("ModulesCtrl", ModulesController)

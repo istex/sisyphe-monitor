@@ -9,6 +9,13 @@
     <div class="row">
       <div class="modalContainer ten wide column aligned">
         {{modalContainer}}
+        <div class="ui right labeled left icon input">
+          <i class="tags icon"></i>
+          <input ng-model="host" type="text">
+          <a class="ui tag label" ng-click="changeHost(host)">
+              Change host
+            </a>
+        </div>
       </div>
     </div>
   </div>
@@ -19,6 +26,13 @@
     <div class="row">
       <div class="scallable ui tall piled segment fifteen wide column centered">
         <div class="ui grid">
+          <div class="ui right labeled left icon input">
+            <i class="tags icon"></i>
+            <input ng-model="host" type="text">
+            <a class="ui tag label" ng-click="changeHost(host)">
+              Change host
+            </a>
+          </div>
           <h1 class="row centered content">Modules</h1>
           <div ui-view="modules" class="row"></div>
         </div>
