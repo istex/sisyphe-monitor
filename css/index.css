@@ -34907,6 +34907,28 @@ body.pushable > .pusher {
   font-size: 2em;
 }
 
+#currentContent {
+  position: absolute;
+  z-index: 100;
+  color: white;
+}
+
+#currentProgress {
+  position: absolute;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+#currentProgress .bar {
+  height: 100%;
+}
+
+#currentModuleContainer {
+  padding-top: 1em;
+}
+
 .modal > div {
   width: 100%;
 }
