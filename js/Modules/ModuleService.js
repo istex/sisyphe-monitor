@@ -20,8 +20,11 @@ function Monitor(options = {}) {
   this.prefix = 'bull';
   this.host = 'localhost';
   this.client = redis.createClient({ host: this.host });
-  return this;
-}
+  this.redisConnection = false
+  this.client.info((err, response)=>{
+    this.redisConnection = true
+  })
+};
 
 /**
  * Launches the monitor and injects the data that is needed
@@ -38,25 +41,24 @@ Monitor.prototype.launch = function() {
       const jobsCount = await queue.getJobCounts();
       jobsCount.name = queue.name;
       jobsCount.maxFile = this.redisKeys[queue.name].maxFile;
-      // console.log(jobsCount.maxFile)
       delete jobsCount.delayed;
       delete jobsCount.active;
       delete jobsCount.completed;
       workers[queue.name] = jobsCount;
     })
-      .then(async data => {
-        this.monitorController.refresh({
-          workers,
-          startDate: monitoring.start,
-          endDate: monitoring.end,
-          log: monitoring.log,
-          workersError: monitoring.workersError
-        });
-        return data;
-      })
-      .catch(err => {
-        console.log(err);
+    .then(async data => {
+      this.monitorController.refresh({
+        workers,
+        startDate: monitoring.start,
+        endDate: monitoring.end,
+        log: monitoring.log,
+        workersError: monitoring.workersError
       });
+      return data;
+    })
+    .catch(err => {
+      console.log(err);
+    });
   }, 100);
   return this;
 };
@@ -116,5 +118,10 @@ Monitor.prototype.getCurrentPercent = function() {
 Monitor.prototype.getTotalPercent = function() {
   return this.monitorController.totalPercent;
 };
+
+Monitor.prototype.isRunning = function() {
+  return this.redisConnection;
+};
+
 
 module.exports = Monitor;
