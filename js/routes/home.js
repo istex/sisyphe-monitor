@@ -15,7 +15,8 @@ module.exports = {
       controller: "LogsCtrl"
     },
     "": {
-      templateUrl: "views/home.html"
+      templateUrl: "views/home.html",
+      controller: "HomeCtrl"
     }
   }
 };

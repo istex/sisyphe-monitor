@@ -3,6 +3,6 @@
 // Promise.promisifyAll(redis.Multi.prototype)
 
 function HomeController ($scope) {
-    $scope.waitings = ['lkjjkl']
+   
 }
 module.exports = HomeController

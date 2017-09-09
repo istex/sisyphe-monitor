@@ -1,6 +1,6 @@
-const HomeController = require("./js/HomeController");
 const ModuleService = require("./js/Modules/ModuleService");
 const ModulesController = require("./js/Modules/ModulesController");
+const HomeController = require("./js/HomeController");
 const LogsController = require("./js/Logs/LogsController");
 const NavbarController = require("./js/NavbarController");
 const constant = require("./js/constant");
@@ -9,6 +9,7 @@ let app = angular
   .module("sisyphe", ["ngResource", "ui.router"])
   .constant("contant", constant)
   .service("Modules", ModuleService)
+  .controller("HomeCtrl", HomeController)
   .controller("LogsCtrl", LogsController)
   .controller("ModulesCtrl", ModulesController)
   .controller("NavbarCtrl", NavbarController)
