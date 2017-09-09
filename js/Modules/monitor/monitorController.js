@@ -49,7 +49,12 @@ MonitorController.prototype.updateData = function (data) {
   
   
   // if there's no worker in current queue, we format data to display
-  if (!monitorHelpers.nbProperty(this.workersData.currentModule)) {
+  // Total percent
+  let allDone = this.maxFile * monitorHelpers.nbProperty(this.workersData.doneModules);
+  if (this.workersData.currentModule.waiting) allDone += this.maxFile - (this.workersData.currentModule.waiting);
+  this.totalPercent = ~~(allDone * 100 / (this.maxFile * routerResult.nbWorkers));
+  this.logs = data.log;
+  if (!monitorHelpers.nbProperty(this.workersData.currentModule) || this.totalPercent === 100) {
     this.workersData.currentModule = {
       name: 'None',
       waiting: '',
@@ -57,11 +62,6 @@ MonitorController.prototype.updateData = function (data) {
       failed: ''
     };
   }
-  // Total percent
-  let allDone = this.maxFile * monitorHelpers.nbProperty(this.workersData.doneModules);
-  if (this.workersData.currentModule.waiting) allDone += this.maxFile - (this.workersData.currentModule.waiting);
-  this.totalPercent = ~~(allDone * 100 / (this.maxFile * routerResult.nbWorkers));
-  this.logs = data.log;
   return this;
 };
 

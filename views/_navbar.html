@@ -3,7 +3,7 @@
         <a class="active item">Sisyphe</a>
         <div class="right menu" ng-if="totalPercent">
             <div class="item">
-            <div class="ui active progress">
+            <div class="ui large active indicating progress" data-percent="{{totalPercent}}">
                 <div class="bar" style="transition-duration: 400ms; width: {{totalPercent}}%;">
                     <div class="progress"></div>
                 </div>
