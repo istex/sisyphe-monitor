@@ -1,0 +1,34 @@
+<div class="scallable ui grid tall piled segment five wide column centered">
+    <h3 class="row centered content">Errors</h3>
+    <div class="ui relaxed divided list">
+        <div class="item" ng-repeat="(key, log) in logsError">
+            <div class="content">
+                <a class="header" ng-click="toggle = !toggle">{{log.message}}</a>
+                <div class="description" ng-show="toggle">
+                    <div ng-if="log.stack">{{log.stack}}</div>
+                    <div ng-if="log.infos.path">{{log.infos.path}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="scallable ui grid tall piled segment five wide column centered">
+    <h3 class="row centered content">Infos</h3>
+    <div class="ui relaxed divided list">
+        <div class="item" ng-repeat="(key, log) in logsInfo">
+            <div class="content">
+                <a class="header" ng-click="toggle = !toggle">{{log}}</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="scallable ui grid tall piled segment five wide column centered">
+    <h3 class="row centered content">Warnings</h3>
+    <div class="ui relaxed divided list">
+        <div class="item" ng-repeat="(key, log) in logsWarning">
+            <div class="content">
+                <a class="header" ng-click="toggle = !toggle">{{log}}</a>
+            </div>
+        </div>
+    </div>
+</div>

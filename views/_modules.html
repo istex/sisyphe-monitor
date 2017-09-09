@@ -1,0 +1,39 @@
+<div class="scallable ui tall piled segment five wide column left floated">
+    <div class="ui doneModulesContainer relaxed divided list">
+        <div class="item" ng-repeat="(key, module) in waitingModules">
+            <div class="content">
+                <a class="header" ng-click="toggle = !toggle">{{module.name}}</a>
+                <div class="description" ng-show="toggle">
+                    <div>Waiting:{{module.waiting}}</div>
+                    <div>Failed:{{module.failed}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="scallable ui tall piled segment five wide column">
+    <div class="currentModuleContainer ui grid centered content">
+        <h3 class="row centered content" ng-if="percent">
+            {{currentModule.name}}
+        </h3>
+        <div class="ui active progress fifteen wide column" ng-if="percent">
+            <div class="bar" style="transition-duration: 400ms; width: {{percent}}%;">
+                <div class="progress"></div>
+            </div>
+            <div class="label">Percent</div>
+        </div>
+    </div>
+</div>
+<div class="scallable ui tall piled segment five wide column right floated">
+    <div class="ui waitingModulesContainer relaxed divided list">
+        <div class="item" ng-repeat="(key, module) in doneModules">
+            <div class="content">
+                <a class="header" ng-click="toggle = !toggle" >{{module.name}}</a>
+                <div class="description" ng-show="toggle">
+                    <div>Waiting:{{module.waiting}}</div>
+                    <div>Failed:{{module.failed}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

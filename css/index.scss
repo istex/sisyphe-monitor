@@ -1,0 +1,50 @@
+@import '../bower_components/semantic-ui-sass/app/assets/stylesheets/semantic-ui.scss';
+.navbar{
+    color: white;
+}
+
+.scallableTrigger{
+    text-align: right;
+    font-size: large;
+    width: 30px;
+    height: 30px;
+    position:absolute;
+    top:0;
+    right:0;
+    color: rgba(0,0,0,0.1);
+}
+.right.menu {
+    .item{
+        .progress{
+            width: 100% !important;
+            margin: 0;
+        }
+        width: 100% !important;
+    }
+    width: 100% !important;
+}
+.ui.list > .item .description{
+    width: 100%;
+    word-break: break-all;
+}
+.ui.list > .item .description.active{
+    display: inline-block;
+}
+.scallableTrigger{
+    width: 30px;
+    height: 30px;
+    position: absolute;
+}
+.fa.fa-arrows-alt{
+    font-size: xx-large
+}
+
+.modalContainer{
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.5);
+    top: 0;
+    left: 0;
+    z-index:9999;
+    position: fixed
+}
