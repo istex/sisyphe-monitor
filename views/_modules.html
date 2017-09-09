@@ -12,10 +12,19 @@
     </div>
 </div>
 <div class="scallable ui tall piled segment five wide column">
-    <div class="currentModuleContainer ui grid centered content">
-        <h3 class="row centered content" ng-if="percent">
+    <div class="currentModuleContainer ui grid centered content" ng-if="percent">
+        <h3 class="row centered content">
             {{currentModule.name}}
         </h3>
+        <div class="row centered content">
+            Waiting: {{currentModule.waiting}}
+        </div>
+        <div class="row centered content">
+            Failed: {{currentModule.failed}}
+        </div>
+        <div class="row centered content">
+            completed: {{currentModule.completed}}
+        </div>
         <div class="ui active progress fifteen wide column" ng-if="percent">
             <div class="bar" style="transition-duration: 400ms; width: {{percent}}%;">
                 <div class="progress"></div>
