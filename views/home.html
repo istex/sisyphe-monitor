@@ -1,43 +1,9 @@
-<div class="modal" ng-show="triggerModal">
-  <i class="fa fa-times closeModal" aria-hidden="true" ng-click="triggerModal = !triggerModal"></i>
-  <div class='ui grid centered content'>
-    <div class="row">
-      <div class="modalHeader ten wide column aligned">
-        {{modalHeader}}
-      </div>
-    </div>
-    <div class="row">
-      <div class="modalContainer ten wide column aligned">
-        {{modalContainer}}
-        <div class="ui right labeled left icon input">
-          <i class="tags icon"></i>
-          <input ng-model="host" type="text">
-          <a class="ui tag label" ng-click="changeHost(host)">
-              Change host
-            </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+<div ui-view="modal"></div>
 <div ui-view="navbar" class="ui grid"></div>
 <div class="ui grid">
   <div class="ui container grid fifteen wide column">
-    <div class="row">
-      <div class="scallable ui tall piled segment fifteen wide column centered">
-        <div class="ui grid">
-          <div class="ui right labeled left icon input">
-            <i class="tags icon"></i>
-            <input ng-model="host" type="text">
-            <a class="ui tag label" ng-click="changeHost(host)">
-              Change host
-            </a>
-          </div>
-          <h1 class="row centered content">Modules</h1>
-          <div ui-view="modules" class="row"></div>
-        </div>
-      </div>
-    </div>
+    <div ui-view="infos" class="row"></div>
+    <div ui-view="modules" class="row"></div>
     <div class="row">
       <div class="scallable ui tall piled segment fifteen wide column centered">
         <div class="ui grid">

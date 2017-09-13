@@ -1,6 +1,7 @@
 
-function ConfigService() {
-  this.host='localost'
-};
+function ConfigService () {
+  this.host = 'localost';
+  this.refresh = 1000;
+}
 
-module.exports = ConfigService
+module.exports = ConfigService;

@@ -1,11 +1,11 @@
-const xxh = require("xxhashjs").h32;
+const xxh = require('xxhashjs').h32;
 
-function ModulesController($scope, $interval, Modules) {
+function ModulesController ($scope, $interval, Modules, ConfigService) {
   Modules.launch();
   let waitingH;
   $interval(_ => {
-    if(waitingH !== xxh(JSON.stringify(Modules.getWaitings()), "aaa").toString(16)) {
-      waitingH = xxh(JSON.stringify(Modules.getWaitings()), "aaa").toString(16);
+    if (waitingH !== xxh(JSON.stringify(Modules.getWaitings()), 'aaa').toString(16)) {
+      waitingH = xxh(JSON.stringify(Modules.getWaitings()), 'aaa').toString(16);
       $scope.waitingModules = Modules.getWaitings();
     }
 
@@ -13,11 +13,7 @@ function ModulesController($scope, $interval, Modules) {
     $scope.doneModules = Modules.getDones();
     $scope.percent = Modules.getCurrentPercent();
     $scope.totalPercent = Modules.getTotalPercent();
-  }, 100);
-}
-
-function order(list) {
-  return list
+  }, ConfigService.refresh);
 }
 
 module.exports = ModulesController;

@@ -6,7 +6,7 @@ const os = require('os');
  * @constructor
  * @return {Object} this object
  */
-function MonitorController() {
+function MonitorController () {
   this.workersData = {
     waitingModules: {},
     doneModules: {},
@@ -14,7 +14,7 @@ function MonitorController() {
   };
   this.maxFile = 0;
   this.listWorkers = [];
-  this.logs={}
+  this.logs = {};
   return this;
 }
 
@@ -33,11 +33,11 @@ MonitorController.prototype.updateData = function (data) {
   // dispatch all workers by status (waiting, current, done)
   const routerResult = this.router(data);
   if (data.hasOwnProperty('workersError') && data.workersError) this.nbFailed = data.workersError.length;
-  else this.nbFailed = 0
+  else this.nbFailed = 0;
   for (var worker in this.workersData.waitingModules) {
     if (this.workersData.waitingModules.hasOwnProperty(worker)) {
       var element = this.workersData.waitingModules[worker];
-      element.failed=this.nbFailed
+      element.failed = this.nbFailed;
     }
   }
   if (!routerResult.thereIsACurrent) {
@@ -46,8 +46,8 @@ MonitorController.prototype.updateData = function (data) {
       delete this.workersData.waitingModules[this.workersData.currentModule.name];
     }
   }
-  
-  
+
+
   // if there's no worker in current queue, we format data to display
   // Total percent
   let allDone = this.maxFile * monitorHelpers.nbProperty(this.workersData.doneModules);
@@ -73,9 +73,9 @@ MonitorController.prototype.updateData = function (data) {
 MonitorController.prototype.router = function (data) {
   let nbWorkers = 0;
   let thereIsACurrent = false;
-  this.failed = 0
+  this.failed = 0;
   for (var workerName in data.workers) {
-    const worker = data.workers[workerName]
+    const worker = data.workers[workerName];
     if (workerName === 'walker-fs' || workerName === 'start' || workerName === 'end' || !this.listWorkers[worker.name]) continue;
     nbWorkers++;
     if (this.listWorkers[worker.name].waiting > worker.waiting) {
@@ -96,8 +96,8 @@ MonitorController.prototype.router = function (data) {
     }
     this.listWorkers[worker.name].waiting = worker.waiting;
   }
-  this.maxFile = data.workers.filetype.maxFile
-  this.listWorkers=data.workers
+  this.maxFile = data.workers.filetype.maxFile;
+  this.listWorkers = data.workers;
   return {
     thereIsACurrent,
     nbWorkers
@@ -110,7 +110,7 @@ MonitorController.prototype.router = function (data) {
  * @return {Object}      this object
  */
 MonitorController.prototype.refresh = function (data) {
-  this.updateData(data)
+  this.updateData(data);
   return this;
 };
 

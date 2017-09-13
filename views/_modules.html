@@ -1,47 +1,52 @@
-<div class="scallable ui tall piled segment five wide column left floated">
-    <div class="ui doneModulesContainer relaxed divided list">
-        <div class="item" ng-repeat="(key, module) in waitingModules">
-            <div class="content">
-                <a class="header" ng-click="toggle = !toggle">{{module.name}}</a>
-                <div class="description" ng-show="toggle">
-                    <div>Waiting:{{module.waiting}}</div>
-                    <div>Failed:{{module.failed}}</div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="scallable ui tall piled segment five wide column" id="currentModuleContainer">
-    <div class="ui grid centered content" ng-if="percent">
-        <div id="currentContent">
-            <h3 class="row centered content">
-                {{currentModule.name}}
-            </h3>
-            <div class="row centered content">
-                Waiting: {{currentModule.waiting}}
-            </div>
-            <div class="row centered content">
-                Failed: {{currentModule.failed}}
-            </div>
-            <div class="row centered content">
-                completed: {{currentModule.completed}}
-            </div>
-        </div>
-        <div class="ui active indicating progress sixteen wide column" id="currentProgress" data-percent="{{percent}}">
-            <div class="bar" style="transition-duration: 400ms; width: {{percent}}%;"></div>
-        </div>
-    </div>
-</div>
-<div class="scallable ui tall piled segment five wide column right floated">
-    <div class="ui waitingModulesContainer relaxed divided list">
-        <div class="item" ng-repeat="(key, module) in doneModules">
-            <div class="content">
-                <a class="header" ng-click="toggle = !toggle" >{{module.name}}</a>
-                <div class="description" ng-show="toggle">
-                    <div>Waiting:{{module.waiting}}</div>
-                    <div>Failed:{{module.failed}}</div>
-                </div>
-            </div>
-        </div>
-    </div>
+<div class="scallable ui tall piled segment fifteen wide column centered">
+	<div class="ui grid">
+		<h1 class="row centered content">Modules</h1>
+		<div class="scallable ui tall piled segment five wide column left floated">
+			<div class="ui doneModulesContainer relaxed divided list">
+				<div class="item" ng-repeat="(key, module) in waitingModules">
+					<div class="content">
+						<a class="header" ng-click="toggle = !toggle">{{module.name}}</a>
+						<div class="description" ng-show="toggle">
+							<div>Waiting:{{module.waiting}}</div>
+							<div>Failed:{{module.failed}}</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="scallable ui tall piled segment five wide column" id="currentModuleContainer">
+			<div class="ui grid centered content" ng-if="percent">
+				<div id="currentContent">
+					<h3 class="row centered content">
+						{{currentModule.name}}
+					</h3>
+					<div class="row centered content">
+						Waiting: {{currentModule.waiting}}
+					</div>
+					<div class="row centered content">
+						Failed: {{currentModule.failed}}
+					</div>
+					<div class="row centered content">
+						completed: {{currentModule.completed}}
+					</div>
+				</div>
+				<div class="ui active indicating progress sixteen wide column" id="currentProgress" data-percent="{{percent}}">
+					<div class="bar" style="transition-duration: 400ms; width: {{percent}}%;"></div>
+				</div>
+			</div>
+		</div>
+		<div class="scallable ui tall piled segment five wide column right floated">
+			<div class="ui waitingModulesContainer relaxed divided list">
+				<div class="item" ng-repeat="(key, module) in doneModules">
+					<div class="content">
+						<a class="header" ng-click="toggle = !toggle">{{module.name}}</a>
+						<div class="description" ng-show="toggle">
+							<div>Waiting:{{module.waiting}}</div>
+							<div>Failed:{{module.failed}}</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>

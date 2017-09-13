@@ -1,7 +1,7 @@
-function NavbarController($scope, $interval, Modules) {
+function NavbarController ($scope, $interval, Modules, ConfigService) {
   $interval(_ => {
     $scope.totalPercent = Modules.getTotalPercent();
-  }, 100);
+  }, ConfigService.refresh);
 }
 
 module.exports = NavbarController;

@@ -1,22 +1,34 @@
 module.exports = {
-  name: "home",
-  url: "/",
+  name: 'home',
+  url: '/',
   views: {
-    "navbar@home": {
-      templateUrl: "views/_navbar.html",
-      controller: "NavbarCtrl"
+    'navbar@home': {
+      parent: 'home',
+      templateUrl: 'views/_navbar.html',
+      controller: 'NavbarCtrl'
     },
-    "modules@home": {
-      templateUrl: "views/_modules.html",
-      controller: "ModulesCtrl"
+    'modal@home': {
+      parent: 'home',
+      templateUrl: 'views/_modal.html'
     },
-    "logs@home": {
-      templateUrl: "views/_logs.html",
-      controller: "LogsCtrl"
+    'infos@home': {
+      parent: 'home',
+      templateUrl: 'views/_infos.html'
     },
-    "": {
-      templateUrl: "views/home.html",
-      controller: "HomeCtrl"
+    'modules@home': {
+      parent: 'home',
+      templateUrl: 'views/_modules.html',
+      controller: 'ModulesCtrl'
+    },
+    'logs@home': {
+      parent: 'home',
+      templateUrl: 'views/_logs.html',
+      controller: 'LogsCtrl'
+    },
+    '': {
+      abstract: true,
+      templateUrl: 'views/home.html',
+      controller: 'HomeCtrl'
     }
   }
 };

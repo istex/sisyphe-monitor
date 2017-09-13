@@ -1,0 +1,20 @@
+<div class="modal" ng-show="triggerModal">
+	<i class="fa fa-times closeModal" aria-hidden="true" ng-click="triggerModal = !triggerModal"></i>
+	<div class='ui grid centered content'>
+		<div class="row">
+			<div class="modalHeader ten wide column aligned">
+				{{modalHeader}}
+			</div>
+		</div>
+		<div class="row">
+			<div class="modalContainer ten wide column aligned">
+				{{modalContainer}}
+				<div class="ui right labeled left icon input">
+					<i class="tags icon"></i>
+					<input ng-model="Model.host" type="text">
+					<a class="ui tag label" ng-click="changeHost(Model.host)"> Change host</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

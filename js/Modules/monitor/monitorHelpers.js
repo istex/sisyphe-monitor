@@ -2,7 +2,7 @@
  * List of help function
  * @constructor
  */
-function MonitorHelpers() { }
+function MonitorHelpers () { }
 
 /**
  * Convert an object to an array with array of properties inside
@@ -33,14 +33,14 @@ MonitorHelpers.prototype.getColorLog = function (logs) {
     formatedLogs.push('┌─────────────────────');
     formatedLogs.push('├─ ' + type + ':');
     for (var j = 0; j < logs[type].length; j++) {
-      const text = logs[type][j]
+      const text = logs[type][j];
       formatedLogs.push('├─── ' + logs[type][j].split('##')[0]);
       if (text.includes('##')) {
         text.split('##').map((info, index) => {
           if (index !== 0) {
-            formatedLogs.push('├───── ' + info)
+            formatedLogs.push('├───── ' + info);
           }
-        })
+        });
       }
     }
     formatedLogs.push('└─────────────────────');
