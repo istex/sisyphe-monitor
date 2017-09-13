@@ -4,7 +4,7 @@ const Promise = require('bluebird');
 const redis = require('redis');
 Promise.promisifyAll(redis.RedisClient.prototype);
 Promise.promisifyAll(redis.Multi.prototype);
-const MonitorController = require('./monitor/monitorController');
+const MonitorController = require('./core/monitorController');
 
 /**
  * Its role is to manage the refreshments loop and inject the data in the controller

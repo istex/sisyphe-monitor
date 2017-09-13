@@ -1,5 +1,4 @@
 const monitorHelpers = require('./monitorHelpers');
-const os = require('os');
 
 /**
  * Its role is to manage the data for monitor and update views
