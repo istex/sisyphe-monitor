@@ -1,49 +1,41 @@
-<div class="scallable ui tall piled segment fifteen wide column centered">
+<div class="ui tall piled segment fifteen wide column centered" id="progressBackground">
+
+	<div class="ui active indicating progress sixteen wide column progressWide" data-percent="{{totalPercent}}">
+		<div class="bar" style="transition-duration: 400ms; width: {{totalPercent}}%;"></div>
+	</div>
+
 	<div class="ui grid">
 		<h1 class="row centered content">Modules</h1>
-		<div class="scallable ui tall piled segment five wide column left floated">
-			<div class="ui doneModulesContainer relaxed divided list">
-				<div class="item" ng-repeat="(key, module) in waitingModules">
-					<div class="content">
-						<a class="header" ng-click="toggle = !toggle">{{module.name}}</a>
-						<div class="description" ng-show="toggle">
-							<div>Waiting:{{module.waiting}}</div>
-							<div>Failed:{{module.failed}}</div>
-						</div>
+		<div class="row centered content">
+			<div class="ui grid five wide column segmentContent left centered" id="segmentContent">
+				<h3 class="row centered content">Waiting</h3> 
+				<div class="ui doneModulesContainer relaxed divided list">
+					<div class="item" ng-repeat="(key, module) in waitingModules">
+						<div class="row aligned content">{{module.name}}</div>
 					</div>
 				</div>
 			</div>
-		</div>
-		<div class="scallable ui tall piled segment five wide column" id="currentModuleContainer">
-			<div class="ui grid centered content" ng-if="percent">
-				<div id="currentContent">
-					<h3 class="row centered content">
-						{{currentModule.name}}
-					</h3>
-					<div class="row centered content">
-						Waiting: {{currentModule.waiting}}
-					</div>
-					<div class="row centered content">
-						Failed: {{currentModule.failed}}
-					</div>
-					<div class="row centered content">
-						completed: {{currentModule.completed}}
-					</div>
-				</div>
-				<div class="ui active indicating progress sixteen wide column" id="currentProgress" data-percent="{{percent}}">
+			<div class="ui five wide column segmentContent" id="progressBackground">
+				<div class="ui active indicating progress sixteen wide column progressWide" ng-if="percent"  data-percent="{{percent}}">
 					<div class="bar" style="transition-duration: 400ms; width: {{percent}}%;"></div>
 				</div>
-			</div>
-		</div>
-		<div class="scallable ui tall piled segment five wide column right floated">
-			<div class="ui waitingModulesContainer relaxed divided list">
-				<div class="item" ng-repeat="(key, module) in doneModules">
-					<div class="content">
-						<a class="header" ng-click="toggle = !toggle">{{module.name}}</a>
-						<div class="description" ng-show="toggle">
-							<div>Waiting:{{module.waiting}}</div>
-							<div>Failed:{{module.failed}}</div>
+				<div class="ui grid">
+					<h3 class="row centered content">Current</h3>
+					<div class="row centered content" ng-if="percent">
+						<div class="ui relaxed list">
+							<div class="item">Name:{{currentModule.name}}</div>
+							<div class="item">Waiting: {{currentModule.waiting}}</div>
+							<div class="item">Failed: {{currentModule.failed}}</div>
+							<div class="item">completed: {{currentModule.wait}}</div>
 						</div>
+					</div>
+				</div>
+			</div>
+			<div class="ui grid five wide column right segmentContent centered" id="segmentContent">
+				<h3 class="row centered content">Done</h3>
+				<div class="ui waitingModulesContainer relaxed divided list">
+					<div class="item" ng-repeat="(key, module) in doneModules">
+						<div class="content">{{module.name}}</div>
 					</div>
 				</div>
 			</div>

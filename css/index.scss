@@ -1,9 +1,6 @@
-@import '../bower_components/semantic-ui-sass/app/assets/stylesheets/semantic-ui.scss';
+// @import '../bower_components/semantic-ui-sass/app/assets/stylesheets/semantic-ui.scss';
 .navbar{
     color: white;
-}
-body{
-    background-color: #EEE;
 }
 .modal{
     width: 100vw;
@@ -17,24 +14,83 @@ body{
     color: white;
     font-size: 2em;
 }
-
 #currentContent{
-        position: absolute;
+    position: absolute;
     z-index: 100;
-    color: white;
+    top: 0;
 }
-#currentProgress {
-        position: absolute;
-    height: 100%;
+h1{
+    font-weight: bold;
+}
+.ui.segment .segmentContent, body .ui.segment{
+    visibility: hidden;
+}
+.segmentContent{
+    padding: 0 !important;
+    border: 2px solid#2b3e50 !important;
+    background-color: #2b3e50 !important;
+    box-shadow: 0px 0px 10px 3px #2b3e50 !important;
+    position: relative !important;
+}
+.navbar{
     margin: 0;
-    padding: 0;
-    background-color: rgba(0,0,0,0.5);
-    .bar {
-        height: 100%;
+    height: 100px !important;
+    * {
+        font-size: 2rem; 
+    }
+    &>div{
+        padding:0 !important;
+    }
+    div, & span{
+        // font-size: 2rem !important;
+    }
+    & menu span{
+        padding-left: 2.56666667em!important;
+         padding-right: .93333333em!important;
     }
 }
-#currentModuleContainer{
-    padding-top: 1em;
+.list .content{
+    font-weight: bold;
+    text-align: center;
+}
+.ui.progress{
+    background-color: rgba(0,0,0,0)
+}
+.segment{
+    margin-bottom: 30px !important;
+}
+.progressWide{
+    // background-color:#4e5d6c !important;
+    position: absolute !important;
+    width: 100% !important;
+    height: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    top: 0 !important;
+    .bar {
+        height: 100% !important;
+    }
+}
+h3{
+    background-color: #df691a;
+}
+.ui.grid{
+    margin: 0;
+}
+.ui.grid>*{
+    padding: 0;
+    margin: 0;
+}
+#currentProgress {
+    background-color: #2b3e50 !important;
+}
+#progressBackground{
+    width: 100%;
+
+    position: relative;
+    height: 100%;
+    padding: 0;
+    // background-color:#FFF
 }
 .modal>div{
     width: 100%;
@@ -60,6 +116,9 @@ body{
     right:0;
     color: rgba(0,0,0,0.1);
 }
+.doneModulesContainer{
+    z-index: 1000;
+}
 .right.menu {
     .item{
         .progress{
@@ -73,6 +132,12 @@ body{
 .ui.list > .item .description{
     width: 100%;
     word-break: break-all;
+}
+.ui.list .item {
+    padding: 6px !important;
+}
+.ui.list{
+    padding: 10px !important;
 }
 .ui.list > .item .description.active{
     display: inline-block;

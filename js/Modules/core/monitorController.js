@@ -7,13 +7,9 @@ const monitorHelpers = require('./monitorHelpers');
  */
 function MonitorController () {
   this.workersData = {
-    waitingModules: {},
-    doneModules: {},
-    currentModule: {}
+    
   };
-  this.maxFile = 0;
-  this.listWorkers = [];
-  this.logs = {};
+  
   return this;
 }
 

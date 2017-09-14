@@ -1,7 +1,6 @@
 const xxh = require("xxhashjs").h32;
 
 function LogsController($scope, $interval, Modules) {
-  Modules.launch();
   let logsErrorH;
   let errors = {};
   errorsH = new Set();

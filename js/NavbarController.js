@@ -1,6 +1,13 @@
 function NavbarController ($scope, $interval, Modules, ConfigService) {
+  $scope.changeHost = function(host) {
+    Modules.changeHost(host);
+  };
   $interval(_ => {
-    $scope.totalPercent = Modules.getTotalPercent();
+    if (!Modules.isRunning()) {
+      $scope.triggerModal = true;
+      $scope.modalHeader = "Error";
+      $scope.modalContainer = "Redis is not runnning...";
+    } else $scope.triggerModal = false;
   }, ConfigService.refresh);
 }
 

@@ -1,28 +1,69 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>Sisyphe</title>
-    <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css"></script>
-    <link rel="stylesheet" href="css/index.css">
-  </head>
-  <body ng-app="sisyphe">
-    <div ui-view></div>
-    <!-- Insert this line above script imports  -->
-    <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
-    
-    <!-- normal script imports etc  -->
-    <script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
-    <script type="text/javascript" src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
-    <script type="text/javascript" src="bower_components/angular-resource/angular-resource.min.js"></script>
-    <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
-    <script type="text/javascript" src="bower_components/semantic/dist/semantic.js"></script>
-    <script type="text/javascript" src="js/app.js"></script>
-    
-    <!-- Insert this line after script imports -->
-    <script>if (window.module) module = window.module;</script>
+
+<head>
+  <meta charset="utf-8">
+  <title>Sisyphe</title>
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
+  </script>
+  <link rel="stylesheet" href="css/semantic.superhero.min.css">
+  </script>
+  <link rel="stylesheet" href="css/index.css">
+</head>
+
+<body ng-app="sisyphe">
+  <div ui-view></div>
+  <!-- Insert this line above script imports  -->
+  <script>
+    if (typeof module === 'object') { window.module = module; module = undefined; }
+  </script>
+
+  <!-- normal script imports etc  -->
+  <script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
+  <script type="text/javascript" src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+  <script type="text/javascript" src="bower_components/angular-resource/angular-resource.min.js"></script>
+  <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
+  <script type="text/javascript" src="bower_components/semantic/dist/semantic.js"></script>
+  <script type="text/javascript" src="js/app.js"></script>
+  <script>
+    setTimeout(_ => {
+      $('body .ui.segment').transition({
+        animation: 'scale',
+        reverse: 'auto', // default setting
+        interval: 200,
+        duration: 1000,        
+        onComplete: function () {
+          console.log('lkj')
+        }
+      })
+      $('.segmentContent')
+      .transition({
+          animation: 'scale',
+          reverse: 'auto', // default setting
+          duration: 1000,
+          interval: 200
+        })
+
+        $("body").on("mouseover",'.ui.dropdown', function () {
+          console.log('lkjkl')
+          $(this).dropdown({ duration: 600, transition: 'swing down', on:'hover',
+              autofocus: false})
+            //stuff to do on mouseover
+          });
+        
+        $('body').hover()
+        $('input').click(e=>{
+          e.stopPropagation()
+        })
+    }, 300)
+  </script>
+  <!-- Insert this line after script imports -->
+  <script>
+    if (window.module) module = window.module;
+  </script>
 
 
-  </body>
+</body>
+
 </html>
