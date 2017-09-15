@@ -14,7 +14,8 @@ module.exports = {
     },
     "infos@home": {
       parent: "home",
-      templateUrl: "views/_infos.html"
+      templateUrl: "views/_infos.html",
+      controller: "InfoController"
     },
     "modules@home": {
       parent: "home",

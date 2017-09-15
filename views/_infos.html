@@ -1,0 +1,15 @@
+<div class="ui grid tall piled segment fifteen wide column centered">
+    <h1 class="row centered content"> Infos</h1>
+    <div class="row centered content">
+        <div class="ui yellow image label floated left"> Status:<span class="detail">{{status}}</span></div>
+        <div class="ui green image label floated center"> Files:<span class="detail">{{maxFile}}</span></div>
+        <div class="ui blue image label floated right"> Time:
+            <span class="detail">
+                <span ng-if="time.days">{{time.days}} days</span> 
+                <span ng-if="time.days || time.hours">{{time.hours}} hours</span>
+                <span ng-if="time.days || time.hours || time.minutes">{{time.minutes}} Minutes</span> 
+                <span ng-if="time.days || time.hours || time.minutes || time.seconds">{{time.seconds}} seconds</span>
+            </span>
+        </div>
+    </div>
+</div>

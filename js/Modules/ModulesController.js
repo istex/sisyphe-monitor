@@ -21,7 +21,10 @@ ModulesController.prototype.loop = async function($scope, $timeout, Modules, Con
     workers.push(await Modules.getJobsFrom(monitoring.workers[i]));
   }
   workers.forEach(function(worker, index) {
-    if ($scope.maxFile < worker.max) $scope.maxFile = worker.max;
+    if ($scope.maxFile < worker.max) {
+      $scope.maxFile = worker.max;
+      Modules.maxFile = worker.max
+    }
     if (worker.wait === 0 && worker.max === 0) waitingModules.push(worker);
     else if (worker.wait === 0 && worker.max !== 0) doneModules.push(worker);
     else {

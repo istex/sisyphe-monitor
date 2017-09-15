@@ -3,7 +3,8 @@ const ConfigService = require('./js/ConfigService');
 const ModulesController = require('./js/Modules/ModulesController');
 const HomeController = require('./js/HomeController');
 const LogsController = require('./js/Logs/LogsController');
-const NavbarController = require('./js/NavbarController');
+const NavbarController = require("./js/NavbarController");
+const InfoController = require("./js/InfoController");
 const config = require('./js/config');
 let app = angular
   .module("sisyphe", ["ngResource", "ui.router"])
@@ -13,4 +14,5 @@ let app = angular
   .controller("LogsCtrl", LogsController)
   .controller("ModulesCtrl", ModulesController)
   .controller("NavbarCtrl", NavbarController)
+  .controller("InfoController", InfoController)
   .config(config);

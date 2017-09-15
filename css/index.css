@@ -15,6 +15,10 @@
   font-size: 2em;
 }
 
+#infosContainer .label {
+  font-size: 1.2em;
+}
+
 #currentContent {
   position: absolute;
   z-index: 100;
@@ -23,6 +27,10 @@
 
 h1 {
   font-weight: bold;
+}
+
+.ui.segment {
+  padding: 0 !important;
 }
 
 .ui.segment .segmentContent, body .ui.segment {
