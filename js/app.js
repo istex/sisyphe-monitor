@@ -7,7 +7,7 @@ const NavbarController = require("./js/NavbarController");
 const InfoController = require("./js/InfoController");
 const config = require('./js/config');
 let app = angular
-  .module("sisyphe", ["ngResource", "ui.router"])
+  .module("sisyphe", ["ui.router"])
   .service("Modules", ModuleService)
   .service("ConfigService", ConfigService)
   .controller("HomeCtrl", HomeController)
