@@ -26,18 +26,15 @@ ModulesController.prototype.loop = async function($scope, $timeout, Modules, Con
     else if (worker.wait === 0 && worker.max !== 0) doneModules.push(worker);
     else {
       const workerBefore = workers[monitoring.workers.indexOf(worker.name) - 1];
-      const workerAfter = workers[monitoring.workers.indexOf(worker.name) + 1];
       if (workerBefore && worker.wait > workerBefore.wait) {
-        if (!workerAfter) {
-          $scope.currentModule = worker;
-          return;
-        }
         currentModule = {
           name: worker.name,
-          waiting: workerAfter.wait,
-          wait: $scope.maxFile - workerAfter.wait
+          waiting: worker.waiting,
+          wait: $scope.maxFile - worker.waiting
         };
-      } else waitingModules.push(worker);
+      } else {
+        waitingModules.push(worker);
+      }
     }
   });
 

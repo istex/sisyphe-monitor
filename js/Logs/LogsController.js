@@ -1,17 +1,17 @@
-const xxh = require("xxhashjs").h32;
-
-function LogsController($scope, $interval, Modules) {
-  let logsErrorH;
+function LogsController($scope, $timeout, $interval, Modules, ConfigService) {
   let errors = {};
-  errorsH = new Set();
-  $interval(_ => {
-    const kellogs = Modules.getLogs();
-    if (kellogs) {
-      if (kellogs.hasOwnProperty("error") && kellogs.error) kellogs.error.map(error=>errors[error.time] = error)
-      $scope.logsInfo = kellogs.info;
-      $scope.logsWarning = kellogs.warning;
-    }
-}, 100);
-$scope.logsError = errors;
+  const kellogs = Modules.getLogs();
+  errors = {};
+  
+  if (kellogs) {
+    if (kellogs.hasOwnProperty("error") && kellogs.error) kellogs.error.map(error => (errors[error.time] = error));
+    $scope.logsError = errors;
+    $scope.logsInfo = kellogs.info;
+    $scope.logsWarning = kellogs.warning;
+  }
+
+  $timeout(_=>{
+    LogsController($scope, $timeout, $interval, Modules, ConfigService);
+  }, ConfigService.refresh)
 }
 module.exports = LogsController;

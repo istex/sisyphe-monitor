@@ -1,9 +1,9 @@
 <div class="ui grid five wide column segmentContent centered">
     <h3 class="row centered content">Errors</h3>
     <div class="ui relaxed divided list">
-        <div class="item" ng-repeat="(key, log) in logsError">
+        <div class="item" ng-repeat="(key, log) in logsError" ng-click="toggle = !toggle">
             <div class="content">
-                <a class="header" ng-click="toggle = !toggle">{{log.message}}</a>
+                <a class="header">{{log.message}}</a>
                 <div class="description" ng-show="toggle">
                     <div ng-if="log.stack">{{log.stack}}</div>
                     <div ng-if="log.infos.path">{{log.infos.path}}</div>

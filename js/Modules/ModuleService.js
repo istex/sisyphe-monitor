@@ -41,11 +41,12 @@ Monitor.prototype.getMonitoring = async function () {
  * @return {Promise} Promise resolve with all key in redis
  */
 Monitor.prototype.getJobsFrom = async function (worker) {
-  // console.log(this.client.__proto__)
   const wait = +(await this.client.lindexAsync(`bull:${worker}:wait`, 0));
   const max = +(await this.client.getAsync(`bull:${worker}:id`));
+  const waiting = +(await this.client.lindexAsync(`bull:${worker}:wait`, -1))
   return {
     name: worker,
+    waiting,
     wait,
     max
   };
