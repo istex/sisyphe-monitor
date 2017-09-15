@@ -247,3 +247,9 @@ hs_err_pid*
 # End of https://www.gitignore.io/api/macos,linux,webstorm,node,java,osx,sublimetext
 
 !.gitkeep
+
+
+.sass-cache/
+bower_components/
+css/
+
