@@ -1,5 +1,3 @@
-const xxh = require('xxhashjs').h32;
-
 function ModulesController ($scope, $timeout, Modules, ConfigService) {
   $scope.maxFile = 0;
   $scope.listWorkers = [];

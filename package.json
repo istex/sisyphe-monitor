@@ -5,9 +5,9 @@
   "dependencies": {
     "bluebird": "^3.5.0",
     "bull": "^3.1.0",
-    "electron": "^1.7.6",
-    "electron-prebuilt": "^1.4.13",
-    "redis": "^2.8.0",
-    "xxhashjs": "^0.2.1"
+    "redis": "^2.8.0"
+  },
+  "devDependencies" : {
+    "electron": "^1.7.6"
   }
 }
