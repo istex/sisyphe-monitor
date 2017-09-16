@@ -1,7 +1,11 @@
 // @import '../bower_components/semantic-ui-sass/app/assets/stylesheets/semantic-ui.scss';
 .navbar{
     color: white;
+    position: fixed;
+    width: 100%;
+    z-index: 100000;
 }
+
 .modal{
     width: 100vw;
     height: 100vh;
@@ -14,6 +18,19 @@
     color: white;
     font-size: 2em;
 }
+
+.logo{
+    padding: 0 !important;
+    width: 120px !important;
+    img{
+        width: auto !important;
+        height: 100% !important;
+    }
+}
+.fixNavbar{
+    height: 95px;
+}
+
 #infosContainer{
     .label{
         font-size: 1.2em;

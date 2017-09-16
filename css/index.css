@@ -1,5 +1,8 @@
 .navbar {
   color: white;
+  position: fixed;
+  width: 100%;
+  z-index: 100000;
 }
 
 .modal {
@@ -13,6 +16,20 @@
   justify-content: center;
   color: white;
   font-size: 2em;
+}
+
+.logo {
+  padding: 0 !important;
+  width: 120px !important;
+}
+
+.logo img {
+  width: auto !important;
+  height: 100% !important;
+}
+
+.fixNavbar {
+  height: 95px;
 }
 
 #infosContainer .label {
