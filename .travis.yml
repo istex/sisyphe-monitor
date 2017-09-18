@@ -16,7 +16,9 @@ script:
   - npm install -g bower
   - npm update -g npm
   - bower install
-  - npm run package
+  - npm run package-linux
+  - npm run package-mac
+  - npm run package-windows
 before_deploy:
   - cd build
   - bash ../script/zip.sh

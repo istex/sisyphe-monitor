@@ -9,7 +9,9 @@
     "request": "^2.81.0"
   },
   "scripts": {
-    "package": "electron-packager . --overwrite --platform=all --arch=all --out=build"
+    "package-linux": "electron-packager . --overwrite --platform=linux --arch=all --out=build",
+    "package-mac": "electron-packager . --icon='logo-sisyphe.icns' --overwrite --platform=darwin --arch=all --out=build",
+    "package-windows": "electron-packager . --icon='logo-sisyphe.ico' --overwrite --platform=win32 --arch=all --out=build"
   },
   "devDependencies": {
     "electron": "^1.7.6",

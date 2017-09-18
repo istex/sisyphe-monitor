@@ -13,10 +13,10 @@ let win;
 function createWindow() {
     // Create the browser window.
     win = new BrowserWindow({
-        width: 1366,
-        height: 768
+      width: 1366,
+      height: 768,
+      icon: __dirname + "/icon-sisyphe.png"
     });
-    
     // and load the index.html of the app.
     win.loadURL(url.format({
         pathname: path.join(__dirname, 'index.html'),
