@@ -2,8 +2,7 @@
   color: white;
   position: fixed;
   width: 100%;
-  z-index: 100000;
-}
+  z-index: 100000; }
 
 .modal {
   width: 100vw;
@@ -15,83 +14,62 @@
   align-items: center;
   justify-content: center;
   color: white;
-  font-size: 2em;
-}
+  font-size: 2em; }
 
 .logo {
   padding: 0 !important;
-  width: 120px !important;
-}
-
-.logo img {
-  width: auto !important;
-  height: 100% !important;
-}
+  width: 120px !important; }
+  .logo img {
+    width: auto !important;
+    height: 100% !important; }
 
 .fixNavbar {
-  height: 95px;
-}
+  height: 95px; }
 
 #infosContainer .label {
-  font-size: 1.2em;
-}
+  font-size: 1.2em; }
 
 #currentContent {
   position: absolute;
   z-index: 100;
-  top: 0;
-}
+  top: 0; }
 
 h1 {
-  font-weight: bold;
-}
+  font-weight: bold; }
 
 .ui.segment {
-  padding: 0 !important;
-}
+  padding: 0 !important; }
 
 .ui.segment .segmentContent, body .ui.segment {
-  visibility: hidden;
-}
+  visibility: hidden; }
 
 .segmentContent {
   padding: 0 !important;
   border: 2px solid #2b3e50 !important;
   background-color: #2b3e50 !important;
   box-shadow: 0px 0px 10px 3px #2b3e50 !important;
-  position: relative !important;
-}
+  position: relative !important; }
 
 .navbar {
   margin: 0;
-  height: 100px !important;
-}
-
-.navbar * {
-  font-size: 2rem;
-}
-
-.navbar > div {
-  padding: 0 !important;
-}
-
-.navbar menu span {
-  padding-left: 2.56667em !important;
-  padding-right: 0.93333em !important;
-}
+  height: 100px !important; }
+  .navbar * {
+    font-size: 2rem; }
+  .navbar > div {
+    padding: 0 !important; }
+  .navbar menu span {
+    padding-left: 2.56667em !important;
+    padding-right: 0.93333em !important; }
 
 .list .content {
   font-weight: bold;
-  text-align: center;
-}
+  text-align: center; }
 
 .ui.progress {
-  background-color: transparent;
-}
+  background-color: transparent; }
 
 .segment {
-  margin-bottom: 30px !important;
-}
+  margin-bottom: 30px !important; }
 
 .progressWide {
   position: absolute !important;
@@ -99,52 +77,51 @@ h1 {
   height: 100% !important;
   margin: 0 !important;
   padding: 0 !important;
-  top: 0 !important;
-}
-
-.progressWide .bar {
-  height: 100% !important;
-}
+  top: 0 !important; }
+  .progressWide .bar {
+    height: 100% !important; }
 
 h3 {
-  background-color: #df691a;
-}
+  background-color: #df691a; }
 
 .ui.grid {
-  margin: 0;
-}
+  margin: 0; }
 
 .ui.grid > * {
   padding: 0;
-  margin: 0;
-}
+  margin: 0; }
 
 #currentProgress {
-  background-color: #2b3e50 !important;
-}
+  background-color: #2b3e50 !important; }
 
 #progressBackground {
   width: 100%;
   position: relative;
   height: 100%;
-  padding: 0;
-}
+  padding: 0; }
+
+.progressText {
+  position: fixed;
+  left: 2vw;
+  top: 99px;
+  z-index: 8;
+  font-style: italic;
+  font-weight: bold;
+  font-size: 30px;
+  transform: rotate(-30deg); }
 
 .modal > div {
-  width: 100%;
-}
+  width: 100%; }
 
 .modalContainer {
   height: 20vh;
   text-align: center;
-  line-height: 2em;
-}
+  line-height: 2em; }
 
 .modalHeader {
   text-align: center;
   line-height: 2em;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.85);
-}
+  border-bottom: 1px solid rgba(255, 255, 255, 0.85); }
 
 .scallableTrigger {
   text-align: right;
@@ -154,46 +131,34 @@ h3 {
   position: absolute;
   top: 0;
   right: 0;
-  color: rgba(0, 0, 0, 0.1);
-}
+  color: rgba(0, 0, 0, 0.1); }
 
 .doneModulesContainer {
-  z-index: 1000;
-}
+  z-index: 1000; }
 
 .right.menu {
-  width: 100% !important;
-}
-
-.right.menu .item {
-  width: 100% !important;
-}
-
-.right.menu .item .progress {
-  width: 100% !important;
-  margin: 0;
-}
+  width: 100% !important; }
+  .right.menu .item {
+    width: 100% !important; }
+    .right.menu .item .progress {
+      width: 100% !important;
+      margin: 0; }
 
 .ui.list > .item .description {
   width: 100%;
-  word-break: break-all;
-}
+  word-break: break-all; }
 
 .ui.list .item {
-  padding: 6px !important;
-}
+  padding: 6px !important; }
 
 .ui.list {
-  padding: 10px !important;
-}
+  padding: 10px !important; }
 
 .ui.list > .item .description.active {
-  display: inline-block;
-}
+  display: inline-block; }
 
 .fa.fa-arrows-alt {
-  font-size: xx-large;
-}
+  font-size: xx-large; }
 
 .closeModal {
   width: 3rem;
@@ -203,8 +168,6 @@ h3 {
   right: 15px;
   margin: 0;
   top: 30px;
-  font-size: 3rem;
-}
- 
+  font-size: 3rem; }
 
- /*# sourceMappingURL= index.css.map */
+/*# sourceMappingURL=index.css.map */
