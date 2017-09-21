@@ -1,4 +1,8 @@
 function InfoController($scope, $timeout, Modules, ConfigService) {
+    $scope.launchCommand= function (command) {
+        console.log(command)
+        Modules.launchCommand(command)
+    }
     loop($scope, $timeout, Modules, ConfigService);
 }
 

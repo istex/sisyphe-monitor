@@ -89,4 +89,11 @@ Monitor.prototype.isRunning = function() {
   return this.redisConnection;
 };
 
+Monitor.prototype.launchCommand = function(command) {
+  this.monitoring = {}
+  return this.client.lpushAsync('command', command).catch(err=>{
+    console.log(err)
+  });
+};
+
 module.exports = Monitor;

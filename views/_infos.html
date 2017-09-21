@@ -1,5 +1,10 @@
 <div class="ui grid tall piled segment fifteen wide column centered">
     <h1 class="row centered content"> Infos</h1>
+    <div class="ui right labeled left icon input">
+        <i class="tags icon"></i>
+        <input ng-model="launch" type="text">
+        <a class="ui tag label" ng-click="launchCommand(launch)">Launch a command</a>
+    </div>
     <div class="row centered content">
         <div class="ui yellow image label floated left"> Status:<span class="detail">{{status}}</span></div>
         <div class="ui green image label floated center" > Files:<span class="detail">{{maxFile || 0}}</span></div>
