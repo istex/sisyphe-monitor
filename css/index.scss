@@ -118,14 +118,13 @@ h3{
     // background-color:#FFF
 }
 .progressText{
-    position: fixed;
-    left: 2vw;
-    top: 99px;
+    position: absolute;
     z-index: 8;
+    background-color: rgba(0,0,0,0.5);
+    padding: 10px;
     font-style: italic;
     font-weight: bold;
     font-size: 30px;
-    transform: rotate(-30deg);
 }
 
 .modal>div{

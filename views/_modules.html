@@ -4,7 +4,7 @@
 		<div class="bar" style="transition-duration: 400ms; width: {{totalPercent}}%;"></div>
 	</div>
 
-	<span class="progressText">{{totalPercent}} %</span>
+	<span class="progressText" ng-if="totalPercent">{{totalPercent}} %</span>
 
 	<div class="ui grid">
 		<h1 class="row centered content">Modules</h1>
