@@ -2,9 +2,15 @@
     <h1 class="row centered content"> Infos</h1>
     <div class="ui right labeled left icon input">
         <i class="tags icon"></i>
-        <input ng-model="launch" type="text">
-        <a class="ui tag label" ng-click="launchCommand(launch)">Launch a command</a>
+        <input placeholder="Name of the corpus" ng-model="launch.name" type="text"/>
+        <br>
+        <input placeholder="Path to configuration" ng-model="launch.config" type="text"/> 
+        <br>
+        <input placeholder="Path to the corpus" ng-model="launch.path" type="text"/> 
+        <br>
+        <a class="ui label" ng-click="launchCommand(launch)">Launch a command</a>
     </div>
+    <div ng-if="commandError">{{commandError}}</div>
     <div class="row centered content">
         <div class="ui yellow image label floated left"> Status:<span class="detail">{{status}}</span></div>
         <div class="ui green image label floated center" > Files:<span class="detail">{{maxFile || 0}}</span></div>
