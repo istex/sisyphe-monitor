@@ -1,25 +1,10 @@
 <div class="ui menu">
     <a class="active item logo"><img src="./logo-sisyphe.png" alt=""></a>
     <div class="ui dropdown link item">
-        <i class="fa fa-cog" aria-hidden="true"></i>
-
-        <div class="menu">
-            <div class="item">
-                <i class="fa fa-server" aria-hidden="true"></i>
-
-                <span class="text"> Change host </span>
-               <i class="fa fa-caret-right" aria-hidden="true"></i>
-
-                <div class="menu">
-                    <div class="item">
-                        <div class="ui right labeled left icon input">
-                            <i class="tags icon"></i>
-                            <input ng-model="Model.host" type="text">
-                            <a class="ui tag label" ng-click="changeHost(Model.host)">Change host</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="ui right labeled left icon input">
+            <i class="tags icon"></i>
+            <input ng-model="Model.host" type="text">
+            <a class="ui tag label" ng-click="changeHost(Model.host)">Change host</a>
         </div>
     </div>
 </div>
