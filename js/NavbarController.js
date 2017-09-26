@@ -1,5 +1,6 @@
 function NavbarController ($scope, $interval, Modules, ConfigService) {
   $scope.changeHost = function(host) {
+    ConfigService.save({host})
     Modules.changeHost(host);
   };
   $interval(_ => {

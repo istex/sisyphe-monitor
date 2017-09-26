@@ -1,4 +1,3 @@
-const Queue = require("bull");
 const Promise = require("bluebird");
 
 const redis = require("redis");
@@ -15,18 +14,12 @@ Promise.promisifyAll(redis.Multi.prototype);
 function Monitor(options = {}) {
   options = options || {};
   this.redisKeys = {};
-  this.host = "localhost";
-  this.client = redis.createClient({ host: this.host });
-  this.redisConnection = true;
+  this.redisConnection = false;
   this.monitoring = {};
-  this.client.on("error", async err => {
-    this.redisConnection = false;
-    await this.client.infoAsync();
-    this.redisConnection = true;
-  });
 }
 
 Monitor.prototype.getMonitoring = async function() {
+  if (!this.host) return;
   const keys = await this.client.hkeysAsync("monitoring");
   this.monitoring={}
   await Promise.map(keys, async key => {
@@ -75,10 +68,16 @@ Monitor.prototype.getStatus = function() {
   return status;
 };
 Monitor.prototype.changeHost = function(host) {
-  this.redisConnection = false;
-  this.host = host;
-  this.client = redis.createClient({ host: this.host });
-  this.client.info((err, response) => (this.redisConnection = true));
+  console.log(host)
+    this.redisConnection = false;
+    this.host = host;
+    this.client = redis.createClient({ host: this.host });
+    this.client.info((err, response) => (this.redisConnection = true));
+    this.client.on("error", async err => {
+      this.redisConnection = false;
+      await this.client.infoAsync();
+      this.redisConnection = true;
+    });
 };
 
 Monitor.prototype.getLogs = function() {

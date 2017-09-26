@@ -5,7 +5,7 @@
   "dependencies": {
     "bluebird": "^3.5.0",
     "bower": "^1.8.2",
-    "bull": "^3.1.0",
+    "localStorage": "^1.0.3",
     "redis": "^2.8.0",
     "request": "^2.81.0"
   },
