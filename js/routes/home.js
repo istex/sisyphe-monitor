@@ -7,6 +7,11 @@ module.exports = {
       templateUrl: "views/_navbar.html",
       controller: "NavbarCtrl"
     },
+    "progression@home": {
+      parent: "home",
+      templateUrl: "views/_progression.html",
+      controller: "ModulesCtrl"
+    },
     "modal@home": {
       parent: "home",
       templateUrl: "views/_modal.html",

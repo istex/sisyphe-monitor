@@ -1,44 +1,39 @@
-<div class="ui tall piled segment fifteen wide column centered" id="progressBackground">
-
-	<div class="ui active indicating progress sixteen wide column progressWide" data-percent="{{totalPercent}}">
-		<div class="bar" style="transition-duration: 400ms; width: {{totalPercent}}%;"></div>
+<div class="section ui tall piled segment fifteen wide column centered">
+	<div class="titleSection centered content" ng-click="showModules = !showModules">
+		<h1 class="row"> Modules</h1>
+		<i class="row fa fa-caret-up" aria-hidden="true" ng-if="showModules"></i>
+		<i class="row fa fa-caret-down" aria-hidden="true" ng-if="!showModules"></i>
 	</div>
-
-	<span class="progressText" ng-if="totalPercent">{{totalPercent}} %</span>
-
-	<div class="ui grid">
-		<h1 class="row centered content">Modules</h1>
-		<div class="row centered content">
-			<div class="ui grid five wide column segmentContent left centered" id="segmentContent">
-				<h3 class="row centered content">Waiting</h3> 
-				<div class="ui doneModulesContainer relaxed divided list">
-					<div class="item" ng-repeat="(key, module) in waitingModules">
-						<div class="row aligned content">{{module.name}}</div>
+	<div class="ui grid contentSection" ng-if="showModules">
+		<div class="ui grid five wide column segmentContent left centered" id="segmentContent">
+			<h3 class="row centered content">Waiting</h3> 
+			<div class="ui doneModulesContainer relaxed divided list">
+				<div class="item" ng-repeat="(key, module) in waitingModules">
+					<div class="row aligned content">{{module.name}}</div>
+				</div>
+			</div>
+		</div>
+		<div class="ui five wide column segmentContent" id="progressBackground">
+			<div class="ui active indicating progress sixteen wide column progressWide" ng-if="percent"  data-percent="{{percent}}">
+				<div class="bar" style="transition-duration: 400ms; width: {{percent}}%;"></div>
+			</div>
+			<div class="ui grid">
+				<h3 class="row centered content">Current</h3>
+				<div class="row centered content" ng-if="percent">
+					<div class="ui relaxed list">
+						<div class="item">Name:{{currentModule.name}}</div>
+						<div class="item">Waiting: {{currentModule.wait}}</div>
+						<div class="item">Failed: {{currentModule.failed}}</div>
+						<div class="item">completed: {{currentModule.waiting}}</div>
 					</div>
 				</div>
 			</div>
-			<div class="ui five wide column segmentContent" id="progressBackground">
-				<div class="ui active indicating progress sixteen wide column progressWide" ng-if="percent"  data-percent="{{percent}}">
-					<div class="bar" style="transition-duration: 400ms; width: {{percent}}%;"></div>
-				</div>
-				<div class="ui grid">
-					<h3 class="row centered content">Current</h3>
-					<div class="row centered content" ng-if="percent">
-						<div class="ui relaxed list">
-							<div class="item">Name:{{currentModule.name}}</div>
-							<div class="item">Waiting: {{currentModule.wait}}</div>
-							<div class="item">Failed: {{currentModule.failed}}</div>
-							<div class="item">completed: {{currentModule.waiting}}</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="ui grid five wide column right segmentContent centered" id="segmentContent">
-				<h3 class="row centered content">Done</h3>
-				<div class="ui waitingModulesContainer relaxed divided list">
-					<div class="item" ng-repeat="(key, module) in doneModules">
-						<div class="content">{{module.name}}</div>
-					</div>
+		</div>
+		<div class="ui grid five wide column right segmentContent centered" id="segmentContent">
+			<h3 class="row centered content">Done</h3>
+			<div class="ui waitingModulesContainer relaxed divided list">
+				<div class="item" ng-repeat="(key, module) in doneModules">
+					<div class="content">{{module.name}}</div>
 				</div>
 			</div>
 		</div>

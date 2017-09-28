@@ -1,5 +1,14 @@
+.ui.grid {
+  margin: 0;
+}
+
+.ui.grid > * {
+  padding: 0;
+  margin: 0;
+}
+
 #notificationsContainer {
-  background-color: #411C00;
+  background-color: #411c00;
   position: fixed;
   margin-top: 40px;
   z-index: 70;
@@ -27,16 +36,21 @@
   right: 10px;
 }
 
-.section {
-  border: 1px solid rgba(0, 0, 0, 0.2) !important;
+#body .section {
+  border: 2px solid rgba(0, 0, 0, 0.3) !important;
 }
 
-.section .titleSection {
-  background-color: rgba(0, 0, 0, 0.2);
+#body .section .titleSection {
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.3);
 }
 
-.section .titleSection h1 {
+#body .section .titleSection h1 {
   margin: 0;
+}
+
+#body .section .contentSection {
+  margin: 10px;
 }
 
 .modal {
@@ -109,13 +123,13 @@ body .ui.segment {
   padding: 0 !important;
 }
 
-.navbar + .fixNavbar {
+.navbar ~ .fixNavbar {
   height: 40px !important;
 }
 
 .navbar menu span {
-  padding-left: 2.56667em !important;
-  padding-right: 0.93333em !important;
+  padding-left: 2.56666667em !important;
+  padding-right: .93333333em !important;
 }
 
 .list .content {
@@ -123,59 +137,34 @@ body .ui.segment {
   text-align: center;
 }
 
-.ui.progress {
-  background-color: transparent;
-}
-
 .segment {
   margin-bottom: 30px !important;
 }
 
-.progressWide {
-  position: absolute !important;
-  width: 100% !important;
-  height: 100% !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  top: 0 !important;
+#progressView {
+  position: fixed;
+  z-index: 100;
+  width: 100%;
 }
 
-.progressWide .bar {
-  height: 100% !important;
+#progressView .progress {
+  background-color: transparent;
+  font-weight: bold;
+  height: 7px;
+  padding: 0;
+  margin: 0;
+}
+
+#progressView .progress .bar {
+  height: 100%;
 }
 
 h3 {
   background-color: #df691a;
 }
 
-.ui.grid {
-  margin: 0;
-}
-
-.ui.grid > * {
-  padding: 0;
-  margin: 0;
-}
-
 #currentProgress {
   background-color: #2b3e50 !important;
-}
-
-#progressBackground {
-  width: 100%;
-  position: relative;
-  height: 100%;
-  padding: 0;
-}
-
-.progressText {
-  position: absolute;
-  z-index: 8;
-  background-color: rgba(0, 0, 0, 0.5);
-  padding: 10px;
-  font-style: italic;
-  font-weight: bold;
-  font-size: 30px;
 }
 
 .modal > div {
