@@ -1,33 +1,45 @@
-<div class="ui grid five wide column segmentContent centered">
-    <h3 class="row centered content">Errors</h3>
-    <div class="ui relaxed divided list">
-        <div class="item" ng-repeat="(key, log) in logsError" ng-click="toggle = !toggle">
-            <div class="content">
-                <a class="header">{{log.message}}</a>
-                <div class="description" ng-show="toggle">
-                    <div ng-if="log.stack">{{log.stack}}</div>
-                    <div ng-if="log.infos.path">{{log.infos.path}}</div>
+
+<div class="section ui tall piled segment fifteen wide column centered">
+    <div class="titleSection centered content" ng-click="showModules = !showModules">
+        <h1 class="row"> Logs</h1>
+        <i class="row fa fa-caret-up" aria-hidden="true" ng-if="showModules"></i>
+        <i class="row fa fa-caret-down" aria-hidden="true" ng-if="!showModules"></i>
+    </div>
+    <div class="ui grid contentSection" ng-if="showModules">
+        <div class="row">
+            <div class="ui grid five wide column left centered segmentContent">
+                <h3 class="row centered content">Errors</h3>
+                <div class="ui relaxed divided list">
+                    <div class="item" ng-repeat="(key, log) in logsError" ng-click="toggle = !toggle">
+                        <div class="content">
+                            <a class="header">{{log.message}}</a>
+                            <div class="description" ng-show="toggle">
+                                <div ng-if="log.stack">{{log.stack}}</div>
+                                <div ng-if="log.infos.path">{{log.infos.path}}</div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
-</div>
-<div class="ui grid five wide column segmentContent centered">
-    <h3 class="row centered content">Infos</h3>
-    <div class="ui relaxed divided list">
-        <div class="item" ng-repeat="(key, log) in logsInfo track by $index">
-            <div class="content">
-                <a class="header" ng-click="toggle = !toggle">{{log}}</a>
+            <div class="ui grid five wide column segmentContent centered">
+                <h3 class="row centered content">Infos</h3>
+                <div class="ui relaxed divided list">
+                    <div class="item" ng-repeat="(key, log) in logsInfo track by $index">
+                        <div class="content">
+                            <a class="header" ng-click="toggle = !toggle">{{log}}</a>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
-</div>
-<div class="ui grid five wide column segmentContent centered">
-    <h3 class="row centered content">Warnings</h3>
-    <div class="ui relaxed divided list">
-        <div class="item" ng-repeat="(key, log) in logsWarning track by $index">
-            <div class="content">
-                <a class="header" ng-click="toggle = !toggle">{{}}</a>
+            <div class="ui grid five wide column segmentContent centered">
+                <h3 class="row centered content">Warnings</h3>
+                <div class="ui relaxed divided list">
+                    <div class="item" ng-repeat="(key, log) in logsWarning track by $index">
+                        <div class="content">
+                            <a class="header" ng-click="toggle = !toggle">{{}}</a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

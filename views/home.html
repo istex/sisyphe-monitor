@@ -7,13 +7,6 @@
   <div class="ui container grid fifteen wide column">
     <div ui-view="infos" class="row" id="infosContainer"></div>
     <div ui-view="modules" class="row" id="modulesView"></div>
-    <div class="row">
-      <div class="scallable ui tall piled segment fifteen wide column centered">
-        <div class="ui grid">
-          <h1 class="row centered content">Logs</h1>
-          <div ui-view="logs" class="row"></div>
-        </div>
-      </div>
-    </div>
+    <div ui-view="logs" class="row" id="logsView"></div>
   </div>
 </div>
