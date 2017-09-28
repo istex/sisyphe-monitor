@@ -8,23 +8,23 @@
 		<div class="ui grid five wide column segmentContent left centered" id="segmentContent">
 			<h3 class="row centered content">Waiting</h3> 
 			<div class="ui doneModulesContainer relaxed divided list">
-				<div class="item" ng-repeat="(key, module) in waitingModules">
+				<div class="item" ng-repeat="(key, module) in modules.waitingModules">
 					<div class="row aligned content">{{module.name}}</div>
 				</div>
 			</div>
 		</div>
-		<div class="ui five wide column segmentContent" id="progressBackground">
-			<div class="ui active indicating progress sixteen wide column progressWide" ng-if="percent"  data-percent="{{percent}}">
-				<div class="bar" style="transition-duration: 400ms; width: {{percent}}%;"></div>
-			</div>
+		<div class="ui five wide column segmentContent">
 			<div class="ui grid">
 				<h3 class="row centered content">Current</h3>
-				<div class="row centered content" ng-if="percent">
+				<div class="ui active indicating progress" id="currentPercent" ng-if="percents.percent"  data-percent="{{percents.percent}}">
+					<div class="bar" style="transition-duration: 400ms; width: {{percents.percent}}%;"></div>
+				</div>
+				<div class="row centered content" ng-if="percents.percent">
 					<div class="ui relaxed list">
-						<div class="item">Name:{{currentModule.name}}</div>
-						<div class="item">Waiting: {{currentModule.wait}}</div>
-						<div class="item">Failed: {{currentModule.failed}}</div>
-						<div class="item">completed: {{currentModule.waiting}}</div>
+						<div class="item">Name:{{modules.currentModule.name}}</div>
+						<div class="item">Waiting: {{modules.currentModule.wait}}</div>
+						<div class="item">Failed: {{modules.currentModule.failed}}</div>
+						<div class="item">completed: {{modules.currentModule.waiting}}</div>
 					</div>
 				</div>
 			</div>
@@ -32,7 +32,7 @@
 		<div class="ui grid five wide column right segmentContent centered" id="segmentContent">
 			<h3 class="row centered content">Done</h3>
 			<div class="ui waitingModulesContainer relaxed divided list">
-				<div class="item" ng-repeat="(key, module) in doneModules">
+				<div class="item" ng-repeat="(key, module) in modules.doneModules">
 					<div class="content">{{module.name}}</div>
 				</div>
 			</div>

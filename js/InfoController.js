@@ -23,8 +23,8 @@ function InfoController ($scope, $interval, Modules, ConfigService, Notification
   };
   $interval(_ => {
     $scope.maxFile = Modules.maxFile;
-    $scope.time = Modules.getTime();
-    $scope.status = Modules.getStatus();
+    $scope.time = Modules.time;
+    $scope.status = Modules.status;
   }, ConfigService.refresh);
 }
 

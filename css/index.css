@@ -53,6 +53,15 @@
   margin: 10px;
 }
 
+#currentPercent {
+  height: 7px;
+  width: 100%;
+}
+
+#currentPercent .bar {
+  height: 100%;
+}
+
 .modal {
   width: 100vw;
   height: 100vh;

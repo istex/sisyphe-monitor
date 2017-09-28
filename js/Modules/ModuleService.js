@@ -2,19 +2,40 @@ const Promise = require('bluebird');
 const redis = require('redis');
 Promise.promisifyAll(redis.RedisClient.prototype);
 Promise.promisifyAll(redis.Multi.prototype);
+const _lo = require('lodash') 
 // const MonitorController = require('./core/monitorController');
 
 /**
  * Its role is to manage the refreshments loop and inject the data in the controller
- * @param       {Object} [options={}] Can have properties: refresh, prefix
+ * @param       {Object} [] Can have properties: refresh, prefix
  * @constructor
  * @return {Object} this object
  */
-function Monitor (options = {}) {
-  options = options || {};
+function Monitor (ConfigService) {
   this.redisKeys = {};
   this.redisConnection = false;
   this.monitoring = {};
+  this.modules = {
+    doneModules: [],
+    currentModule: {},
+    waitingModules: [],
+  }
+  this.percents = {
+    totalPercent: 0,
+    percent: 0
+  }
+  this.maxFile = 0
+  this.status = 'Waiting'
+  this.time = {}
+  setInterval(async _ =>{
+    this.getStatus();
+    this.getTime();
+    this.monitoring = await this.getMonitoring();
+    if (!this.monitoring || !this.monitoring.hasOwnProperty("workers")) return;
+    const workers = await Promise.all(this.monitoring.workers.map(async worker=>await this.getJobsFrom(worker)))
+    this.dispatchWorkers(workers)
+    this.calculPercentages(this.modules, workers.length, this.maxFile)
+  },ConfigService.refresh)
 }
 
 Monitor.prototype.getMonitoring = async function () {
@@ -58,13 +79,11 @@ Monitor.prototype.getTime = function () {
     minutes: time.getMinutes(),
     seconds: time.getSeconds()
   };
-  return timeObject;
+  this.time = timeObject;
 };
 Monitor.prototype.getStatus = function () {
-  let status = 'Ready';
-  if (this.monitoring.end) status = 'End';
-  if (this.monitoring.start && !this.monitoring.end) status = 'Working';
-  return status;
+  if (this.monitoring.end) this.status = 'End';
+  if (this.monitoring.start && !this.monitoring.end) this.status = 'Working';
 };
 Monitor.prototype.changeHost = function (host) {
   this.redisConnection = false;
@@ -99,11 +118,53 @@ Monitor.prototype.downloadFiles = async function () {
   });
 };
 
-Monitor.prototype.launchCommand = function (command) {
+Monitor.prototype.launchCommand = function(command) {
   this.monitoring = {};
-  return this.client.lpushAsync('command', command).catch(err => {
+  return this.client.lpushAsync("command", command).catch(err => {
     console.log(err);
   });
 };
+
+Monitor.prototype.calculPercentages = function(modules, nbWorkers, nbTotalOfFiles) {
+  let allDone = nbTotalOfFiles * modules.doneModules.length;
+  if (modules.currentModule.waiting) allDone += nbTotalOfFiles - modules.currentModule.wait;
+  this.percents.percent = percentage(modules.currentModule.waiting, nbTotalOfFiles);
+  this.percents.totalPercent = ~~(allDone * 100 / (nbTotalOfFiles * nbWorkers));
+};
+
+Monitor.prototype.dispatchWorkers = function(workers) {
+  const modules = {
+    doneModules: [],
+    currentModule: {},
+    waitingModules: []
+  }
+  workers.forEach((worker, index) => {
+    if (this.maxFile < worker.max) this.maxFile = worker.max;
+    if (worker.wait === 0 && worker.max === 0) modules.waitingModules.push(worker);
+    else if (worker.wait === 0 && worker.max !== 0) modules.doneModules.push(worker);
+    else {
+      const workerBefore = workers[this.monitoring.workers.indexOf(worker.name) - 1];
+      if (workerBefore && worker.wait > workerBefore.wait) {
+        modules.currentModule = { name: worker.name, waiting: worker.waiting, wait: this.maxFile - worker.waiting };
+      } else {
+        modules.waitingModules.push(worker);
+      }
+    }
+  });
+  _lo.extend(this.modules, modules)
+};
+
+function a(b){
+  b.lkjaa= 'kljkl'
+}
+
+function percentage(nb, total) {
+  const percent = nb * 100 / total;
+  if (!percent) return 0;
+  else return percent.toFixed(1);
+}
+
+
+
 
 module.exports = Monitor;

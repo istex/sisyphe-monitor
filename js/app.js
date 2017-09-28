@@ -10,8 +10,8 @@ const InfoController = require('./js/InfoController');
 const config = require('./js/config');
 angular
   .module("sisyphe", ["ui.router"])
-  .service("Modules", ModuleService)
   .service("ConfigService", ConfigService)
+  .service("Modules", ModuleService)
   .service("NotificationService", NotificationService)
   .controller("HomeCtrl", HomeController)
   .controller("NotificationController", NotificationController)

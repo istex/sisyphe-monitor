@@ -2,7 +2,7 @@ const localStorage = require('localStorage')
 const Promise = require('bluebird')
 const fs = Promise.promisifyAll(require('fs'))
 function ConfigService () {
-  this.refresh = 1000;
+  this.refresh = 500;
   this.save = function(object) {
     for (var key in object) {
       if (object.hasOwnProperty(key)) localStorage.setItem(key, JSON.stringify(object[key]));
