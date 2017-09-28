@@ -12,6 +12,11 @@ module.exports = {
       templateUrl: "views/_modal.html",
       controller: "NavbarCtrl"
     },
+    "notifications@home": {
+      parent: "home",
+      templateUrl: "views/_notifications.html",
+      controller: "NotificationController"
+    },
     "infos@home": {
       parent: "home",
       templateUrl: "views/_infos.html",

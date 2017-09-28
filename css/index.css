@@ -1,8 +1,30 @@
-.navbar {
-  color: white;
+#notificationsContainer {
+  background-color: #411C00;
   position: fixed;
-  width: 100%;
-  z-index: 100000;
+  margin-top: 40px;
+  z-index: 70;
+  width: 100vw;
+}
+
+#notificationsContainer .show {
+  background-color: #a74800;
+  width: 100vw;
+  text-align: center;
+  font-weight: bold;
+}
+
+#notificationsContainer .notifications > .message {
+  border-radius: 5px;
+  width: 80%;
+  margin: auto;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  text-align: center;
+}
+
+#notificationsContainer .notifications > .message i {
+  position: absolute;
+  right: 10px;
 }
 
 .modal {
@@ -10,7 +32,7 @@
   height: 100vh;
   position: fixed;
   background-color: rgba(0, 0, 0, 0.85);
-  z-index: 1000;
+  z-index: 101;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -26,10 +48,6 @@
 .logo img {
   width: auto !important;
   height: 100% !important;
-}
-
-.fixNavbar {
-  height: 95px;
 }
 
 #infosContainer .label {
@@ -63,8 +81,12 @@ h1 {
 }
 
 .navbar {
+  color: white;
+  position: fixed;
+  width: 100%;
+  z-index: 100;
   margin: 0;
-  height: 100px !important;
+  height: 40px !important;
 }
 
 .navbar * {
@@ -73,6 +95,10 @@ h1 {
 
 .navbar > div {
   padding: 0 !important;
+}
+
+.navbar + .fixNavbar {
+  height: 40px !important;
 }
 
 .navbar menu span {
