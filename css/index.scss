@@ -27,6 +27,15 @@
     z-index: 70;
     width: 100vw;
 }
+.section{
+    border: 1px solid rgba(0,0,0,0.2) !important;
+    .titleSection{
+        h1 {
+            margin: 0;
+        }
+        background-color:rgba(0,0,0,0.2);
+    }
+}
 .modal{
     width: 100vw;
     height: 100vh;
@@ -65,7 +74,7 @@ h1{
 .ui.segment{
     padding: 0 !important;
 }
-.ui.segment .segmentContent, body .ui.segment{
+body .ui.segment{
     visibility: hidden;
 }
 .segmentContent{

@@ -27,6 +27,18 @@
   right: 10px;
 }
 
+.section {
+  border: 1px solid rgba(0, 0, 0, 0.2) !important;
+}
+
+.section .titleSection {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.section .titleSection h1 {
+  margin: 0;
+}
+
 .modal {
   width: 100vw;
   height: 100vh;
@@ -68,7 +80,7 @@ h1 {
   padding: 0 !important;
 }
 
-.ui.segment .segmentContent, body .ui.segment {
+body .ui.segment {
   visibility: hidden;
 }
 

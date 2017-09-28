@@ -1,31 +1,56 @@
-<div class="ui grid tall piled segment fifteen wide column centered">
-    <h1 class="row centered content"> Infos</h1>
-    <div class="ui right labeled left icon input">
-        <i class="tags icon"></i>
-        <input placeholder="Name of the corpus" ng-model="launch.name" type="text"/>
-        <br>
-        <input placeholder="Path to configuration" ng-model="launch.config" type="text"/> 
-        <br>
-        <input placeholder="Path to the corpus" ng-model="launch.path" type="text"/> 
-        <br>
-        <a class="ui label" ng-click="launchCommand(launch)">Launch a command</a>
+<div class="section ui grid tall piled segment fifteen wide column centered">
+    <div class="titleSection centered content" ng-click="showInfos = !showInfos">
+        <h1 class="row"> Infos</h1>
+        <i class="row fa fa-caret-up" aria-hidden="true" ng-if="showInfos"></i>
+        <i class="row fa fa-caret-down" aria-hidden="true" ng-if="!showInfos"></i>
     </div>
-    <div ng-if="commandError">{{commandError}}</div>
-    <div class="row centered content">
-        <div class="ui yellow image label floated left"> Status:<span class="detail">{{status}}</span></div>
-        <div class="ui green image label floated center" > Files:<span class="detail">{{maxFile || 0}}</span></div>
-        <div class="ui blue image label floated right"  ng-if="status !== 'Ready'"> Time:
-            <span class="detail">
-                <span ng-if="time.days">{{time.days}} days</span> 
-                <span ng-if="time.days || time.hours">{{time.hours}} hours</span>
-                <span ng-if="time.days || time.hours || time.minutes">{{time.minutes}} Minutes</span> 
-                <span>{{time.seconds}} seconds</span>
-            </span>
+    <div class="ui grid" ng-if="showInfos">
+        <div class="row">
+            <div class="ui grid fifteen wide column left centered segmentContent">
+                <h3 class="row centered content" ng-click="showControl =!showControl">Control</h3>
+                <div class="ui grid" ng-if="showControl">
+                    <div class="row centered content">
+                        <div class="ui input">
+                            <input placeholder="Name of the corpus" ng-model="launch.name" type="text" />
+                        </div>
+                        <div class="ui input">
+                            <input placeholder="Path to configuration" ng-model="launch.config" type="text" />
+                        </div>
+                        <div class="ui input">
+                            <input placeholder="Path to the corpus" ng-model="launch.path" type="text" />
+                        </div>
+                        <button class="ui blue right labeled icon button" ng-click="launchCommand(launch)">
+                            <i class="right arrow icon"></i>
+                            Launch Sisyphe
+                        </button>
+                    </div>
+                    <div ng-if="commandError">{{commandError}}</div>
+                    <div class="row centered content">
+                        <button class="positive ui button" ng-click="downloadFiles()" ng-if="status === 'End'">
+                            Download
+                            <i class="fa fa-download" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="ui grid fifteen wide column left centered segmentContent">
+                <h3 class="row centered content" ng-click="showStatus =!showStatus">Status</h3>
+                <div class="ui row" ng-if="showStatus">
+                    <div class="ui yellow image label floated left"> Status:<span class="detail">{{status}}</span></div>
+                    <div class="ui green image label floated center"> Files:<span class="detail">{{maxFile || 0}}</span></div>
+                    <div class="ui blue image label floated right" ng-if="status !== 'Ready'"> Time:
+                        <span class="detail">
+                        <span ng-if="time.days">{{time.days}} days</span>
+                        <span ng-if="time.days || time.hours">{{time.hours}} hours</span>
+                        <span ng-if="time.days || time.hours || time.minutes">{{time.minutes}} Minutes</span>
+                        <span>{{time.seconds}} seconds</span>
+                        </span>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-    <div class="row centered content">
-        <button class="positive ui button" ng-click="downloadFiles()" ng-if="status === 'End'">
-            Download
-            <i class="fa fa-download" aria-hidden="true"></i>
-        </button></div>
 </div>
+    
