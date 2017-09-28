@@ -68,16 +68,15 @@ Monitor.prototype.getStatus = function() {
   return status;
 };
 Monitor.prototype.changeHost = function(host) {
-  console.log(host)
+  this.redisConnection = false;
+  this.host = host;
+  this.client = redis.createClient({ host: this.host });
+  this.client.info((err, response) => (this.redisConnection = true));
+  this.client.on("error", async err => {
     this.redisConnection = false;
-    this.host = host;
-    this.client = redis.createClient({ host: this.host });
-    this.client.info((err, response) => (this.redisConnection = true));
-    this.client.on("error", async err => {
-      this.redisConnection = false;
-      await this.client.infoAsync();
-      this.redisConnection = true;
-    });
+    await this.client.infoAsync();
+    this.redisConnection = true;
+  });
 };
 
 Monitor.prototype.getLogs = function() {
@@ -87,6 +86,15 @@ Monitor.prototype.getLogs = function() {
 Monitor.prototype.isRunning = function() {
   return this.redisConnection;
 };
+
+
+Monitor.prototype.downloadFiles = function() {
+  return this.client.lpushAsync("download", "dedededed").catch(err => {
+    console.log(err);
+  });
+};
+
+
 
 Monitor.prototype.launchCommand = function(command) {
   this.monitoring = {}
