@@ -1,6 +1,14 @@
 const {app, BrowserWindow} = require('electron');
 const path = require('path');
 const url = require('url');
+// const {
+//   default: installExtension,
+//   ANGULARJS_BATARANG
+// } = require("electron-devtools-installer");
+
+// installExtension(ANGULARJS_BATARANG)
+//   .then(name => console.log(`Added Extension:  ${name}`))
+//   .catch(err => console.log("An error occurred: ", err));
 
 let win;
 function createWindow () {
@@ -14,7 +22,6 @@ function createWindow () {
     protocol: 'file:',
     slashes: true
   }));
-
   // win.webContents.openDevTools();
 
   win.on('closed', () => {

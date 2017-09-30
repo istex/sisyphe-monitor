@@ -11,7 +11,7 @@ const _lo = require('lodash');
  * @constructor
  * @return {Object} this object
  */
-function Monitor (ConfigService) {
+function WorkersService (ConfigService) {
   this.redisKeys = {};
   this.redisConnection = false;
   this.monitoring = {};
@@ -46,7 +46,7 @@ function Monitor (ConfigService) {
   }, ConfigService.refresh);
 }
 
-Monitor.prototype.getMonitoring = async function () {
+WorkersService.prototype.getMonitoring = async function () {
   if (!this.host) return;
   const keys = await this.client.hkeysAsync('monitoring');
   this.monitoring = {};
@@ -62,7 +62,7 @@ Monitor.prototype.getMonitoring = async function () {
  * Searches all keys in redis and stores them in the local object
  * @return {Promise} Promise resolve with all key in redis
  */
-Monitor.prototype.getJobsFrom = async function (worker) {
+WorkersService.prototype.getJobsFrom = async function (worker) {
   const wait = +await this.client.lindexAsync(`bull:${worker}:wait`, 0);
   const max = +await this.client.getAsync(`bull:${worker}:id`);
   const waiting = +await this.client.lindexAsync(`bull:${worker}:wait`, -1);
@@ -73,7 +73,7 @@ Monitor.prototype.getJobsFrom = async function (worker) {
     max
   };
 };
-Monitor.prototype.getTime = function () {
+WorkersService.prototype.getTime = function () {
   const startDateInMs = this.monitoring.start;
   const endDateInMs = this.monitoring.end ? this.monitoring.end : Date.now();
   const time = new Date();
@@ -89,11 +89,11 @@ Monitor.prototype.getTime = function () {
   };
   this.time = timeObject;
 };
-Monitor.prototype.getStatus = function () {
+WorkersService.prototype.getStatus = function () {
   if (this.monitoring.end) this.status = 'End';
   if (this.monitoring.start && !this.monitoring.end) this.status = 'Working';
 };
-Monitor.prototype.changeHost = async function (host) {
+WorkersService.prototype.changeHost = async function (host) {
   this.redisConnection = false;
   this.host = host;
   this.client = redis.createClient({ host: this.host });
@@ -105,15 +105,15 @@ Monitor.prototype.changeHost = async function (host) {
   });
 };
 
-Monitor.prototype.getLogs = function () {
+WorkersService.prototype.getLogs = function () {
   return this.monitoring.log;
 };
 
-Monitor.prototype.isRunning = function () {
+WorkersService.prototype.isRunning = function () {
   return this.redisConnection;
 };
 
-Monitor.prototype.downloadFiles = async function () {
+WorkersService.prototype.downloadFiles = async function () {
   await this.client.lpushAsync('download', 'dedededed');
   return new Promise((resolve, reject) => {
     const interval = setInterval(async _ => {
@@ -126,21 +126,21 @@ Monitor.prototype.downloadFiles = async function () {
   });
 };
 
-Monitor.prototype.launchCommand = function (command) {
+WorkersService.prototype.launchCommand = function (command) {
   this.monitoring = {};
   return this.client.lpushAsync('command', command).catch(err => {
     console.log(err);
   });
 };
 
-Monitor.prototype.calculPercentages = function (modules, nbWorkers, nbTotalOfFiles) {
+WorkersService.prototype.calculPercentages = function (modules, nbWorkers, nbTotalOfFiles) {
   let allDone = nbTotalOfFiles * Object.keys(modules.doneModules).length;
   if (modules.currentModule.waiting) allDone += nbTotalOfFiles - modules.currentModule.wait;
   this.percents.percent = percentage(modules.currentModule.waiting, nbTotalOfFiles);
   this.percents.totalPercent = ~~(allDone * 100 / (nbTotalOfFiles * nbWorkers));
 };
 
-Monitor.prototype.dispatchWorkers = function (workers) {
+WorkersService.prototype.dispatchWorkers = function (workers) {
   const modules = {
     doneModules: {},
     currentModule: {},
@@ -168,4 +168,4 @@ function percentage (nb, total) {
   else return percent.toFixed(1);
 }
 
-module.exports = Monitor;
+module.exports = WorkersService;

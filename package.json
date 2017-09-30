@@ -24,6 +24,7 @@
   },
   "devDependencies": {
     "electron": "^1.7.6",
+    "electron-devtools-installer": "^2.2.0",
     "electron-packager": "^9.1.0"
   }
 }

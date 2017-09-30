@@ -10,7 +10,7 @@ module.exports = {
     'modal@home': {
       parent: 'home',
       templateUrl: 'views/_modal.html',
-      controller: 'NavbarCtrl'
+      controller: 'ModalController'
     },
     '': {
       abstract: true,

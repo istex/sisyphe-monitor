@@ -11,7 +11,7 @@ function Router ($stateProvider, $urlRouterProvider, $httpProvider) {
       'modal@Monitor': {
         parent: 'Monitor',
         templateUrl: 'views/_modal.html',
-        controller: 'NavbarCtrl'
+        controller: 'ModalController'
       },
       'Monitor@Monitor': {
         parent: 'Monitor',
