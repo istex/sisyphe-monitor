@@ -1,0 +1,15 @@
+<div class="modal" ng-show="triggerModal">
+	<i class="fa fa-times closeModal" aria-hidden="true" ng-click="triggerModal = !triggerModal"></i>
+	<div class='ui grid centered content'>
+		<div class="row">
+			<div class="modalHeader ten wide column aligned">
+				{{modalHeader}}
+			</div>
+		</div>
+		<div class="row">
+			<div class="modalContainer ten wide column aligned">
+				{{modalContainer}}
+			</div>
+		</div>
+	</div>
+</div>

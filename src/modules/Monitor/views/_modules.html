@@ -1,0 +1,39 @@
+<div class="section ui segment fifteen wide column centered">
+	<div class="titleSection centered content">
+		<h1> Modules</h1>
+	</div>
+	<div class="ui grid contentSection">
+		<div class="row">
+			<div class="ui grid five wide column subSection left centered">
+				<h3 class="row centered content title">Waiting</h3> 
+				<div class="ui relaxed divided list">
+					<div class="item animated appear" ng-repeat="module in modules.waitingModules" >
+						<div class="row aligned content">{{module.name}}</div>
+					</div>
+				</div>
+			</div>
+			<div class="ui grid five wide column subSection">
+				<h3 class="row centered content title">Current</h3>
+				<div class="ui active indicating progress" id="currentPercent" ng-if="percents.percent"  data-percent="{{percents.percent}}">
+					<div class="bar" style="transition-duration: 400ms; width: {{percents.percent}}%;"></div>
+				</div>
+				<div class="row centered content" ng-if="percents.percent">
+					<div class="ui relaxed list">
+						<div class="item">Name:{{modules.currentModule.name}}</div>
+						<div class="item">Waiting: {{modules.currentModule.wait}}</div>
+						<div class="item">Failed: {{modules.currentModule.failed}}</div>
+						<div class="item">completed: {{modules.currentModule.waiting}}</div>
+					</div>
+				</div>
+			</div>
+			<div class="ui grid five wide column right subSection centered">
+				<h3 class="row centered content title">Done</h3>
+				<div class="ui waitingModulesContainer relaxed divided list">
+					<div class="item animated appear" ng-repeat="(key, module) in modules.doneModules">
+						<div class="content">{{module.name}}</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,12 @@
+#monitor{
+    &>.row{
+        margin-top:60px;
+        margin-bottom:20px;
+    }
+    #infosContainer {
+        .label{
+            font-size: 1.2em;
+            box-shadow: 24px 22px 10px -1px #142739 !important;
+        }
+    }
+}
