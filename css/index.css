@@ -1,256 +1,210 @@
+* {
+  box-sizing: border-box;
+  font-weight: bold !important; }
+
+#body #monitor > .row {
+  margin-top: 60px;
+  margin-bottom: 20px; }
+#body #monitor #infosContainer .label {
+  font-size: 1.2em;
+  box-shadow: 24px 22px 10px -1px #142739 !important; }
+#body .progress {
+  margin: 0 !important;
+  background-color: rgba(255, 255, 255, 0.1);
+  font-weight: bold;
+  height: 7px;
+  padding: 0;
+  margin: 0; }
+  #body .progress#totalPercent {
+    z-index: 10000;
+    position: fixed;
+    left: 75px;
+    width: calc(100% - 75px); }
+  #body .progress .progressText {
+    background-color: #415262;
+    padding-bottom: 10px;
+    padding-right: 10px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    padding-left: 10px;
+    font-size: 1.2em; }
+  #body .progress .bar {
+    height: 100%; }
+#body .section {
+  padding: 0;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  box-shadow: 24px 22px 10px -1px #142739 !important; }
+  #body .section .titleSection {
+    width: 100%;
+    text-align: center;
+    padding: 0;
+    display: flex;
+    background-color: #f59c16; }
+    #body .section .titleSection h1 {
+      width: 100%;
+      font-weight: bold;
+      margin: 0;
+      display: inline-block; }
+    #body .section .titleSection i {
+      width: 38px;
+      font-size: 2em;
+      text-align: center;
+      border-right: 1px solid #f9c678;
+      margin-right: 10px; }
+  #body .section .contentSection {
+    margin: 10px; }
+#body .subSection {
+  padding: 0 !important;
+  border: 2px solid #2b3e50 !important;
+  background-color: #2b3e50 !important;
+  box-shadow: 0px 0px 10px 3px #2b3e50 !important;
+  position: relative !important; }
+  #body .subSection .title {
+    background-color: #f59c16;
+    margin-bottom: 0; }
+#body .sidebar {
+  width: 75px !important; }
+  #body .sidebar a {
+    color: white !important; }
+    #body .sidebar a i {
+      font-size: 30px;
+      margin-bottom: 10px; }
+  #body .sidebar img {
+    width: 100%; }
+#body #logs .list {
+  margin: 0; }
+  #body #logs .list .item {
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px; }
+
+.infoContainer {
+  position: fixed !important;
+  left: 25%;
+  width: 50%;
+  z-index: 100; }
+  .infoContainer .ui.row.message {
+    overflow: hidden;
+    border-radius: 10px;
+    opacity: 0.5; }
+    .infoContainer .ui.row.message:hover {
+      opacity: 1; }
+    .infoContainer .ui.row.message .close {
+      position: absolute;
+      right: 10px;
+      cursor: pointer; }
+    .infoContainer .ui.row.message .text {
+      width: 100%;
+      text-align: center;
+      font-size: 1.2rem;
+      color: white; }
+
 .ui.grid {
   margin: 0;
-}
+  position: relative; }
 
-.ui.grid > * {
-  padding: 0;
-  margin: 0;
-}
+.module {
+  padding: 0 !important; }
+  .module #musicModule {
+    width: 100%;
+    margin: 0 !important;
+    padding: 0 !important; }
+    .module #musicModule #musicNavbar {
+      margin: 0 !important;
+      overflow-y: scroll;
+      height: 100vh;
+      width: 200px;
+      background-color: #495560 !important; }
+      .module #musicModule #musicNavbar a.item {
+        border-bottom: solid 1px rgba(255, 255, 255, 0.2) !important;
+        padding-top: 10px;
+        padding-bottom: 10px; }
+        .module #musicModule #musicNavbar a.item:hover {
+          background-color: rgba(255, 255, 255, 0.2) !important; }
+    .module #musicModule #musicContainer {
+      overflow-y: scroll;
+      height: 100vh;
+      width: calc(100% - 200px); }
+      .module #musicModule #musicContainer .item {
+        position: relative;
+        margin: 0;
+        position: relative;
+        text-align: center;
+        font-size: 1.2rem; }
+        .module #musicModule #musicContainer .item img {
+          top: 0; }
+        .module #musicModule #musicContainer .item .text {
+          padding-top: 10px;
+          padding-bottom: 10px; }
 
-#notificationsContainer {
-  background-color: #411c00;
+.floating-button {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  background: #db4437;
   position: fixed;
-  margin-top: 40px;
-  z-index: 70;
-  width: 100vw;
-}
+  bottom: 30px;
+  right: 30px;
+  cursor: pointer;
+  box-shadow: 0px 2px 5px #666; }
+  .floating-button:hover {
+    background-color: #A31D11; }
+  .floating-button .plus {
+    color: white;
+    position: absolute;
+    top: 0;
+    display: block;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+    line-height: 55px;
+    font-size: 38px;
+    font-family: 'Roboto';
+    font-weight: 300;
+    animation: plus-out 0.3s;
+    transition: all 0.3s; }
 
-#notificationsContainer .show {
-  background-color: #a74800;
-  width: 100vw;
-  text-align: center;
-  font-weight: bold;
-}
+#moduleContainer {
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 100% !important; }
 
-#notificationsContainer .notifications > .message {
-  border-radius: 5px;
-  width: 80%;
-  margin: auto;
-  margin-top: 5px;
-  margin-bottom: 5px;
-  text-align: center;
-}
-
-#notificationsContainer .notifications > .message i {
-  position: absolute;
-  right: 10px;
-}
-
-#body .section {
-  border: 2px solid rgba(0, 0, 0, 0.3) !important;
-}
-
-#body .section .titleSection {
-  text-align: center;
-  background-color: rgba(0, 0, 0, 0.3);
-}
-
-#body .section .titleSection h1 {
-  margin: 0;
-}
-
-#body .section .contentSection {
-  margin: 10px;
-}
-
-#currentPercent {
-  height: 7px;
-  width: 100%;
-}
-
-#currentPercent .bar {
-  height: 100%;
-}
+.globalContainer {
+  margin-left: 75px !important; }
 
 .modal {
   width: 100vw;
   height: 100vh;
   position: fixed;
   background-color: rgba(0, 0, 0, 0.85);
-  z-index: 101;
+  z-index: 1000;
   display: flex;
   align-items: center;
   justify-content: center;
   color: white;
-  font-size: 2em;
-}
+  font-size: 2em; }
+  .modal > div {
+    width: 100%; }
+  .modal .modalContainer {
+    height: 20vh;
+    text-align: center;
+    line-height: 2em; }
+  .modal .modalHeader {
+    text-align: center;
+    line-height: 2em;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.85); }
+  .modal .closeModal {
+    width: 3rem;
+    height: 3rem;
+    color: white;
+    position: absolute;
+    right: 15px;
+    margin: 0;
+    top: 30px;
+    font-size: 3rem; }
 
-.logo {
-  padding: 0 !important;
-  width: 120px !important;
-}
-
-.logo img {
-  width: auto !important;
-  height: 100% !important;
-}
-
-#infosContainer .label {
-  font-size: 1.2em;
-}
-
-#currentContent {
-  position: absolute;
-  z-index: 100;
-  top: 0;
-}
-
-h1 {
-  font-weight: bold;
-}
-
-.ui.segment {
-  padding: 0 !important;
-}
-
-body .ui.segment {
-  visibility: hidden;
-}
-
-.segmentContent {
-  padding: 0 !important;
-  border: 2px solid #2b3e50 !important;
-  background-color: #2b3e50 !important;
-  box-shadow: 0px 0px 10px 3px #2b3e50 !important;
-  position: relative !important;
-}
-
-.navbar {
-  color: white;
-  position: fixed;
-  width: 100%;
-  z-index: 100;
-  margin: 0;
-  height: 40px !important;
-}
-
-.navbar * {
-  font-size: 2rem;
-}
-
-.navbar > div {
-  padding: 0 !important;
-}
-
-.navbar ~ .fixNavbar {
-  height: 40px !important;
-}
-
-.navbar menu span {
-  padding-left: 2.56666667em !important;
-  padding-right: .93333333em !important;
-}
-
-.list .content {
-  font-weight: bold;
-  text-align: center;
-}
-
-.segment {
-  margin-bottom: 30px !important;
-}
-
-#progressView {
-  position: fixed;
-  z-index: 100;
-  width: 100%;
-}
-
-#progressView .progress {
-  background-color: transparent;
-  font-weight: bold;
-  height: 7px;
-  padding: 0;
-  margin: 0;
-}
-
-#progressView .progress .bar {
-  height: 100%;
-}
-
-h3 {
-  background-color: #df691a;
-}
-
-#currentProgress {
-  background-color: #2b3e50 !important;
-}
-
-.modal > div {
-  width: 100%;
-}
-
-.modalContainer {
-  height: 20vh;
-  text-align: center;
-  line-height: 2em;
-}
-
-.modalHeader {
-  text-align: center;
-  line-height: 2em;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.85);
-}
-
-.scallableTrigger {
-  text-align: right;
-  font-size: large;
-  width: 30px;
-  height: 30px;
-  position: absolute;
-  top: 0;
-  right: 0;
-  color: rgba(0, 0, 0, 0.1);
-}
-
-.doneModulesContainer {
-  z-index: 1000;
-}
-
-.right.menu {
-  width: 100% !important;
-}
-
-.right.menu .item {
-  width: 100% !important;
-}
-
-.right.menu .item .progress {
-  width: 100% !important;
-  margin: 0;
-}
-
-.ui.list > .item .description {
-  width: 100%;
-  word-break: break-all;
-}
-
-.ui.list .item {
-  padding: 6px !important;
-}
-
-.ui.list {
-  padding: 10px !important;
-}
-
-.ui.list > .item .description.active {
-  display: inline-block;
-}
-
-.fa.fa-arrows-alt {
-  font-size: xx-large;
-}
-
-.closeModal {
-  width: 3rem;
-  height: 3rem;
-  color: white;
-  position: absolute;
-  right: 15px;
-  margin: 0;
-  top: 30px;
-  font-size: 3rem;
-}
- 
-
- /*# sourceMappingURL= index.css.map */
+/*# sourceMappingURL=index.css.map */

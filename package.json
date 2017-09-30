@@ -1,20 +1,26 @@
 {
   "name": "sisyphe-monitor",
-  "version": "2.2.5",
+  "version": "3.0.0",
   "main": "index.js",
   "dependencies": {
     "bluebird": "^3.5.0",
     "bower": "^1.8.2",
+    "cheerio": "^1.0.0-rc.2",
+    "commander": "^2.11.0",
+    "electron-oauth2": "^3.0.0",
+    "jsmediatags": "^3.8.0",
     "localStorage": "^1.0.3",
     "lodash": "^4.17.4",
-    "redis": "^2.8.0",
-    "request": "^2.81.0"
+    "ncp": "^2.0.0",
+    "redis": "^2.8.0"
   },
   "scripts": {
+    "electron": "electron .",
     "postinstall": "bower install",
+    "orchestra": "node script/orchestra.js",
     "package-linux": "electron-packager . --overwrite --platform=linux --arch=all --out=build",
-    "package-mac": "electron-packager . --icon=icon-sisyphe.icns --overwrite --platform=darwin --arch=all --out=build",
-    "package-windows": "electron-packager . --icon=icon-sisyphe.ico --overwrite --platform=win32 --arch=all --out=build"
+    "package-mac": "electron-packager . --icon=public/img/icon.icns --overwrite --platform=darwin --arch=all --out=build",
+    "package-windows": "electron-packager . --icon=public/img/icon.ico --overwrite --platform=win32 --arch=all --out=build"
   },
   "devDependencies": {
     "electron": "^1.7.6",

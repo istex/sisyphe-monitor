@@ -1,10 +1,11 @@
-<div class="ui menu">
-    <a class="active item logo"><img src="./logo-sisyphe.png" alt=""></a>
-    <div class="ui dropdown link item">
-        <div class="ui right labeled left icon input">
-            <i class="tags icon"></i>
-            <input ng-model="Model.host" type="text">
-            <a class="ui tag label" ng-click="changeHost(Model.host)">Change host</a>
-        </div>
-    </div>
+<div class="ui left visible vertical sidebar labeled icon menu">
+    <img src="public/img/icon.png" alt="">
+  <a class="item" ui-sref="Monitor" ng-click="changeModule(&apos;Monitor&apos;)">
+    <i class="fa fa-desktop" aria-hidden="true"></i>
+    Monitor
+  </a>
+  <a class="item" ui-sref="Logs" ng-click="changeModule(&apos;Logs&apos;)">
+    <i class="fa fa-book" aria-hidden="true"></i>
+    Logs
+  </a>
 </div>

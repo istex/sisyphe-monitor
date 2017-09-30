@@ -3,16 +3,14 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Sisyphe</title>
+  <title>Sisyphe Monitor</title>
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
-  </script>
   <link rel="stylesheet" href="css/semantic.superhero.min.css">
-  </script>
   <link rel="stylesheet" href="css/index.css">
 </head>
 
-<body ng-app="sisyphe" id="body">
+<body ng-app="app" id="body">
 
   <div ui-view></div>
 
@@ -23,29 +21,7 @@
   <script type="text/javascript" src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
   <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
   <script type="text/javascript" src="bower_components/semantic/dist/semantic.js"></script>
-  <script type="text/javascript" src="js/app.js"></script>
-  <script>
-    $(document).ready(function () {
-      $('body .ui.segment').transition({
-        animation: 'scale',
-        reverse: 'auto',
-        interval: 200,
-        duration: 1000
-      })
-      
-        $("body").on("mouseover", '.ui.dropdown', function () {
-          $(this).dropdown({
-            duration: 600, transition: 'swing down', on: 'hover',
-            autofocus: false        
-          })
-      });
-  
-      $('body').hover()
-      $('input').click(e => {
-        e.stopPropagation()
-      })
-    });
-  </script>
+  <script type="text/javascript" src="src/app.js"></script>
   <script>
     if (window.module) module = window.module;
   </script>
