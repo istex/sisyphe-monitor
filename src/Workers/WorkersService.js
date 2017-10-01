@@ -96,7 +96,7 @@ WorkersService.prototype.getStatus = function () {
 WorkersService.prototype.changeHost = async function (host) {
   this.redisConnection = false;
   this.host = host;
-  this.client = redis.createClient({ host: this.host });
+  this.client = redis.createClient({ host: this.host, return_buffers: true });
   this.client.infoAsync((noErr, response) => (this.redisConnection = true));
   this.client.on('error', async noErr => {
     this.redisConnection = false;
@@ -114,12 +114,12 @@ WorkersService.prototype.isRunning = function () {
 };
 
 WorkersService.prototype.downloadFiles = async function () {
-  await this.client.lpushAsync('download', 'dedededed');
+  await this.client.lpushAsync('server', JSON.stringify({action: 'download'}));
   return new Promise((resolve, reject) => {
     const interval = setInterval(async _ => {
       let response = await this.client.lpopAsync('downloadResponse');
       if (response) {
-        resolve(JSON.parse(response));
+        resolve(response);
         clearInterval(interval);
       }
     }, 100);
@@ -128,7 +128,8 @@ WorkersService.prototype.downloadFiles = async function () {
 
 WorkersService.prototype.launchCommand = function (command) {
   this.monitoring = {};
-  return this.client.lpushAsync('command', command).catch(err => {
+  console.log(JSON.stringify({ action: 'launch', command }));
+  return this.client.lpushAsync('server', JSON.stringify({action: 'launch', command})).catch(err => {
     console.log(err);
   });
 };

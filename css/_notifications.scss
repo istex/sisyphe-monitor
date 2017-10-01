@@ -3,20 +3,24 @@
     // position: fixed;
     text-align: center;
     margin-bottom: 20px;
-    width: 100%;
-    z-index: 100;
+    z-index: 104;
+    position: fixed;
+    right: 0;
     .show{
-        width:300px;
         background-color: $masterColor;
         margin: auto;
         border-bottom-right-radius: 10px;
-        border-bottom-left-radius: 10px;   
+        border-bottom-left-radius: 10px;  
+        padding: 10px;
+
     }
     .notifications{
+        height: 100vh;
+        overflow-y: scroll;
         padding: 10px;
-        background-color: #495868;
+        background-color: #2b3e50;
         box-shadow: 24px 22px 10px -1px #142739 !important;
-        width: 800px;
+        width: 100vw;
         margin: auto;
         i {
             position: absolute;

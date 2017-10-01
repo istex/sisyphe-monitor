@@ -1,7 +1,8 @@
 const Promise = require('bluebird');
 const fs = Promise.promisifyAll(require('fs'));
 const path = require('path');
-
+const zlib = require('zlib');
+const mkdirp = require('mkdirp');
 function ControlController ($scope, $interval, WorkersService, ConfigService, NotificationService) {
   $scope.launchCommand = function (command) {
     let commandString = '';
@@ -11,17 +12,20 @@ function ControlController ($scope, $interval, WorkersService, ConfigService, No
     $scope.commandError = undefined;
     WorkersService.launchCommand(commandString);
   };
-  $scope.getstatus = function(){
-    return WorkersService.status
-  }
+  $scope.getstatus = function () {
+    return WorkersService.status;
+  };
   $scope.downloadFiles = async _ => {
-    const response = await WorkersService.downloadFiles();
+    let response = await WorkersService.downloadFiles();
+    response = JSON.parse(zlib.inflateSync(response).toString('utf8'));
     const { dialog } = require('electron').remote;
     const pathToSave = dialog
       .showOpenDialog({ properties: ['openDirectory'] })
       .pop();
-    await fs.writeFileAsync(path.resolve(pathToSave, response.log.file), response.log.content, 'utf8');
-    await fs.writeFileAsync(path.resolve(pathToSave, response.xpath.file), response.xpath.content, 'utf8');
+    response.map(async file => {
+      mkdirp.sync(path.dirname(path.resolve(pathToSave, file.path)));
+      await fs.writeFileAsync(path.resolve(pathToSave, file.path), file.content, 'utf8');
+    });
     NotificationService.add('info', `Files saves in ${pathToSave}`);
   };
 }

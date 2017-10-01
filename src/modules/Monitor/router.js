@@ -13,6 +13,11 @@ function Router ($stateProvider, $urlRouterProvider, $httpProvider) {
         templateUrl: 'views/_modal.html',
         controller: 'ModalController'
       },
+      'notifications@Monitor': {
+        parent: 'Monitor',
+        templateUrl: 'views/_notifications.html',
+        controller: 'NotificationController'
+      },
       'Monitor@Monitor': {
         parent: 'Monitor',
         templateUrl: 'src/modules/Monitor/Monitor.html'

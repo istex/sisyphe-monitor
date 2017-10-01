@@ -1,5 +1,4 @@
 function SettingsController ($scope, WorkersService, ConfigService) {
-  
   $scope.Settings = 'I\' the module Settings !';
   $scope.settings = {
     host: ConfigService.get('host')

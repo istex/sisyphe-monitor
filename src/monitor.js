@@ -6,7 +6,6 @@ const redis = require('redis');
 Promise.promisifyAll(redis.RedisClient.prototype);
 Promise.promisifyAll(redis.Multi.prototype);
 
-
 /**
  * Its role is to manage the refreshments loop and inject the data in the controller
  * @param       {Object} [options={}] Can have properties: refresh, prefix
@@ -18,8 +17,8 @@ function Monitor (options = {}) {
   this.workers = [];
   this.redisKeys = {};
   this.prefix = options.prefix;
-  this.host = options.host
-  this.client = redis.createClient({host: this.host})
+  this.host = options.host;
+  this.client = redis.createClient({host: this.host});
   return this;
 }
 
@@ -33,7 +32,7 @@ Monitor.prototype.launch = function () {
     const monitoring = await this.getMonitoring();
     if (!monitoring.hasOwnProperty('workers')) return;
     const queues = await this.getQueue(monitoring.workers);
-    const workers={}
+    const workers = {};
     await Promise.map(queues, async(queue) => {
       const jobsCount = await queue.getJobCounts();
       jobsCount.name = queue.name;
@@ -41,7 +40,7 @@ Monitor.prototype.launch = function () {
       delete jobsCount.delayed;
       delete jobsCount.active;
       delete jobsCount.completed;
-      workers[queue.name] = jobsCount
+      workers[queue.name] = jobsCount;
     }).then(async(data) => {
       this.monitorController.refresh({
         workers,
@@ -51,8 +50,8 @@ Monitor.prototype.launch = function () {
         workersError: monitoring.workersError
       });
       return data;
-    }).catch(err=>{
-      console.log(err)
+    }).catch(err => {
+      console.log(err);
     });
   }, this.refresh);
   return this;

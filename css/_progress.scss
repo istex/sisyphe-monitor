@@ -1,6 +1,6 @@
 .progress {
     &#totalPercent {
-        z-index: 10000;
+        z-index: 103;
         position: fixed;
         left: $sidebarWidth;
         width: calc(100% - #{$sidebarWidth});

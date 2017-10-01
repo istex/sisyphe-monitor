@@ -8,9 +8,9 @@
     "cheerio": "^1.0.0-rc.2",
     "commander": "^2.11.0",
     "electron-oauth2": "^3.0.0",
-    "jsmediatags": "^3.8.0",
     "localStorage": "^1.0.3",
     "lodash": "^4.17.4",
+    "mkdirp": "^0.5.1",
     "ncp": "^2.0.0",
     "redis": "^2.8.0"
   },
