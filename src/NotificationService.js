@@ -8,11 +8,19 @@ function NotificationService () {
 }
 
 NotificationService.prototype.add = function (type, message) {
-  this.notifications[type + 's'].push({
-    id: Math.random(),
-    message
-  });
-  this.notifications.total++;
+  let insert = true;
+  this.notifications[type + 's'].map(notification => {
+    if(message === notification.message) {
+      insert = false; 
+    }
+  })
+  if (insert) {
+    this.notifications[type + 's'].push({
+      id: Math.random(),
+      message
+    });
+    this.notifications.total++;
+  }
 };
 NotificationService.prototype.remove = function (type, id) {
   this.notifications[type].map((notif, index) =>

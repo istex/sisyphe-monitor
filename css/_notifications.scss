@@ -1,0 +1,27 @@
+#notificationsContainer{
+    // background-color:red;
+    // position: fixed;
+    text-align: center;
+    margin-bottom: 20px;
+    width: 100%;
+    z-index: 100;
+    .show{
+        width:300px;
+        background-color: $masterColor;
+        margin: auto;
+        border-bottom-right-radius: 10px;
+        border-bottom-left-radius: 10px;   
+    }
+    .notifications{
+        padding: 10px;
+        background-color: #495868;
+        box-shadow: 24px 22px 10px -1px #142739 !important;
+        width: 800px;
+        margin: auto;
+        i {
+            position: absolute;
+            right: 10px;
+        }
+    }
+    
+}

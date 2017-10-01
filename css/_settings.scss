@@ -1,0 +1,70 @@
+#settingsView {
+  .settingSection {
+    width: 80%;
+    margin: auto;
+    width: 800px;
+    box-shadow: 24px 22px 10px -1px #142739 !important;
+    .title {
+      width: 100%;
+      background-color: $masterColor;
+      font-size: 2rem;
+      padding: 15px;
+    }
+    .content {
+      padding: 10px;
+      width: 100%;
+      background-color: #495868;
+      .item {
+        display: flex;
+        align-items: center;
+        .action {
+          margin-left: auto;
+          margin-right: 0;
+          width: 300px;
+          .input.ok{
+            border: 1px solid green;
+            input{
+              color: green;
+            }
+            .label {
+              padding-left: 5px;
+              padding-right: 5px;
+              background-color: green;
+            }
+          }
+          .input.ko{
+            border: 1px solid red;
+            input{
+              color: red;
+            }
+            .label{
+              padding-left: 5px;
+              padding-right: 5px;
+              background-color: red;
+            }
+          }
+        }
+        .description {
+          font-size: 1.2em;
+          .sub {
+              color: darken(#FFF, 40%)
+          }
+        }
+        & > * {
+          display: inline-block;
+        }
+        width: 100%;
+        padding: 10px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        border-collapse: collapse;
+        margin-top: -1px;
+        &:first-child {
+          border-top: none;
+        }
+        &:last-child {
+          border-bottom: none;
+        }
+      }
+    }
+  }
+}

@@ -6,7 +6,7 @@ $backgroundNavbar: #323b44 ;
 $backgroundBody: #0b1b44;
 $masterColor: #f59c16;
 // $masterColor: #3f7caf;
-$sidebarWidth: 75px;
+$sidebarWidth: 90px;
 
 #body{
   @import 'reset';
@@ -16,7 +16,9 @@ $sidebarWidth: 75px;
   @import 'sections';
   @import 'subsections'; 
   @import 'sidebar';
-  @import 'logs'
+  @import 'logs';
+  @import 'settings';
+  @import 'notifications';
 }
 .infoContainer{
   position: fixed !important;

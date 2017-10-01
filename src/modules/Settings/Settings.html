@@ -1,0 +1,27 @@
+<div class="ui grid fifteen wide column" id="settingsView">
+    <div class="settingSection">
+        <div class="title">Sisyphe</div>
+        <div class="content">
+            <div class="item">
+                <div class="description">
+                    Host
+                    <div class="sub">
+                        Change the url to Redis server
+                    </div>
+                </div>
+                <div class="action">
+                    <form ng-submit="changeHost(settings.host)">
+                        <div class ="ui fluid right labeled input" ng-class="{ok: redisConnection(), ko: !redisConnection()}">
+                            <input type="text" placeholder="Search..." ng-value="settings.host" ng-model="settings.host">
+                            <div class="label">
+                                <i class="fa fa-times" aria-hidden="true" ng-if="!redisConnection()"></i>
+                                <i class="fa fa-check" aria-hidden="true" ng-if="redisConnection()"></i>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        </ul>
+    </div>
+</div>
