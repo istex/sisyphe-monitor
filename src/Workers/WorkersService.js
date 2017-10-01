@@ -82,7 +82,7 @@ WorkersService.prototype.getTime = function () {
   time.setHours((endDateInMs - startDateInMs) / (1000 * 60 * 60));
   time.setDate(~~((endDateInMs - startDateInMs) / (1000 * 60 * 60 * 24)));
   const timeObject = {
-    days: time.getDate() === 31 ? 0 : time.getDate(),
+    days: (time.getDate() >= 28) ? 0 : time.getDate(),
     hours: time.getHours(),
     minutes: time.getMinutes(),
     seconds: time.getSeconds()
