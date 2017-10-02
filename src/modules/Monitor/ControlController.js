@@ -3,15 +3,17 @@ const fs = Promise.promisifyAll(require('fs'));
 const path = require('path');
 const zlib = require('zlib');
 const mkdirp = require('mkdirp');
-const request = require('request-promise')
+const request = require('request-promise')  
 function ControlController ($scope, $interval, $state, WorkersService, ConfigService, NotificationService, DownloadService) {
-  $scope.launchCommand = function (command) {
-    let commandString = '';
-    if (!command || !command.hasOwnProperty('name') || !command.hasOwnProperty('path')) return $scope.commandError = 'Please set a name and a path';
-    if (command.hasOwnProperty('config')) commandString += `-c ${command.config} `;
+  $scope.launchCommand = async function (command) {
+    let commandString = "";
+    if (!command || !command.hasOwnProperty("name") || !command.hasOwnProperty("path")) return ($scope.commandError = "Please set a name and a path");
+    if (command.hasOwnProperty("config")) commandString += `-c ${command.config} `;
     commandString += `-n ${command.name} ${command.path} -s `;
     $scope.commandError = undefined;
-    WorkersService.launchCommand(commandString);
+    const url = ConfigService.get("serverUrl") + "launch";
+    var options = { method: "POST", url, body: { command: commandString }, json: true }; // Automatically stringifies the body to JSON
+    let latestSession = await request(options)
   };
   $scope.getstatus = function () {
     return WorkersService.status;
