@@ -1,0 +1,28 @@
+.hint{
+    position: absolute;
+    width: 100%;
+    max-height: 500px;
+    overflow-y: scroll;
+    z-index: 3;
+    color: black;
+    top: 20px;
+    background-color: #2b3e50;
+    border: 3px solid #FFF;
+    .item{
+        padding: 10px;
+    }
+}
+
+::-webkit-scrollbar {     
+    background-color: transparent;
+    width: 0.4em;
+    position: absolute;
+    margin-right: 2px;
+    right: 2px;
+}
+
+::-webkit-scrollbar-thumb:window-inactive,
+::-webkit-scrollbar-thumb {
+        background:  #b3b3b3;
+        border-radius: 10px;
+}

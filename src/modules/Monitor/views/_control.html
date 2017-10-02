@@ -11,7 +11,19 @@
                 <input placeholder="Path to configuration" ng-model="launch.config" type="text" />
             </div>
             <div class="ui input">
-                <input placeholder="Path to the corpus" ng-model="launch.path" type="text" />
+                <input
+                    placeholder="Path to the corpus"
+                    ng-model="launch.path" 
+                    type="text" 
+                    tab
+                />
+                <div class="hint ui list divided" ng-if="hintInput">
+                    <li class="item" ng-repeat="hint in hintInput track by $index">
+                        {{hint}}
+                    </li>
+                </div>
+                <div>
+                </div>
             </div>
             <button class="ui blue right icon button" ng-click="launchCommand(launch)">
                 Launch Sisyphe

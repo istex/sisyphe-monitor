@@ -20,15 +20,19 @@ function ControlController ($scope, $interval, $state, WorkersService, ConfigSer
   };
   $scope.downloadFiles = async _ => {
     const url = ConfigService.get("serverUrl") + "download/latest";
-    console.log(url)
     let latestSession = await request(url)
     latestSession = JSON.parse(latestSession)
-    console.log('latestSession', latestSession)
     latestSession.map(file=>{
       DownloadService.add(file.path)
     })
     $state.go('Download')
     DownloadService.launch()
+  };
+
+  $scope.readdirServer = async function(path) {
+    const url = ConfigService.get("serverUrl") + "readdir";
+    var options = { method: "POST", url, body: { path }, json: true }; // Automatically stringifies the body to JSON
+    return await request(options)
   };
 }
 

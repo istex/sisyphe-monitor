@@ -40,7 +40,6 @@ function WorkersService (ConfigService) {
           return job;
         })
     );
-    // console.log(workers)
     this.dispatchWorkers(workers);
     this.calculPercentages(this.modules, workers.length, this.maxFile);
   }, ConfigService.refresh);
