@@ -32,3 +32,4 @@ const ang = angular
   ]); const Monitor = require('./src/modules/Monitor/app'); Monitor.init(ang);
 const Logs = require('./src/modules/Logs/app'); Logs.init(ang);
 const Settings = require('./src/modules/Settings/app'); Settings.init(ang);
+const Download = require('./src/modules/Download/app');Download.init(ang); 

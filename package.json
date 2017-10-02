@@ -12,7 +12,9 @@
     "lodash": "^4.17.4",
     "mkdirp": "^0.5.1",
     "ncp": "^2.0.0",
-    "redis": "^2.8.0"
+    "redis": "^2.8.0",
+    "request-progress": "^3.0.0",
+    "request-promise": "^4.2.2"
   },
   "scripts": {
     "electron": "electron .",

@@ -238,6 +238,16 @@
   right: 10px;
 }
 
+#body #downloadView .downloadInfos {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  width: 70%;
+  margin: auto;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
 .infoContainer {
   position: fixed !important;
   left: 25%;
