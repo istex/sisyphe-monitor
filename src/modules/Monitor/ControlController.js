@@ -29,19 +29,6 @@ function ControlController ($scope, $interval, $state, WorkersService, ConfigSer
     })
     $state.go('Download')
     DownloadService.launch()
-    // DownloadService.launch()
-    
-    // let response = await WorkersService.downloadFiles();
-    // response = JSON.parse(zlib.inflateSync(response).toString('utf8'));
-    // const { dialog } = require('electron').remote;
-    // const pathToSave = dialog
-    //   .showOpenDialog({ properties: ['openDirectory'] })
-    //   .pop();
-    // response.map(async file => {
-    //   mkdirp.sync(path.dirname(path.resolve(pathToSave, file.path)));
-    //   await fs.writeFileAsync(path.resolve(pathToSave, file.path), file.content, 'utf8');
-    // });
-    // NotificationService.add('info', `Files saves in ${pathToSave}`);
   };
 }
 

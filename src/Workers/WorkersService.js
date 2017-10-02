@@ -113,27 +113,6 @@ WorkersService.prototype.isRunning = function () {
   return this.redisConnection;
 };
 
-WorkersService.prototype.downloadFiles = async function () {
-  await this.client.lpushAsync('server', JSON.stringify({action: 'download'}));
-  return new Promise((resolve, reject) => {
-    const interval = setInterval(async _ => {
-      let response = await this.client.lpopAsync('downloadResponse');
-      if (response) {
-        resolve(response);
-        clearInterval(interval);
-      }
-    }, 100);
-  });
-};
-
-WorkersService.prototype.launchCommand = function (command) {
-  this.monitoring = {};
-  console.log(JSON.stringify({ action: 'launch', command }));
-  return this.client.lpushAsync('server', JSON.stringify({action: 'launch', command})).catch(err => {
-    console.log(err);
-  });
-};
-
 WorkersService.prototype.calculPercentages = function (modules, nbWorkers, nbTotalOfFiles) {
   let allDone = nbTotalOfFiles * Object.keys(modules.doneModules).length;
   if (modules.currentModule.waiting) allDone += nbTotalOfFiles - modules.currentModule.wait;
