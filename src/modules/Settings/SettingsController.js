@@ -1,7 +1,7 @@
 function SettingsController ($scope, WorkersService, ConfigService) {
-  $scope.Settings = 'I\' the module Settings !';
   $scope.settings = {
-    host: ConfigService.get('host')
+    host: ConfigService.get('host'),
+    workers: ConfigService.get('workers')
   };
   $scope.redisConnection = _ => WorkersService.redisConnection;
   $scope.changeHost = function (host) {

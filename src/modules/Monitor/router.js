@@ -40,7 +40,7 @@ function Router ($stateProvider, $urlRouterProvider, $httpProvider) {
       'progression@Monitor': {
         parent: 'Monitor',
         templateUrl: 'src/modules/Monitor/views/_progression.html',
-        controller: 'WorkersController'
+        controller: 'ProgressionController'
       },
       '': {
         abstract: true,

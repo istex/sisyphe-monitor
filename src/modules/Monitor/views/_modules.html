@@ -14,10 +14,10 @@
 			</div>
 			<div class="ui grid five wide column subSection">
 				<h3 class="row centered content title">Current</h3>
-				<div class="ui active indicating progress" id="currentPercent" ng-if="percents.percent"  data-percent="{{percents.percent}}">
-					<div class="bar" style="transition-duration: 400ms; width: {{percents.percent}}%;"></div>
+				<div class="ui active indicating progress" id="currentPercent" ng-if="currentPercent()"  data-percent="{{currentPercent()}}">
+					<div class="bar" style="transition-duration: 400ms; width: {{currentPercent()}}%;"></div>
 				</div>
-				<div class="row centered content" ng-if="percents.percent">
+				<div class="row centered content" ng-if="currentPercent()">
 					<div class="ui relaxed list">
 						<div class="item">Name:{{modules.currentModule.name}}</div>
 						<div class="item">Waiting: {{modules.currentModule.wait}}</div>

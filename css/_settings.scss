@@ -43,6 +43,28 @@
               background-color: red;
             }
           }
+          .workers{
+            display: flex;
+            width: 100%;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            li{
+              width: 100%;
+              font-size: 13px;
+              border: 1px solid grey;
+              line-height: 50px;
+              text-align: center;
+              margin: 3px;
+              text-transform: uppercase;
+              &.ok{
+                background: #008000;
+              }
+              &.ko{
+                background: #ff0000;
+              }
+            }
+          }
         }
         .description {
           font-size: 1.2em;

@@ -1,6 +1,8 @@
-function ModulesController ($scope, $interval, WorkersService, ConfigService, ModalService, $state, NotificationService) {
+function WorkersController ($scope, $interval, WorkersService, ConfigService, ModalService, $state, NotificationService) {
+  $scope.currentPercent = function(){
+    return WorkersService.percents.percent;
+  }
   $scope.modules = WorkersService.modules;
-  $scope.percents = WorkersService.percents;
   $interval(_ => {
     if (WorkersService.redisConnection === false) {
       NotificationService.add('error', 'Connection lost: please, verify url of redis');
@@ -9,4 +11,4 @@ function ModulesController ($scope, $interval, WorkersService, ConfigService, Mo
   }, 500);
 }
 
-module.exports = ModulesController;
+module.exports = WorkersController;

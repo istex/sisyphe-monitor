@@ -21,6 +21,20 @@
                     </form>
                 </div>
             </div>
+            <div class="item">
+                <div class="description">
+                    Workers
+                    <div class="sub">
+                        Enable or disable Workers
+                    </div>
+                </div>
+                <div class="action">
+                  <ul class="workers">
+                    {{settings.workers}}
+                    <li ng-repeat="worker in settings.workers" ng-click="worker.disable = !worker.disable" ng-class="{ok:!worker.disable, ko:worker.disable}">{{worker.name}}</li>
+                  </ul>
+                </div>
+            </div>
         </div>
         </ul>
     </div>
