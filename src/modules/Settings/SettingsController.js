@@ -6,7 +6,7 @@ function SettingsController ($scope, WorkersService, ConfigService) {
   $scope.redisConnection = _ => WorkersService.redisConnection;
   $scope.changeHost = function (host) {
     WorkersService.changeHost(host);
-    const serverUrl = `http://${host}:3000/`
+    const serverUrl = `http://${host}:3264/`
     ConfigService.save({host, serverUrl});
   };
 }

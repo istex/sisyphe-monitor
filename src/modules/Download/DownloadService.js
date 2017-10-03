@@ -8,7 +8,8 @@ function DownloadService(ConfigService) {
   this.downloads = [];
 }
 DownloadService.prototype.add = function(path) {
-  const url = "http://" + this.ConfigService.get("host") + ":3000/" + path;
+  const url = this.ConfigService.get("serverUrl") + path;
+  console.log(url)
   const filename = pathfs.basename(path);
   this.downloads.push({
     url,
