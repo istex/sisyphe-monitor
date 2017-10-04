@@ -21,7 +21,7 @@
                     </form>
                 </div>
             </div>
-            <div class="item">
+            <div class="item" ng-if="redisConnection()">
                 <div class="description">
                     Workers
                     <div class="sub">
@@ -30,8 +30,7 @@
                 </div>
                 <div class="action">
                   <ul class="workers">
-                    {{settings.workers}}
-                    <li ng-repeat="worker in settings.workers" ng-click="worker.disable = !worker.disable" ng-class="{ok:!worker.disable, ko:worker.disable}">{{worker.name}}</li>
+                    <li ng-repeat="worker in settings.workers" ng-click="worker.disable = !worker.disable; saveSettings()" ng-class="{ok:!worker.disable, ko:worker.disable}">{{worker.name}}</li>
                   </ul>
                 </div>
             </div>

@@ -3,6 +3,7 @@ function SettingsController ($scope, WorkersService, ConfigService) {
     host: ConfigService.get('host'),
     workers: ConfigService.get('workers')
   };
+  $scope.saveSettings = _=> ConfigService.save($scope.settings)
   $scope.redisConnection = _ => WorkersService.redisConnection;
   $scope.changeHost = function (host) {
     WorkersService.changeHost(host);

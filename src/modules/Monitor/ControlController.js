@@ -9,9 +9,18 @@ function ControlController ($scope, $interval, $state, WorkersService, ConfigSer
     let commandString = "";
     if (!command || !command.hasOwnProperty("name") || !command.hasOwnProperty("path")) return ($scope.commandError = "Please set a name and a path");
     if (command.hasOwnProperty("config")) commandString += `-c ${command.config} `;
-    commandString += `-n ${command.name} ${command.path} -s `;
     $scope.commandError = undefined;
+    const workers = ConfigService.get('workers')
+    let removeString = ""
+    workers
+    .filter(worker => worker.disable)
+    .map(
+      workerDisabled => (removeString += `-r ${workerDisabled.name} `)
+    );
+    commandString += removeString
+    commandString += `-n ${command.name} ${command.path} -s `;
     const url = ConfigService.get("serverUrl") + "launch";
+    console.log(commandString)
     var options = { method: "POST", url, body: { command: commandString }, json: true }; // Automatically stringifies the body to JSON
     let latestSession = await request(options)
   };
