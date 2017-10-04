@@ -9,7 +9,6 @@ function DownloadService(ConfigService) {
 }
 DownloadService.prototype.add = function(path) {
   const url = this.ConfigService.get("serverUrl") + path;
-  console.log(url)
   const filename = pathfs.basename(path);
   this.downloads.push({
     url,

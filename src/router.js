@@ -1,6 +1,6 @@
 
 function Router ($stateProvider, $urlRouterProvider, $httpProvider) {
-  $urlRouterProvider.otherwise('/');
+  $urlRouterProvider.otherwise('/Monitor');
   $stateProvider.state(require('./routes/home'));
 }
 

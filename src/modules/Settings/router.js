@@ -1,7 +1,7 @@
 function Router ($stateProvider, $urlRouterProvider, $httpProvider) {
   $stateProvider.state({
     name: 'Settings',
-    url: '/',
+    url: '/Settings',
     views: {
       'navbar@Settings': {
         parent: 'Settings',
@@ -20,7 +20,8 @@ function Router ($stateProvider, $urlRouterProvider, $httpProvider) {
       },
       'Settings@Settings': {
         parent: 'Settings',
-        templateUrl: 'src/modules/Settings/Settings.html'
+        templateUrl: 'src/modules/Settings/Settings.html',
+        controller: "HomeCtrl"
       },
       '': {
         abstract: true,

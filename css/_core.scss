@@ -12,7 +12,9 @@
         padding: 10px;
     }
 }
-
+.module>div{
+    max-width: 1200px;
+}
 ::-webkit-scrollbar {     
     background-color: transparent;
     width: 0.4em;

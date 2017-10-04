@@ -53,48 +53,7 @@ $sidebarWidth: 90px;
   margin: 0;
   position: relative;
 }
-.module{
-  padding: 0 !important;
-  #musicModule {
-    width: 100%;
-    margin: 0 !important;
-    padding: 0 !important;
-    #musicNavbar{
-      margin: 0 !important;
-      overflow-y: scroll;
-      height: 100vh;
-      width: 200px;
-      background-color: #495560 !important;
-      a.item{
-        border-bottom: solid 1px rgba(255, 255, 255, 0.2) !important;
-        padding-top: 10px;
-        padding-bottom: 10px;
-        &:hover{
-          background-color: rgba(255, 255, 255, 0.2) !important 
-        }
-      }
-    }
-    #musicContainer{
-      overflow-y: scroll;
-      height: 100vh;
-      width: calc(100% - 200px);
-      .item{
-        position: relative;
-        margin: 0;
-        position: relative;
-        text-align: center;
-        font-size: 1.2rem;
-        img{
-          top: 0;
-        }
-        .text{
-          padding-top: 10px;
-          padding-bottom: 10px;
-        }
-      }
-    }
-  }
-}
+
 
 
 .floating-button{
@@ -137,7 +96,7 @@ $sidebarWidth: 90px;
 }
 
 .globalContainer {
-    margin-left: 75px !important;
+    margin-left: $sidebarWidth !important;
 }
 
 .modal {

@@ -1,4 +1,5 @@
-<div class="section ui grid segment fifteen wide column centered">
+<div ng-if="!serverConnection">To control Sisyphe, run the server</div>
+<div class="section ui grid segment fifteen wide column centered" ng-if="serverConnection">
     <div class="titleSection centered content">
         <h1 class="row">Control</h1>
     </div>

@@ -20,7 +20,6 @@ function ControlController ($scope, $interval, $state, WorkersService, ConfigSer
     commandString += removeString
     commandString += `-n ${command.name} ${command.path} -s `;
     const url = ConfigService.get("serverUrl") + "launch";
-    console.log(commandString)
     var options = { method: "POST", url, body: { command: commandString }, json: true }; // Automatically stringifies the body to JSON
     let latestSession = await request(options)
   };

@@ -1,26 +1,27 @@
 function Router ($stateProvider, $urlRouterProvider, $httpProvider) {
   $stateProvider.state({
-    name: '{{ModuleName}}',
-    url: '/',
+    name: "{{ModuleName}}",
+    url: "/",
     views: {
-      'navbar@{{ModuleName}}': {
-        parent: '{{ModuleName}}',
-        templateUrl: 'views/_navbar.html',
-        controller: 'NavbarCtrl'
+      "navbar@{{ModuleName}}": {
+        parent: "{{ModuleName}}",
+        templateUrl: "views/_navbar.html",
+        controller: "NavbarCtrl"
       },
-      'modal@{{ModuleName}}': {
-        parent: '{{ModuleName}}',
-        templateUrl: 'views/_modal.html',
-        controller: 'NavbarCtrl'
+      "modal@{{ModuleName}}": {
+        parent: "{{ModuleName}}",
+        templateUrl: "views/_modal.html",
+        controller: "NavbarCtrl"
       },
-      '{{ModuleName}}@{{ModuleName}}': {
-        parent: '{{ModuleName}}',
-        templateUrl: 'src/modules/{{ModuleName}}/{{ModuleName}}.html'
+      "{{ModuleName}}@{{ModuleName}}": {
+        parent: "{{ModuleName}}",
+        templateUrl: "src/modules/{{ModuleName}}/{{ModuleName}}.html",
+        controller: "HomeCtrl"
       },
-      '': {
+      "": {
         abstract: true,
-        templateUrl: 'views/home.html',
-        controller: '{{Controller}}'
+        templateUrl: "views/home.html",
+        controller: "{{Controller}}"
       }
     }
   });

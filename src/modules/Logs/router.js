@@ -1,7 +1,7 @@
 function Router ($stateProvider, $urlRouterProvider, $httpProvider) {
   $stateProvider.state({
     name: 'Logs',
-    url: '/',
+    url: '/Logs',
     views: {
       'navbar@Logs': {
         parent: 'Logs',

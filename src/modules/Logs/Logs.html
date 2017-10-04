@@ -6,7 +6,7 @@
         <div class="ui relaxed divided list">
             <div class="item" ng-repeat="(key, log) in logsError">
                 <div class="content">
-                    <a class="header">{{log.message}}</a>
+                    <div class="header">{{log.message}}</div>
                     <div class="description" ng-show="toggle">
                         <div ng-if="log.stack">{{log.stack}}</div>
                         <div ng-if="log.infos.path">{{log.infos.path}}</div>
@@ -22,7 +22,7 @@
         </div>
         <div class="ui relaxed divided list">
             <div class="item animated appear" ng-repeat="(key, log) in logsInfo track by $index">
-                    <a class="header" ng-click="toggle = !toggle">{{log}}</a>
+                    <div class="header" ng-click="toggle = !toggle">{{log}}</div>
             </div>
         </div>
     </div>
@@ -33,35 +33,9 @@
         <div class="ui relaxed divided list">
             <div class="item" ng-repeat="(key, log) in logsWarning track by $index">
                 <div class="content">
-                    <a class="header" ng-click="toggle = !toggle">{{}}</a>
+                    <div class="header" ng-click="toggle = !toggle">{{log}}</div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<!-- <div>
-    <div class="ui grid contentSection" ng-if="showModules">
-        <div class="row">
-            <div class="ui grid five wide column subSection centered">
-                <h3 class="row centered content title">Infos</h3>
-                <div class="ui relaxed divided list">
-                    <div class="item" ng-repeat="(key, log) in logsInfo track by $index">
-                        <div class="content">
-                            <a class="header" ng-click="toggle = !toggle">{{log}}</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="ui grid five wide column subSection centered">
-                <h3 class="row centered content title">Warnings</h3>
-                <div class="ui relaxed divided list">
-                    <div class="item" ng-repeat="(key, log) in logsWarning track by $index">
-                        <div class="content">
-                            <a class="header" ng-click="toggle = !toggle">{{}}</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>-->

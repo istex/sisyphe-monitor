@@ -1,4 +1,5 @@
-<div id="downloadView" class="section ui segment fifteen wide column centered">
+<div ng-if="!serverConnection">Sisyphe server is not running</div>
+<div id="downloadView" class="section ui segment fifteen wide column centered" ng-if="serverConnection">
     <div class="titleSection centered content">
         <h1> Downloads</h1>
     </div>
