@@ -29,6 +29,10 @@
                 Launch Sisyphe
                 <i class="fa fa-arrow-circle-right right" aria-hidden="true"></i>
             </button>
+            <button class="ui purple right icon button" ng-click="$state.go('Settings')">
+                Check loaded modules
+                <i class="fa fa-arrow-circle-right right" aria-hidden="true"></i>
+            </button>
         </div>
         <div class="row centered content" ng-if="commandError">{{commandError}}</div>
         <div class="row centered content" ng-if="getstatus() === 'End'">

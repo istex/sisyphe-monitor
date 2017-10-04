@@ -30,7 +30,11 @@
                 </div>
                 <div class="action">
                   <ul class="workers">
-                    <li ng-repeat="worker in settings.workers" ng-click="worker.disable = !worker.disable; saveSettings()" ng-class="{ok:!worker.disable, ko:worker.disable}">{{worker.name}}</li>
+                    <li 
+                        ng-repeat="worker in settings.workers" 
+                        ng-click="worker.disable = !worker.disable; saveSettings()" 
+                        ng-class="{ok:!worker.disable, ko:worker.disable}"
+                    >{{worker.name}}</li>
                   </ul>
                 </div>
             </div>
