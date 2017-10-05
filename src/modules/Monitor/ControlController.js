@@ -29,9 +29,16 @@ function ControlController ($scope, $interval, $state, WorkersService, ConfigSer
   $scope.downloadFiles = async _ => {
     const url = ConfigService.get("serverUrl") + "download/latest";
     let latestSession = await request(url)
+    $scope.downloadError = undefined;
+    const { dialog } = require("electron").remote;
+    let pathToSave = dialog
+      .showOpenDialog({ properties: ["openDirectory"] })
+    if (!pathToSave) return ($scope.downloadError = "No path specified");
+    pathToSave = pathToSave.pop()
+    console.log(pathToSave);
     latestSession = JSON.parse(latestSession)
-    latestSession.map(file=>{
-      DownloadService.add(file.path)
+    latestSession.map(fileOnServer=>{
+      DownloadService.add(fileOnServer.path, pathToSave)
     })
     $state.go('Download')
     DownloadService.launch()

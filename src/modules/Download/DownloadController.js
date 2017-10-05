@@ -3,7 +3,8 @@ function DownloadController ($scope, ConfigService, DownloadService) {
     DownloadService.launch()
   }
   setInterval(_=>{
-    $scope.downloads = DownloadService.downloads
+    $scope.endDownloads = DownloadService.endDownloads
+    $scope.currentDownloads = DownloadService.currentDownloads;
   },100)
   $scope.infos = DownloadService.infos;
 }

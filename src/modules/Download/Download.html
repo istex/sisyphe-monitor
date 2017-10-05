@@ -1,20 +1,40 @@
-<div ng-if="!serverConnection">Sisyphe server is not running</div>
-<div id="downloadView" class="section ui segment fifteen wide column centered" ng-if="serverConnection">
-    <div class="titleSection centered content">
-        <h1> Downloads</h1>
-    </div>
-    <div class="ui relaxed divided list">
-        <div class="item" ng-repeat="download in downloads">
-            <div class="ui active indicating progress" id="currentPercent" ng-if="download.percent" data-percent="{{download.percent}}">
-                <div class="bar" style="transition-duration: 400ms; width: {{download.percent}}%;"></div>
-            </div>
-            <div class="row aligned content downloadInfos"  ng-class="{ok: download.end, ko: !download.end}">
-                <div>{{download.filename}}</div>
-                <div ng-if="download.speed">{{download.speed}} Mo/s</div>
-                <div ng-if="download.end">End</div>
-                <div ng-if="!download.end">Working</div>
+<div class="ui grid fifteen wide column" id="downloadView">
+    <div ng-if="!serverConnection">Sisyphe server is not running</div>
+    <div class="section ui segment fifteen wide column centered" ng-if="serverConnection">
+        <div class="titleSection centered content">
+            <h1>Current Downloads</h1>
+        </div>
+        <div class="ui relaxed divided list">
+            <div class="item" ng-repeat="download in currentDownloads">
+                <div class="ui active indicating progress" id="currentPercent" ng-if="download.percent" data-percent="{{download.percent}}">
+                    <div class="bar" style="transition-duration: 400ms; width: {{download.percent}}%;"></div>
+                </div>
+                <div class="row aligned content downloadInfos" ng-class="{ok: download.end, ko: !download.end}">
+                    <div>{{download.filename}}</div>
+                    <div ng-if="download.speed">{{download.speed}} Mo/s</div>
+                    <div ng-if="download.end">End</div>
+                    <div ng-if="!download.end">Working</div>
+                </div>
             </div>
         </div>
     </div>
+    <div class="section ui segment fifteen wide column centered" ng-if="serverConnection">
+        <div class="titleSection centered content">
+            <h1>End Downloads</h1>
+        </div>
+        <div class="ui relaxed divided list">
+            <div class="item" ng-repeat="download in endDownloads">
+                <div class="ui active indicating progress" id="currentPercent" ng-if="download.percent" data-percent="{{download.percent}}">
+                    <div class="bar" style="transition-duration: 400ms; width: {{download.percent}}%;"></div>
+                </div>
+                <div class="row aligned content downloadInfos" ng-class="{ok: download.end, ko: !download.end}">
+                    <div>{{download.filename}}</div>
+                    <div ng-if="download.speed">{{download.speed}} Mo/s</div>
+                    <div ng-if="download.end">End</div>
+                    <div ng-if="!download.end">Working</div>
+                </div>
+            </div>
+        </div>
 
+    </div>
 </div>
