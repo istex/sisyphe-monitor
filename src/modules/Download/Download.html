@@ -1,6 +1,6 @@
 <div class="ui grid fifteen wide column" id="downloadView">
     <div ng-if="!serverConnection">Sisyphe server is not running</div>
-    <div class="section ui segment fifteen wide column centered" ng-if="serverConnection">
+    <div class="section ui segment fifteen wide column centered" ng-if="serverConnection && currentDownloads.length">
         <div class="titleSection centered content">
             <h1>Current Downloads</h1>
         </div>
@@ -18,7 +18,7 @@
             </div>
         </div>
     </div>
-    <div class="section ui segment fifteen wide column centered" ng-if="serverConnection">
+    <div class="section ui segment fifteen wide column centered" ng-if="serverConnection && endDownloads.length">
         <div class="titleSection centered content">
             <h1>End Downloads</h1>
         </div>
