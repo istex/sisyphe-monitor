@@ -1,18 +1,18 @@
 <div class="ui left visible vertical sidebar labeled icon menu">
     <img src="public/img/icon.png" alt="">
-  <a class="item" ui-sref="Monitor" ng-click="$state.go('Monitor')">
+  <a class="item" ui-sref="Monitor" ng-class="{active: activeModule() === 'Monitor'}">
     <i class="fa fa-desktop" aria-hidden="true"></i>
     Monitor
   </a>
-  <a class="item" ui-sref="Logs">
+  <a class="item" ui-sref="Logs" ng-class="{active: activeModule() === 'Logs'}">
     <i class="fa fa-book" aria-hidden="true"></i>
     Logs
   </a>
-  <a class="item" ui-sref="Download">
+  <a class="item" ui-sref="Download" ng-class="{active: activeModule() === 'Download'}">
     <i class="fa fa-download" aria-hidden="true"></i>
     Download
   </a>
-  <a class="item" ui-sref="Settings">
+  <a class="item" ui-sref="Settings" ng-class="{active: activeModule() === 'Settings'}">
     <i class="fa fa-cog" aria-hidden="true"></i>
     Settings
   </a>

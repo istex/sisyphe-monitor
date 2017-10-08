@@ -51,10 +51,10 @@ WorkersService.prototype.getMonitoring = async function () {
   this.monitoring = {};
   await Promise.map(keys, async key => {
     let val = await this.client.hgetAsync('monitoring', key);
-    try{
+    try {
       this.monitoring[key] = JSON.parse(val);
-    }catch(err){
-      this.monitoring[key] = val
+    } catch (err) {
+      this.monitoring[key] = val;
     }
   });
   return this.monitoring;
@@ -98,7 +98,7 @@ WorkersService.prototype.getStatus = function () {
 WorkersService.prototype.changeHost = async function (host) {
   this.redisConnection = false;
   this.host = host;
-  this.client = redis.createClient({ host: this.host});
+  this.client = redis.createClient({host: this.host});
   this.client.infoAsync((noErr, response) => (this.redisConnection = true));
   this.client.on('error', async noErr => {
     this.redisConnection = false;

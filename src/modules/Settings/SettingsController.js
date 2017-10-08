@@ -1,13 +1,14 @@
-function SettingsController ($scope, WorkersService, ConfigService) {
+function SettingsController ($scope, WorkersService, ConfigService, ModuleService) {
+  $scope.activeModule = ModuleService.changeActiveModule('Settings');
   $scope.settings = {
     host: ConfigService.get('host'),
     workers: ConfigService.get('workers')
   };
-  $scope.saveSettings = _=> ConfigService.save($scope.settings)
+  $scope.saveSettings = _ => ConfigService.save($scope.settings);
   $scope.redisConnection = _ => WorkersService.redisConnection;
   $scope.changeHost = function (host) {
     WorkersService.changeHost(host);
-    const serverUrl = `http://${host}:3264/`
+    const serverUrl = `http://${host}:3264/`;
     ConfigService.save({host, serverUrl});
   };
 }

@@ -15,12 +15,13 @@ function Router ($stateProvider, $urlRouterProvider, $httpProvider) {
       },
       'Logs@Logs': {
         parent: 'Logs',
-        templateUrl: 'src/modules/Logs/Logs.html'
+        templateUrl: 'src/modules/Logs/Logs.html',
+        controller: 'LogsController'
       },
       '': {
         abstract: true,
         templateUrl: 'views/home.html',
-        controller: 'LogsController'
+        controller: 'HomeCtrl'
       }
     }
   });

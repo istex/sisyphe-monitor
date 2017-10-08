@@ -21,7 +21,7 @@ function Router ($stateProvider, $urlRouterProvider, $httpProvider) {
       'Settings@Settings': {
         parent: 'Settings',
         templateUrl: 'src/modules/Settings/Settings.html',
-        controller: "HomeCtrl"
+        controller: 'HomeCtrl'
       },
       '': {
         abstract: true,

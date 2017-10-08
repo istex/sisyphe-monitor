@@ -45,7 +45,8 @@ function ControlController ($scope, $interval, $state, WorkersService, ConfigSer
   $scope.readdirServer = async function (path) {
     const url = ConfigService.get('serverUrl') + 'readdir';
     var options = { method: 'POST', url, body: { path }, json: true };
-    return await request(options);
+    const readdir = await request(options);
+    return readdir;
   };
 }
 
