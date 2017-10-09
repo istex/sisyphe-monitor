@@ -21,6 +21,9 @@ function HomeController ($scope, $interval, ModuleService, $state, ConfigService
       .catch(_ => ($scope.serverConnection = false));
   }, 1000);
   const host = ConfigService.get('host');
+  if (!ConfigService.get('debug')) {
+    ConfigService.save({debug: false})
+  }
   if (!host) {
     ConfigService.save({
       host: 'localhost',

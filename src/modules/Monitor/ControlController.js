@@ -6,6 +6,7 @@ function ControlController ($scope, $interval, $state, WorkersService, ConfigSer
     if (command.hasOwnProperty('config')) commandString += `-c ${command.config} `;
     $scope.commandError = undefined;
     const workers = ConfigService.get('workers');
+    const debug = ConfigService.get('debug')
     let removeString = '';
     workers
     .filter(worker => worker.disable)
@@ -13,7 +14,8 @@ function ControlController ($scope, $interval, $state, WorkersService, ConfigSer
       workerDisabled => (removeString += `-r ${workerDisabled.name} `)
     );
     commandString += removeString;
-    commandString += `-n ${command.name} ${command.path} -s`;
+    commandString += `-n ${command.name} ${command.path}`;
+    if (!debug) commandString += ' -s'
     const url = ConfigService.get('serverUrl') + 'launch';
     var options = { method: 'POST', url, body: { command: commandString }, json: true };
     await request(options);

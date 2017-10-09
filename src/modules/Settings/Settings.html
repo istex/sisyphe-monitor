@@ -42,6 +42,28 @@
 					</div>
 				</div>
 			</div>
+			<div class="item" ng-if="serverConnection">
+				<div class="description">
+					Debug
+					<div class="sub">
+						Enable or disable the output on the server
+					</div>
+				</div>
+				<div class="action">
+					<div class="ui fitted toggle checkbox">
+						<input ng-checked="debug()" type="checkbox" ng-click="debugSisyphe($event.target.checked)">
+						<label></label>
+					</div>
+				</div>
+			</div>
+			<div class="item" ng-if="!serverConnection">
+				<div class="description">
+					Debug
+					<div class="sub">
+						Run Sisyphe server to enable or disable debug
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>
