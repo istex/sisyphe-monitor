@@ -3,21 +3,18 @@ function ControlController ($scope, $interval, $state, WorkersService, ConfigSer
   $scope.launchCommand = async function (command) {
     let commandString = '';
     if (!command || !command.hasOwnProperty('name') || !command.hasOwnProperty('path')) return ($scope.commandError = 'Please set a name and a path');
-    if (command.hasOwnProperty('config')) commandString += `-c ${command.config} `;
     $scope.commandError = undefined;
-    const workers = ConfigService.get('workers');
+    const workers = ConfigService.get('workers').filter(worker => worker.disable)
     const debug = ConfigService.get('debug')
-    let removeString = '';
-    workers
-    .filter(worker => worker.disable)
-    .map(
-      workerDisabled => (removeString += `-r ${workerDisabled.name} `)
-    );
-    commandString += removeString;
-    commandString += `-n ${command.name} ${command.path}`;
-    if (!debug) commandString += ' -s'
     const url = ConfigService.get('serverUrl') + 'launch';
-    var options = { method: 'POST', url, body: { command: commandString }, json: true };
+    const commandJson = {
+      debug,
+      name: command.name,
+      disable: workers,
+      config: command.config,
+      path: command.path
+    }
+    var options = { method: 'POST', url, body: { command: commandJson }, json: true };
     await request(options);
   };
   $scope.stop = async function () {
