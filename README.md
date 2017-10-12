@@ -1,8 +1,11 @@
-![sisyphe](./logo-sisyphe.jpg)
 
 ## Sisyphe-monitor
+![sisyphe](./logo-sisyphe.jpg)
 
 Sisyphe-monitor is a front-end command line for the [Sisyphe](https://github.com/istex/sisyphe)  application. It displays information about the progress of the analysis.
+
+
+![sisyphe](./flow.gif)
 
 ### Requirements
 Test with NodeJS@8.1, Redis@3.2.6
@@ -10,19 +13,28 @@ Test with NodeJS@8.1, Redis@3.2.6
 
 ### Install it
 
-1. Download the lastest [Sysiphe](https://github.com/istex/sisyphe)  version and refer to the Readme to install it
-2. Download the lastest Sisyphe-monitor version
-2. Just do : `npm install`
-3. ... that's it.
+ - Download the lastest [Sisyphe](https://github.com/istex/sisyphe)  version and refer to the Readme to install it
+ - Download the lastest Sisyphe-monitor [release](https://github.com/istex/sisyphe-monitor/releases/latest)
+ - Execute Sisyphe-monitor
+ - ... that's it.
+ 
+If the server is not running on Sisyphe, you can not control it. Sisyphe-monitor asks you to start the server to access certain actions. 
+But you can use it without server, sisyphe-monitor watch redis to display progressions
 
-### Documentations
 
-You can view technical documentation [here](https://istex.github.io/sisyphe-monitor/)
+### Features
 
-### Test
-
-`npm run test` Will test sisyphe-monitor
-
+ - View global progression
+ - View modules progression
+ - View time of analyse
+ - View Sisyphe status
+ - View logs
+ - Launch analyse with parameters 
+ - Manipulate modules (activate/desactivate)
+ - Download latest analyse 
+ - Stop analyse
+ - Activate debug mode on server
+ 
 ### Help
 
 `./app.js --help` Will output help
@@ -33,12 +45,3 @@ You can view technical documentation [here](https://istex.github.io/sisyphe-moni
     -u, --url <name>        Define the remote to redis
     -p, --prefix <name>     Define the prefix for redis
     -h, --help              output usage information
-    
-### How it works ?
-
-Just start Sisyphe-sisyphe like this:
-
-`npm start -- -p bull -r 1000`  Prefix with bull and refresh every 1000ms on localhost
-
-Sisyphe start and wait for keys in redis
-![sisyphe](./flow.gif)
