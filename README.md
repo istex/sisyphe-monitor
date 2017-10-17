@@ -2,7 +2,7 @@
 ## Sisyphe-monitor
 ![sisyphe](./logo-sisyphe.jpg)
 
-Sisyphe-monitor is a front-end command line for the [Sisyphe](https://github.com/istex/sisyphe)  application. It displays information about the progress of the analysis.
+Sisyphe-monitor is an Electron app for the [Sisyphe](https://github.com/istex/sisyphe) application. It displays information about the progress of the analysis.
 
 
 ![sisyphe](./flow.gif)
@@ -20,10 +20,6 @@ Test with NodeJS@8.1, Redis@3.2.6
  
 If the server is not running on Sisyphe, you can not control it. Sisyphe-monitor asks you to start the server to access certain actions. 
 But you can use it without server, sisyphe-monitor watch redis to display progressions
-
-### Documentations
-
-You can view technical documentation [here](https://istex.github.io/sisyphe-monitor/)
 
 ### Features
 
