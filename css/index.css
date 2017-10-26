@@ -154,6 +154,10 @@
   width: 100%;
 }
 
+#body #logs #logErrors {
+  cursor: pointer;
+}
+
 #body #logs .list {
   margin: 0;
 }
