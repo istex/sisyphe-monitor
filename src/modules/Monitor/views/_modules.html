@@ -3,18 +3,24 @@
 		<h1> Modules</h1>
 	</div>
 	<div class="ui grid contentSection">
+		<div class="row centered">
+			<button class="ui red right labeled icon button" ng-if="thereIsAnErrorInLog" ui-sref="Logs">
+				There is one more problem in the session, verify logs
+				<i class="right arrow icon"></i>
+			</button>
+		</div>
 		<div class="row">
 			<div class="ui grid five wide column subSection left centered">
-				<h3 class="row centered content title">Waiting</h3> 
+				<h3 class="row centered content title">Waiting</h3>
 				<div class="ui relaxed divided list">
-					<div class="item animated appear" ng-repeat="module in modules.waitingModules" >
+					<div class="item animated appear" ng-repeat="module in modules.waitingModules">
 						<div class="row aligned content">{{module.name}}</div>
 					</div>
 				</div>
 			</div>
 			<div class="ui grid five wide column subSection">
 				<h3 class="row centered content title">Current</h3>
-				<div class="ui active indicating progress" id="currentPercent" ng-if="currentPercent()"  data-percent="{{currentPercent()}}">
+				<div class="ui active indicating progress" id="currentPercent" ng-if="currentPercent()" data-percent="{{currentPercent()}}">
 					<div class="bar" style="transition-duration: 400ms; width: {{currentPercent()}}%;"></div>
 				</div>
 				<div class="row centered content" ng-if="currentPercent()">

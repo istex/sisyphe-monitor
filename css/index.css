@@ -3,10 +3,6 @@
   font-weight: bold !important;
 }
 
-#body .ui.grid > * {
-  padding: 0;
-}
-
 #body .hint {
   position: absolute;
   width: 100%;
@@ -35,6 +31,10 @@
   right: 2px;
 }
 
+#body .ui.grid > .row {
+  padding-top: 0;
+}
+
 #body ::-webkit-scrollbar-thumb:window-inactive,
 #body ::-webkit-scrollbar-thumb {
   background: #b3b3b3;
@@ -52,6 +52,10 @@
 #body #monitor #infosContainer .label {
   font-size: 1.2em;
   box-shadow: 24px 22px 10px -1px #142739 !important;
+}
+
+#body #monitor .title {
+  padding-top: 10px;
 }
 
 #body #infosContainer h1 {
