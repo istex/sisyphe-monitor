@@ -33,3 +33,4 @@ const ang = angular
 const Logs = require('./src/modules/Logs/app'); Logs.init(ang);
 const Settings = require('./src/modules/Settings/app'); Settings.init(ang);
 const Download = require('./src/modules/Download/app'); Download.init(ang);
+const Version = require('./src/modules/Version/app');Version.init(ang); 

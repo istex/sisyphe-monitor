@@ -41,14 +41,6 @@
   border-radius: 10px;
 }
 
-#body #monitor {
-  display: inline-block;
-}
-
-#body #monitor > .row {
-  margin-top: 10px;
-}
-
 #body #monitor #infosContainer .label {
   font-size: 1.2em;
   box-shadow: 24px 22px 10px -1px #142739 !important;
@@ -174,6 +166,7 @@
 
 #body #settingsView .settingSection {
   margin: auto;
+  padding: 0;
   box-shadow: 24px 22px 10px -1px #142739 !important;
 }
 
@@ -319,6 +312,50 @@
   margin: auto;
   padding-top: 10px;
   padding-bottom: 10px;
+}
+
+#body #versionView .moduleTag .tag {
+  width: 25%;
+}
+
+#body #versionView .branches {
+  display: flex;
+  flex-direction: row;
+}
+
+#body #versionView .branches .containerTags {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+#body #versionView .branches .containerTags .tag {
+  background-color: blue;
+  padding: 10px;
+  margin: 10px;
+}
+
+#body #versionView .branches .containerTags .tag i {
+  background-color: yellow;
+}
+
+#body #versionView .branches .containerTags .tag.activeBranch {
+  background-color: green;
+}
+
+#body #versionView .branches .branchStatus {
+  border: 1px solid #f59c16;
+  background-color: rgba(0, 0, 0, 0.3);
+  flex-grow: 1;
+}
+
+#body #versionView .branches .branchStatus .title {
+  text-align: center;
+}
+
+#body #versionView .branches .branchStatus > .row {
+  margin-bottom: 20px;
 }
 
 .infoContainer {

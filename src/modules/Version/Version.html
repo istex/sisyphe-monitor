@@ -1,0 +1,48 @@
+<div class="ui grid five column wide" id="versionView">
+
+  <div class="section ui segment fifteen wide column centered">
+    <div class="titleSection centered content">
+      <h1> Sisyphe Version : (current: {{sisyphe.versions.version}})</h1>
+    </div>
+    <div class="ui grid contentSection" class="moduleTag">
+      <div class="item" ng-repeat="module in sisyphe.versions.modules">
+        <a class="ui teal tag label">{{module.name}}: v{{module.version}}</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="section ui segment fifteen wide column centered">
+    <div class="titleSection centered content">
+      <h1> Branches</h1>
+    </div>
+    <div class="ui grid contentSection branches">
+      <div class="containerTags">
+        <button ng-class="{loading: loading, green: branch === git.currentBranchName }" class="ui right blue icon circle button"
+          ng-repeat="branch in git.localBranchesName" ng-click="changeBranch(branch)">   
+            <i class="fa fa-check-circle" aria-hidden="true" ng-if="branch === git.currentBranchName"></i>
+            {{branch}}
+        </button>
+      </div>
+      <div class="branchStatus">
+        <h2 class="title">{{git.currentBranchName}}</h2>
+        <div class="row" ng-class="{loading:loading}" ng-if="git.status !== undefined">
+          <div class="status red" ng-click="pull(git.currentBranchName)" ng-if="git.status == -1">
+            <i ng-class="{loading: loading}" class="fa fa-cloud-download right" aria-hidden="true"></i>
+            Update is available for this branch
+            <button ng-class="{loading: loading}" class="ui right purple icon circle button">Click here to update Sisyphe</button> 
+            <i class="fa fa-check-circle" aria-hidden="true" ng-if="branch === git.currentBranchName"></i>
+        </button>
+          </div>
+          <div class="status" ng-if="git.status == 1">
+            <i ng-class="{loading: loading}" class="fa fa-cloud-upload right" aria-hidden="true"></i>
+            Branch seems to have modification that remote don't have. Please connect to server to take a decision !
+          </div>
+          <div class="status" ng-if="git.status == 0">
+            <i ng-class="{loading: loading}" class="fa fa-check-circle" aria-hidden="true"></i>
+            Branch is up-to-date
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

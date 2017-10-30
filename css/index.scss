@@ -20,7 +20,8 @@ $sidebarWidth: 90px;
   @import 'logs';
   @import 'settings';
   @import 'notifications';
-  @import 'download'
+  @import 'download';
+  @import 'version';
 }
 .infoContainer{
   position: fixed !important;
