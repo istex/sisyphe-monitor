@@ -2,6 +2,7 @@
 	<div class="fifteen wide column settingSection">
 		<div class="title">Sisyphe</div>
 		<div class="content">
+
 			<div class="item">
 				<div class="description">
 					Host
@@ -20,7 +21,8 @@
 						</div>
 					</form>
 				</div>
-			</div>
+      </div>
+      
 			<div class="item" ng-if="serverConnection">
 				<div class="description">
 					Workers
@@ -41,29 +43,34 @@
 						Run Sisyphe server to enable or disable Workers
 					</div>
 				</div>
-			</div>
-			<div class="item" ng-if="serverConnection">
-				<div class="description">
-					Debug
-					<div class="sub">
-						Enable or disable the output on the server
-					</div>
-				</div>
-				<div class="action">
-					<div class="ui fitted toggle checkbox">
-						<input ng-checked="debug()" type="checkbox" ng-click="debugSisyphe($event.target.checked)">
-						<label></label>
-					</div>
-				</div>
-			</div>
-			<div class="item" ng-if="!serverConnection">
-				<div class="description">
-					Debug
-					<div class="sub">
-						Run Sisyphe server to enable or disable debug
-					</div>
-				</div>
-			</div>
+      </div>
+      
+      <div class="item" ng-if="serverConnection">
+        <div class="description">
+          Debug
+          <div class="sub">
+            Enable or disable the output on the server
+          </div>
+        </div>
+        <div class="action">
+          <div class="ui fitted toggle checkbox">
+            <input ng-checked="debug()" type="checkbox" ng-click="debugSisyphe($event.target.checked)">
+            <label></label>
+          </div>
+        </div>
+      </div>
+      frklferklfjklerf: {{serverConnection}}
+      <div class="item" ng-if="serverConnection">
+        <div class="description">
+          Resync
+          <div class="sub">
+            Sync localstorage and server
+          </div>
+        </div>
+        <div class="action">
+          <div class="ui button" ng-click="resync()">demldeld</div>
+        </div>
+      </div>
 		</div>
 	</div>
 </div>

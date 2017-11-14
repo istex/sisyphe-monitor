@@ -7,6 +7,7 @@
     "bower": "^1.8.2",
     "cheerio": "^1.0.0-rc.2",
     "commander": "^2.11.0",
+    "electron-context-menu": "^0.9.1",
     "electron-oauth2": "^3.0.0",
     "localStorage": "^1.0.3",
     "lodash": "^4.17.4",

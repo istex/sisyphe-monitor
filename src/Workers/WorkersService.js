@@ -32,6 +32,7 @@ function WorkersService (ConfigService) {
     this.getStatus();
     this.getTime();
     if (!this.monitoring || !this.monitoring.hasOwnProperty('workers')) return;
+    this.monitoring.workers = this.monitoring.workers.split(',')
     const workers = await Promise.all(
       this.monitoring.workers
         .map(async (worker, index) => {
@@ -46,6 +47,7 @@ function WorkersService (ConfigService) {
 }
 
 WorkersService.prototype.getMonitoring = async function () {
+  const previousAnalyse = this.monitoring.start
   if (!this.host) return;
   const keys = await this.client.hkeysAsync('monitoring');
   this.monitoring = {};
@@ -57,6 +59,7 @@ WorkersService.prototype.getMonitoring = async function () {
       this.monitoring[key] = val;
     }
   });
+  if (previousAnalyse !== this.monitoring.start) this.reset()
   return this.monitoring;
 };
 
@@ -75,7 +78,18 @@ WorkersService.prototype.getJobsFrom = async function (worker) {
     max
   };
 };
+/**
+ * Reset variables in new session
+ */
+WorkersService.prototype.reset = async function (worker) {
+  this.maxFile = 0
+};
+/**
+ * Format time spent in analyse
+ * @return {Object} object with days, hours, minutes, seconds properties
+ */
 WorkersService.prototype.getTime = function () {
+  if (this.monitoring === undefined) return;   
   const startDateInMs = this.monitoring.start;
   const endDateInMs = this.monitoring.end ? this.monitoring.end : Date.now();
   const time = new Date();
@@ -91,7 +105,8 @@ WorkersService.prototype.getTime = function () {
   };
   this.time = timeObject;
 };
-WorkersService.prototype.getStatus = function () {
+WorkersService.prototype.getStatus = async function () {
+  if (this.monitoring === undefined) return; 
   if (this.monitoring.end) this.status = 'End';
   if (this.monitoring.start && !this.monitoring.end) this.status = 'Working';
 };

@@ -19,7 +19,6 @@ VersionService.prototype.changeBranch = function(branch) {
   return rp(options).then(_ => branch);
 };
 VersionService.prototype.pull = function(branch) {
-  console.log(branch);
   const uri = this.ConfigService.get("serverUrl") + "pull";
   var options = { method: "POST", uri, body: { branch }, json: true };
   return rp(options);

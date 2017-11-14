@@ -1,6 +1,6 @@
 const request = require('request-promise');
 function HomeController ($scope, $interval, ModuleService, $state, ConfigService, WorkersService) {
-  const loadWorkers = setInterval(_ => {
+  const loadWorkers = $interval(_ => {
     if (!ConfigService.get('workers')) {
       request(ConfigService.get('serverUrl') + 'workers').then(function (workers) {
         workers = JSON.parse(workers);
@@ -12,7 +12,8 @@ function HomeController ($scope, $interval, ModuleService, $state, ConfigService
       });
     }
   }, 1000);
-  setInterval(_ => {
+  $interval(_ => {
+    const serverConnection = $scope.serverConnection
     request({ url: ConfigService.get('serverUrl') + 'ping', timeout: 2000 })
       .then(data => {
         if (data === 'pong') $scope.serverConnection = true;

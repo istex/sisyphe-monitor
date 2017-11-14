@@ -9,7 +9,10 @@ const url = require('url');
 // installExtension(ANGULARJS_BATARANG)
 //   .then(name => console.log(`Added Extension:  ${name}`))
 //   .catch(err => console.log("An error occurred: ", err));
-
+require("electron-context-menu")({
+  showInspectElement: true,
+  shouldShowMenu: (event, params) => params.isEditable
+});
 let win;
 function createWindow () {
   win = new BrowserWindow({
