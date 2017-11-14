@@ -1,11 +1,17 @@
-function SettingsController ($scope, $interval, WorkersService, ConfigService, ModuleService) {
+function SettingsController ($scope, $interval, $timeout, WorkersService, ConfigService, ModuleService) {
   $scope.activeModule = ModuleService.changeActiveModule('Settings');
   $scope.settings = {
     host: ConfigService.get('host'),
-    workers: ConfigService.get('workers')
+    workers: getWorkers()
+  };
+  $scope.updateOrder = function(data) {
+    console.log($scope.settings)
+    $timeout(_=>{
+      ConfigService.save($scope.settings);
+    },100)
   };
   const workersInterval = $interval(_=>{
-    if (!$scope.settings.workers) $scope.settings.workers = ConfigService.get('workers')
+    if (!$scope.settings.workers) $scope.settings.workers = getWorkers()
     else return clearInterval(workersInterval)
   },ConfigService.refresh)
   $scope.saveSettings = _ => ConfigService.save($scope.settings);
@@ -20,5 +26,12 @@ function SettingsController ($scope, $interval, WorkersService, ConfigService, M
   $scope.resync = function() {
     ConfigService.empty()
   };
+  function getWorkers() {
+    const needed = ["walker-fs", "filetype", "out"];
+    workers = ConfigService.get("workers").filter(worker => {
+      return !needed.includes(worker.name);
+    });
+    return workers
+  }
 }
 module.exports = SettingsController;

@@ -31,7 +31,7 @@
 					</div>
 				</div>
 				<div class="action">
-					<ul class="workers">
+					<ul class="workers" ui-sortable ui-sortable-update="updateOrder" ng-model="settings.workers">
 						<li ng-repeat="worker in settings.workers" ng-click="worker.disable = !worker.disable; saveSettings()" ng-class="{ok:!worker.disable, ko:worker.disable}">{{worker.name}}</li>
 					</ul>
 				</div>

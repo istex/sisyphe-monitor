@@ -11,7 +11,7 @@ const ModalController = require('./src/Modal/ModalController');
 
 const config = require('./src/config');
 const ang = angular
-  .module('app', ['ui.router'])
+  .module('app', ['ui.router', 'ui.sortable'])
   .service('ConfigService', ConfigService)
   .service('ModuleService', ModuleService)
   .service('ModalService', ModalService)

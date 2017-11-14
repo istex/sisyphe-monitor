@@ -20,14 +20,14 @@ function ControlController(
       return ($scope.commandError = "Please set a name and a path");
     $scope.commandError = undefined;
     const workers = ConfigService.get("workers").filter(
-      worker => worker.disable
-    );
+      worker => !worker.disable
+    ).map(worker=>worker.name);
     const debug = ConfigService.get("debug");
     const url = ConfigService.get("serverUrl") + "launch";
     const commandJson = {
       debug,
       name: command.name,
-      disable: workers,
+      workers: workers.join(','),
       config: command.config,
       path: command.path
     };
