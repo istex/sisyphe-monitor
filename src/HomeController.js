@@ -43,7 +43,7 @@ function HomeController ($scope, $interval, ModuleService, $state, ConfigService
       const remoteVersion = JSON.parse(data).tag_name.split('v')[1]
       const version = require('../package').version
       if (remoteVersion === version) NotificationService.add("info", "Monitor is up to date")
-      else NotificationService.add("info", `Monitor is not up to date: v${version} -> v${remoteVersion} (https://github.com/istex/sisyphe-monitor/releases/latest)`);
+      else NotificationService.add("warning", `Monitor is not up to date: v${version} -> v${remoteVersion} (https://github.com/istex/sisyphe-monitor/releases/latest)`);
     })
     .catch(err => {
       console.log('kljjkl')
