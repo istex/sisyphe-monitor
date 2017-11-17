@@ -1,5 +1,5 @@
 const request = require('request-promise');
-function HomeController ($scope, $interval, ModuleService, $state, ConfigService, WorkersService) {
+function HomeController ($scope, $interval, ModuleService, $state, ConfigService, NotificationService, WorkersService) {
   const loadWorkers = $interval(_ => {
     if (!ConfigService.get('workers')) {
       request(ConfigService.get('serverUrl') + 'workers').then(function (workers) {
@@ -33,6 +33,22 @@ function HomeController ($scope, $interval, ModuleService, $state, ConfigService
   }
   $scope.Model = { host };
   WorkersService.changeHost(host);
+  request({ 
+    url: 'https://api.github.com/repos/istex/sisyphe-monitor/releases/latest', 
+    timeout: 2000, 
+    headers: {
+      'User-Agent': 'request'
+    },
+  }).then(data => {
+      const remoteVersion = JSON.parse(data).tag_name.split('v')[1]
+      const version = require('../package').version
+      if (remoteVersion === version) NotificationService.add("info", "Monitor is up to date")
+      else NotificationService.add("info", `Monitor is not up to date: v${version} -> v${remoteVersion} (https://github.com/istex/sisyphe-monitor/releases/latest)`);
+    })
+    .catch(err => {
+      console.log('kljjkl')
+      NotificationService.add('info', 'Go online to check updates')
+    })
   // $state.go('Monitor');
 }
 module.exports = HomeController;
