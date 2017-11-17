@@ -54,6 +54,10 @@
   padding-top: 10px;
 }
 
+#body #infosContainer {
+  margin-top: 50px;
+}
+
 #body #infosContainer h1 {
   padding-bottom: 30px;
 }
