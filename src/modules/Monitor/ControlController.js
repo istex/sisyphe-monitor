@@ -12,16 +12,12 @@ function ControlController(
   if (inputs) $scope[inputs.model] = JSON.parse(inputs.value);
   $scope.launchCommand = async function(command) {
     let commandString = "";
-    if (
-      !command ||
-      !command.hasOwnProperty("name") ||
-      !command.hasOwnProperty("path")
-    )
+    if (!command || !command.hasOwnProperty("name") || !command.hasOwnProperty("path"))
       return ($scope.commandError = "Please set a name and a path");
     $scope.commandError = undefined;
-    const workers = ConfigService.get("workers").filter(
-      worker => !worker.disable
-    ).map(worker=>worker.name);
+    const workers = ConfigService.get("workers")
+      .filter(worker => !worker.disable)
+      .map(worker=>worker.name);
     const debug = ConfigService.get("debug");
     const url = ConfigService.get("serverUrl") + "launch";
     const commandJson = {
