@@ -1,4 +1,4 @@
-function NotificationController ($scope, NotificationService) {
+function NotificationController ($scope, $interval, NotificationService) {
   $scope.remove = NotificationService.remove;
   $scope.show = false;
   $scope.notifications = NotificationService.notifications;

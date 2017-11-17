@@ -41,6 +41,10 @@
   border-radius: 10px;
 }
 
+#body .ui.grid > * {
+  padding: 0;
+}
+
 #body #monitor #infosContainer .label {
   font-size: 1.2em;
   box-shadow: 24px 22px 10px -1px #142739 !important;
@@ -273,35 +277,41 @@
   border-bottom: none;
 }
 
-#body #notificationsContainer {
-  text-align: center;
-  margin-bottom: 20px;
-  z-index: 104;
-  position: fixed;
-  right: 0;
+#body #notificationsContainer .notification {
+  padding: 10px;
+  animation: open 500ms;
+  animation-fill-mode: forwards;
 }
 
-#body #notificationsContainer .show {
+#body #notificationsContainer .notification.infos {
+  background-color: #1e7abf;
+}
+
+#body #notificationsContainer .notification.warnings {
   background-color: #f59c16;
-  margin: auto;
-  border-bottom-right-radius: 10px;
-  border-bottom-left-radius: 10px;
-  padding: 10px;
 }
 
-#body #notificationsContainer .notifications {
-  height: 100vh;
-  overflow-y: scroll;
-  padding: 10px;
-  background-color: #2b3e50;
-  box-shadow: 24px 22px 10px -1px #142739 !important;
-  width: 100vw;
-  margin: auto;
+#body #notificationsContainer .notification.errors {
+  background-color: #c92424;
 }
 
-#body #notificationsContainer .notifications i {
+#body #notificationsContainer .close {
+  right: 0;
   position: absolute;
-  right: 10px;
+  display: inline-block;
+  padding-right: 10px;
+  font-weight: bold;
+}
+
+@keyframes open {
+  0% {
+    opacity: 0;
+    transform: scaleY(0);
+  }
+  100% {
+    opacity: 1;
+    transform: scaleY(1);
+  }
 }
 
 #body #downloadView .downloadInfos {

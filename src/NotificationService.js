@@ -17,15 +17,17 @@ NotificationService.prototype.add = function (type, message) {
   if (insert) {
     this.notifications[type + 's'].push({
       id: Math.random(),
+      type: type+'s',
       message
     });
     this.notifications.total++;
   }
 };
-NotificationService.prototype.remove = function (type, id) {
-  this.notifications[type].map((notif, index) =>
-    this.notifications[type].splice(index, 1)
-  );
+NotificationService.prototype.remove = function (notificationToRemove) {
+  this.notifications[notificationToRemove.type].map((notif, index, array) =>{
+    if (notif.id === notificationToRemove.id)
+      array.splice(index, 1)
+  });
   this.notifications.total--;
 };
 

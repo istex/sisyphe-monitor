@@ -12,9 +12,9 @@ function ControlController(
   if (inputs) $scope[inputs.model] = JSON.parse(inputs.value);
   $scope.launchCommand = async function(command) {
     let commandString = "";
-    if (!command || !command.hasOwnProperty("name") || !command.hasOwnProperty("path"))
-      return ($scope.commandError = "Please set a name and a path");
-    $scope.commandError = undefined;
+    console.log(command)
+    if (!command || !command.name || !command.path)
+      return NotificationService.add("warning", "Please set a name and a path");
     const workers = ConfigService.get("workers")
       .filter(worker => !worker.disable)
       .map(worker=>worker.name);
