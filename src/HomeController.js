@@ -33,7 +33,6 @@ function HomeController ($scope, $interval, ModuleService, $state, ConfigService
   }
   $scope.Model = { host };
   WorkersService.changeHost(host);
-  console.log($state.a)
   if (!$state.alreadyCheckIfUpdateAvailable) {
     request({ 
       url: 'https://api.github.com/repos/istex/sisyphe-monitor/releases/latest', 

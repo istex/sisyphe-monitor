@@ -2,7 +2,8 @@ function SettingsController ($scope, $interval, $timeout, WorkersService, Config
   $scope.activeModule = ModuleService.changeActiveModule('Settings');
   $scope.settings = {
     host: ConfigService.get('host'),
-    workers: getWorkers()
+    workers: getWorkers(),
+    bundle: ConfigService.get('bundle')
   };
   $scope.updateOrder = function(data) {
     console.log($scope.settings)

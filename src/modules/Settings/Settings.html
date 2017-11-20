@@ -22,7 +22,23 @@
 					</form>
 				</div>
       </div>
-      
+			
+			<div class="item" ng-if="serverConnection">
+				<div class="description">
+					Bundle
+					<div class="sub">
+						Regroup job in bundle
+					</div>
+				</div>
+				<div class="action">
+					<form ng-submit="saveSettings()">
+						<div class="ui fluid input">
+							<input type="text" placeholder="Number of jobs..." ng-value="settings.bundle" ng-model="settings.bundle">
+						</div>
+					</form>
+				</div>
+			</div>
+
 			<div class="item" ng-if="serverConnection">
 				<div class="description">
 					Workers
@@ -58,19 +74,20 @@
             <label></label>
           </div>
         </div>
-      </div>
+			</div>
+			
+			<div class="item" ng-if="serverConnection">
+				<div class="description">
+					Resync
+					<div class="sub">
+						Sync localstorage and server
+					</div>
+				</div>
+				<div class="action">
+					<div class="ui red button" ng-click="resync()">Resync workers</div>
+				</div>
+			</div>
 
-      <div class="item" ng-if="serverConnection">
-        <div class="description">
-          Resync
-          <div class="sub">
-            Sync localstorage and server
-          </div>
-        </div>
-        <div class="action">
-          <div class="ui red button" ng-click="resync()">Resync workers</div>
-        </div>
-      </div>
 		</div>
 	</div>
 </div>
