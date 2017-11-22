@@ -68,7 +68,7 @@ HomeController.prototype.loadWorkers = function(){
           workers = workers.workers.map(worker => ({ name: worker, disable: false }));
           ConfigService.save({ workers });
           clearInterval(this);
-        }); 
+        }).catch(err=>{}); 
     }
   }, ConfigService.refresh);
 }

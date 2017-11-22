@@ -28,7 +28,8 @@ function SettingsController ($scope, $interval, $timeout, WorkersService, Config
     ConfigService.empty()
   };
   function getWorkers() {
-    return ConfigService.get("workers").filter(worker => worker.name !== "walker-fs")
+    const workers = ConfigService.get("workers") || [];
+    return workers.filter(worker => worker.name !== "walker-fs")
   }
 }
 module.exports = SettingsController;
