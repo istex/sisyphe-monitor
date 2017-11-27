@@ -1,34 +1,48 @@
-const request = require('request-promise');
+const request = require("request-promise");
 const cp = require("child_process");
 const pathfs = require('path')
-const Promise = require('bluebird')
-const redis = require("redis");
-Promise.promisifyAll(redis.RedisClient.prototype);
-Promise.promisifyAll(redis.Multi.prototype);
-const client = redis.createClient();
-let redisConnection = false
-client.on("error", _ => (redisConnection = false));
-client.on("ready", _ => (redisConnection = true));
+const ipcRenderer = require("electron").ipcRenderer;
 
-
-// HomeController.$inject = [ "$scope", "$interval", "ModuleService", "$state", "ConfigService", "NotificationService", "WorkersService" ];
-function HomeController ( $scope, $interval, ModuleService, $state, ConfigService, NotificationService, WorkersService, ModalService) {
+function HomeController ($q, $scope, $interval, $timeout, $state, ConnectionService, ConfigService, NotificationService, WorkersService, ModalService) {
   HomeController.$inject.map((dependency, index)=> this[dependency]= arguments[index])
   this.loadWorkers()
   this.checkUpdates()
-  this.checkConnection()
   this.loadHost()
-  this.launchRedis()
+  $scope.connections = ConnectionService.data
   if (!ConfigService.get('debug')) ConfigService.save({debug: false})
+  $timeout(_=>{
+    if (!ConnectionService.data.redisConnection) this.launchRedis()
+    if (!ConnectionService.data.serverConnection && !$state.server_isLocal) {
+      $state.server_isLocal = true
+      $scope.server_isLocal = true
+      this.launchServer();
+    }
+    $scope.server_isLocal = $state.server_isLocal
+  },2000)
+  $scope.server_isLocal = $state.server_isLocal || false;
+  $scope.redis_isLocal = $state.redis_isLocal || false
 }
+
 HomeController.prototype.launchRedis = function() {
-  if (!redisConnection) {
-    const pathToRedisServer = pathfs.resolve(__dirname, '..', 'lib', 'redis-linux-64', 'src', 'redis-server')
+  const $scope = this.$scope;  
+  let pathToRedisServer
+  const os = require('os')
+  if (os.platform() === 'linux') pathToRedisServer = pathfs.resolve(__dirname, "..", "lib", "redis-linux-64", "src", "redis-server");
+  else if (os.platform() === "darwin") pathToRedisServer = pathfs.resolve(__dirname, "..", "lib", "redis-darwin-64", "src", "redis-server");
+  else if (os.platform() === 'win32') pathToRedisServer = pathfs.resolve(__dirname, "..", "lib", "redis-win-64", "src", "redis-server");
+  if (pathToRedisServer) {
     const spawnRedis = cp.spawn(pathToRedisServer)
-    setTimeout(function() {
-      spawnRedis.kill('SIGTERM')
-    }, 3000);
+    ipcRenderer.send("pid", spawnRedis.pid);
+    $scope.redis_isLocal = true
   }
+};
+
+HomeController.prototype.launchServer = function() {
+  const $scope = this.$scope
+  const pathToServer = pathfs.resolve(__dirname, '..', 'node_modules', 'sisyphe')
+  const spawnServer = cp.fork(`${pathToServer}/server.js`)
+  ipcRenderer.send("pid", spawnServer.pid);
+  $scope.server_isLocal = true
 };
 
 HomeController.prototype.loadHost = function () {
@@ -39,22 +53,12 @@ HomeController.prototype.loadHost = function () {
   if (!host) ConfigService.save({ host: 'localhost', serverUrl: 'http://localhost:3264/' });
   WorkersService.changeHost(host);
   $scope.Model = { host };
-  
 }
 
 HomeController.prototype.checkConnection = function () {
   const $scope = this.$scope
   const $interval = this.$interval
   const ConfigService = this.ConfigService
-  $interval(_ => {
-    const serverConnection = $scope.serverConnection;
-    request({ url: ConfigService.get("serverUrl") + "ping", timeout: 2000 })
-      .then(data => {
-        if (data === "pong") $scope.serverConnection = true;
-        else $scope.serverConnection = false;
-      })
-      .catch(_ => ($scope.serverConnection = false));
-  }, 1000);
 }
 
 HomeController.prototype.loadWorkers = function(){
@@ -90,7 +94,6 @@ HomeController.prototype.checkUpdates = function () {
       else NotificationService.add("warning", `Monitor is not up to date: v${version} -> v${remoteVersion} (https://github.com/istex/sisyphe-monitor/releases/latest)`);
     })
     .catch(err => {
-      console.log('kljjkl')
       NotificationService.add('info', 'Go online to check updates')
     })
     $state.alreadyCheckIfUpdateAvailable = true

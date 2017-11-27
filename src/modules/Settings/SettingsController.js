@@ -17,7 +17,7 @@ function SettingsController ($scope, $interval, $timeout, WorkersService, Config
   },ConfigService.refresh)
   $scope.saveSettings = _ => ConfigService.save($scope.settings);
   $scope.debugSisyphe = debug => ConfigService.save({debug});
-  $scope.redisConnection = _ => WorkersService.redisConnection;
+  // $scope.redisConnection = _ => WorkersService.redisConnection;
   $scope.debug = _ => ConfigService.get('debug')
   $scope.changeHost = function (host) {
     WorkersService.changeHost(host);

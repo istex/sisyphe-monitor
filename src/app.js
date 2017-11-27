@@ -1,8 +1,10 @@
 const ConfigService = require('./src/ConfigService');
 const ModuleService = require('./src/ModuleService');
 const WorkersService = require('./src/Workers/WorkersService');
+const ConnectionService = require('./src/ConnectionService');
 const NotificationService = require('./src/NotificationService');
 const ModalService = require('./src/Modal/ModalService');
+
 const HomeController = require('./src/HomeController');
 const NavbarController = require('./src/NavbarController');
 const NotificationController = require('./src/NotificationController');
@@ -17,6 +19,7 @@ const ang = angular
   .service('ModalService', ModalService)
   .service('NotificationService', NotificationService)
   .service('WorkersService', WorkersService)
+  .service('ConnectionService', ConnectionService)
   .controller('HomeCtrl', HomeController)
   .controller('NavbarCtrl', NavbarController)
   .controller('NotificationController', NotificationController)
@@ -29,7 +32,10 @@ const ang = angular
     function ($rootScope, $state) {
       $rootScope.$state = $state;
     }
-  ]); const Monitor = require('./src/modules/Monitor/app'); Monitor.init(ang);
+  ]); 
+
+
+const Monitor = require('./src/modules/Monitor/app'); Monitor.init(ang);
 const Logs = require('./src/modules/Logs/app'); Logs.init(ang);
 const Settings = require('./src/modules/Settings/app'); Settings.init(ang);
 const Download = require('./src/modules/Download/app'); Download.init(ang);

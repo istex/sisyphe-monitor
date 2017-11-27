@@ -9,5 +9,13 @@
     <div ui-view="Settings"></div>
     <div ui-view="Download"></div>
     <div ui-view="Version"></div>
-</div>
+    <div id="bottomBar">
+      <div class="is_local" ng-if='server_isLocal'>
+        <i title="Sisyphe is local" class="fa fa-globe" aria-hidden="true"></i>
+      </div>
+      <div class="is_notLocal" ng-if='!server_isLocal'>
+        <i title="Sisyphe is not local" class="fa fa-cloud" aria-hidden="true"></i>
+      </div>
+    </div>
+  </div>
 </div>

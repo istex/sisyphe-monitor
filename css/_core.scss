@@ -33,3 +33,21 @@
 .ui.grid>* {
     padding: 0;
 }
+
+#bottomBar{
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    z-index: 10000;
+    height: 30px;
+    align-items: center;
+    justify-content: flex-end;
+    div {
+        height: 100%;
+        i{
+            font-size: 2em;
+            font-weight: normal !important;
+        }
+    }
+}

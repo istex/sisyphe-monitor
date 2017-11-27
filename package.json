@@ -18,7 +18,8 @@
     "redis": "^2.8.0",
     "request": "^2.83.0",
     "request-progress": "^3.0.0",
-    "request-promise": "^4.2.2"
+    "request-promise": "^4.2.2",
+    "sisyphe": "git+https://github.com/istex/sisyphe.git#verbose_error"
   },
   "scripts": {
     "electron": "electron .",

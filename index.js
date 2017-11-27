@@ -1,3 +1,4 @@
+const listOfChildPid = []
 const {app, BrowserWindow} = require('electron');
 const path = require('path');
 const url = require('url');
@@ -35,6 +36,7 @@ function createWindow () {
 app.on('ready', createWindow);
 
 app.on('window-all-closed', () => {
+  listOfChildPid.map(pid=>process.kill(pid, 'SIGTERM'))
   if (process.platform !== 'darwin') {
     app.quit();
   }
@@ -45,3 +47,28 @@ app.on('activate', () => {
     createWindow();
   }
 });
+
+const ipcMain = require("electron").ipcMain;
+ipcMain.on("pid", function(event, arg) {
+  listOfChildPid.push(arg)
+});
+
+
+
+const exit = function() {
+  listOfChildPid.map(pid => process.kill(pid, "SIGTERM"));
+  if (process.platform !== "darwin") {
+    app.quit();
+  }
+};
+
+// do something when app is closing
+process.on("exit", exit.bind(null));
+// catches ctrl+c event
+process.on("SIGINT", exit.bind(null));
+process.on("SIGTERM", exit.bind(null));
+// // catches "kill pid" (for example: nodemon restart)
+process.on("SIGUSR1", exit.bind(null));
+process.on("SIGUSR2", exit.bind(null));
+// catches uncaught exceptions
+process.on("uncaughtException", exit.bind(null));

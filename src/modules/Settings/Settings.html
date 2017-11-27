@@ -2,28 +2,28 @@
 	<div class="fifteen wide column settingSection">
 		<div class="title">Sisyphe</div>
 		<div class="content">
-
+			
 			<div class="item">
 				<div class="description">
-					Host
+					Host {{server_isLocal}}
 					<div class="sub">
 						Change the url to Redis server
 					</div>
 				</div>
 				<div class="action">
 					<form ng-submit="changeHost(settings.host)">
-						<div class="ui fluid right labeled input" ng-class="{ok: redisConnection(), ko: !redisConnection()}">
+						<div class="ui fluid right labeled input" ng-class="{ok: connections.redisConnection, ko: !connections.redisConnection}">
 							<input type="text" placeholder="Search..." ng-value="settings.host" ng-model="settings.host">
 							<div class="label">
-								<i class="fa fa-times" aria-hidden="true" ng-if="!redisConnection()"></i>
-								<i class="fa fa-check" aria-hidden="true" ng-if="redisConnection()"></i>
+								<i class="fa fa-times" aria-hidden="true" ng-if="!connections.redisConnection"></i>
+								<i class="fa fa-check" aria-hidden="true" ng-if="connections.redisConnection"></i>
 							</div>
 						</div>
 					</form>
 				</div>
       </div>
 			
-			<div class="item" ng-if="serverConnection">
+			<div class="item" ng-if="connections.serverConnection">
 				<div class="description">
 					Bundle
 					<div class="sub">
@@ -38,8 +38,7 @@
 					</form>
 				</div>
 			</div>
-
-			<div class="item" ng-if="serverConnection">
+			<div class="item" ng-if="connections.serverConnection">
 				<div class="description">
 					Workers
 					<div class="sub">
@@ -52,7 +51,7 @@
 					</ul>
 				</div>
 			</div>
-			<div class="item" ng-if="!serverConnection">
+			<div class="item" ng-if="!connections.serverConnection">
 				<div class="description">
 					Workers
 					<div class="sub">
@@ -61,7 +60,7 @@
 				</div>
       </div>
       
-      <div class="item" ng-if="serverConnection">
+      <div class="item" ng-if="connections.serverConnection">
         <div class="description">
           Debug
           <div class="sub">
@@ -76,7 +75,7 @@
         </div>
 			</div>
 			
-			<div class="item" ng-if="serverConnection">
+			<div class="item" ng-if="connections.serverConnection">
 				<div class="description">
 					Resync
 					<div class="sub">

@@ -45,6 +45,26 @@
   padding: 0;
 }
 
+#body #bottomBar {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  z-index: 10000;
+  height: 30px;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+#body #bottomBar div {
+  height: 100%;
+}
+
+#body #bottomBar div i {
+  font-size: 2em;
+  font-weight: normal !important;
+}
+
 #body #monitor #infosContainer .label {
   font-size: 1.2em;
   box-shadow: 24px 22px 10px -1px #142739 !important;
