@@ -11,6 +11,7 @@
     "electron-context-menu": "^0.9.1",
     "electron-oauth2": "^3.0.0",
     "jquery-ui": "^1.12.1",
+    "lerna": "^2.5.1",
     "localStorage": "^1.0.3",
     "lodash": "^4.17.4",
     "mkdirp": "^0.5.1",
