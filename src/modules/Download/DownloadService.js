@@ -24,7 +24,7 @@ DownloadService.prototype.launch = function () {
   this.currentDownloads.map(download => {
     const url = download.url;
     const path = download.path;
-    mkdirp.sync(pathfs.dirname(pathfs.resolve(download.pathToSave, path)));
+    mkdirp.sync(pathfs.dirname(pathfs.join(download.pathToSave, path)));
     progress(request(url), {})
       .on('progress', function (state) {
         download.speed = (state.speed / 10000000).toFixed(2);
@@ -43,7 +43,7 @@ DownloadService.prototype.launch = function () {
           }
         });
       })
-      .pipe(fs.createWriteStream(pathfs.resolve(download.pathToSave, path)));
+      .pipe(fs.createWriteStream(pathfs.join(download.pathToSave, path)));
   });
 };
 
