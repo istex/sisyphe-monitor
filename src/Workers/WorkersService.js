@@ -46,6 +46,10 @@ function WorkersService (ConfigService) {
   }, ConfigService.refresh);
 }
 
+WorkersService.prototype.flushRedis = async function(){
+  await this.client.flushallAsync;
+};
+
 WorkersService.prototype.getMonitoring = async function () {
   const previousAnalyse = this.monitoring.start
   if (!this.host) return;

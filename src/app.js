@@ -31,8 +31,18 @@ const ang = angular
     '$state',
     function ($rootScope, $state) {
       $rootScope.$state = $state;
+      console.log("ON PASSE")
+      setTimeout(function (argument) {
+        // body...
+        $state.go('Monitor');
+      },1000)
     }
   ]); 
+
+setInterval(function (argument) {
+  // body...
+  console.log(window.location);
+},3000)
 
 
 const Monitor = require('./src/modules/Monitor/app'); Monitor.init(ang);

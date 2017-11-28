@@ -25,7 +25,11 @@ function SettingsController ($scope, $interval, $timeout, WorkersService, Config
     ConfigService.save({host, serverUrl});
   };
   $scope.resync = function() {
-    ConfigService.empty()
+    ConfigService.empty();
+    // WorkersService.flushRedis().catch(err=>{
+    //   console.error(err);
+    // });
+    require("electron").remote.getCurrentWindow().reload();
   };
   function getWorkers() {
     const workers = ConfigService.get("workers") || [];

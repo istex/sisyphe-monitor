@@ -1,8 +1,10 @@
 function InfoController ($scope, $interval, WorkersService, ConfigService, NotificationService) {
+  let corpusname = 'No corpusname';
   $interval(_ => {
     $scope.maxFile = WorkersService.maxFile;
     $scope.time = WorkersService.time;
-    $scope.corpusname = WorkersService.monitoring.corpusname;
+    corpusname = WorkersService.monitoring.corpusname || corpusname;
+    $scope.corpusname = corpusname;
     $scope.status = WorkersService.status;
   }, ConfigService.refresh);
 }
