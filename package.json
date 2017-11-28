@@ -23,6 +23,7 @@
     "sisyphe": "git+https://github.com/istex/sisyphe.git#verbose_error"
   },
   "scripts": {
+    "electron-rebuild" : "electron-rebuild node_modules/sisyphe/src/worker/filetype && electron-rebuild node_modules/sisyphe/src/worker/xml &&electron-rebuild node_modules/sisyphe/src/worker/pdf && electron-rebuild node_modules/sisyphe/src/worker/nb && electron-rebuild node_modules/sisyphe/src/worker/multicat && electron-rebuild node_modules/sisyphe/src/worker/teeft && electron-rebuild node_modules/sisyphe/src/worker/skeeft && electron-rebuild node_modules/sisyphe/src/worker/lang",
     "electron": "electron .",
     "postinstall": "bower install",
     "orchestra": "node script/orchestra.js",
@@ -33,6 +34,7 @@
   "devDependencies": {
     "electron": "^1.7.6",
     "electron-devtools-installer": "^2.2.0",
-    "electron-packager": "^9.1.0"
+    "electron-packager": "^9.1.0",
+    "electron-rebuild": "^1.6.0"
   }
 }
