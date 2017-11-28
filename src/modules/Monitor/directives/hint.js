@@ -25,12 +25,12 @@ function HintDirective(ConfigService) {
     });
 
     scope.$watch(attrs.ngModel, async function(value) {
-      if (!value) return;
+      if (!value || (element[0] !== document.activeElement)) return;
       if (value.charAt(value.length - 1) === "/") {
         scope[attrs.to] = await scope.readdirServer(element[0].value);
       } else {
         const inputfile = value.split("/").pop();
-        let newHintInput = scope[attrs.to].filter(hint => {
+        let newHintInput = scope && scope[attrs.to] && scope[attrs.to].filter(hint => {
           return hint.includes(inputfile);
         });
         scope[attrs.to] = newHintInput;
