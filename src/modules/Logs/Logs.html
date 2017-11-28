@@ -1,0 +1,41 @@
+<div class="ui grid eleven wide column" id="logs">
+    <div class="section ui segment fifteen wide column centered" id="logErrors" ng-if="logsError">
+        <div class="titleSection centered content">
+            <h1 class="row"> Errors</h1>
+        </div>
+        <div class="ui relaxed divided list">
+            <div class="item" ng-repeat="(key, log) in logsError" ng-click="toggle = !toggle">
+                <div class="content">
+                    <div class="header">{{log.message}}</div>
+                    <div class="description" ng-show="toggle">
+                        <div ng-if="log.stack">{{log.stack}}</div>
+                        <div ng-if="log.infos.path">{{log.infos.path}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section ui segment fifteen wide column centered" ng-if="logsInfo.length">
+        <div class="titleSection centered content">
+            <h1 class="row"> Infos</h1>
+        </div>
+        <div class="ui relaxed divided list">
+            <div class="item animated appear" ng-repeat="(key, log) in logsInfo track by $index">
+                    <div class="header">{{log}}</div>
+            </div>
+        </div>
+    </div>
+    <div class="section ui segment fifteen wide column centered" ng-if="logsWarning.length">
+        <div class="titleSection centered content">
+            <h1 class="row"> Warnings</h1>
+        </div>
+        <div class="ui relaxed divided list">
+            <div class="item" ng-repeat="(key, log) in logsWarning track by $index">
+                <div class="content">
+                    <div class="header">{{log}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,17 @@
+<div class="ui grid fifteen wide column centered" id="infosContainer">
+    <div class="row">
+        <h1>{{corpusname}}</h1>
+    </div>
+    <div class="ui row">
+        <div class="ui purple image label floated left"> Status:<span class="detail">{{status}}</span></div>
+        <div class="ui green image label floated center"> Files:<span class="detail">{{maxFile || 0}}</span></div>
+        <div class="ui blue image label floated right" ng-if="status !== 'Ready'"> Time:
+            <span class="detail">
+            <span ng-if="time.days">{{time.days}} days</span>
+            <span ng-if="time.days || time.hours">{{time.hours}} hours</span>
+            <span ng-if="time.days || time.hours || time.minutes">{{time.minutes}} Minutes</span>
+            <span>{{time.seconds}} seconds</span>
+            </span>
+        </div>
+    </div>
+</div>

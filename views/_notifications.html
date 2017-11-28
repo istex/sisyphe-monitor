@@ -1,0 +1,15 @@
+<div id="notificationsContainer" ng-if="notifications.total>0">
+    <div ng-class="notification.type" class="notification" ng-repeat="notification in notifications.infos"> 
+        {{notification.message}}
+
+        <div class="close" ng-click="remove(notification)">X</div>
+    </div>
+    <div ng-class="notification.type" class="notification" ng-repeat="notification in notifications.warnings"> 
+        {{notification.message}}
+        <div class="close" ng-click="remove(notification)">X</div>
+    </div>
+    <div ng-class="notification.type" class="notification" ng-repeat="notification in notifications.errors"> 
+        {{notification.message}}
+        <div class="close" ng-click="remove(notification)">X</div>
+    </div>
+</div>

@@ -1,0 +1,53 @@
+<div ng-if="!connections.serverConnection">To control Sisyphe, run the server</div>
+<div class="section ui grid segment fifteen wide column centered" ng-if="connections.serverConnection">
+  <div class="titleSection centered content">
+    <h1 class="row">Control</h1>
+  </div>
+  <div class="ui contentSection grid">
+    <div class="row centered content">
+      <div class="ui input">
+        <input placeholder="Name of the corpus" ng-model="launch.name" type="text" />
+      </div>
+
+      <div class="ui input">
+        <input placeholder="Path to configuration" ng-model="launch.config" type="text" to='hintInputResources' tab/>
+        <div class="hint ui list divided" ng-if="hintInputResources">
+          <li class="item" ng-repeat="hint in hintInputResources track by $index">
+            {{hint}}
+          </li>
+        </div>
+      </div>
+
+      <div class="ui input">
+        <input placeholder="Path to the corpus" ng-model="launch.path" type="text" to="hintInputCorpus" tab />
+        <div class="hint ui list divided" ng-if="hintInputCorpus">
+          <li class="item" ng-repeat="hint in hintInputCorpus track by $index">
+            {{hint}}
+          </li>
+        </div>
+      </div>
+
+      <button class="ui blue right icon button" ng-click="launchCommand(launch)">
+                Launch Sisyphe
+                <i class="fa fa-arrow-circle-right right" aria-hidden="true"></i>
+            </button>
+      <button class="ui red right icon button" ng-click='stop()' ng-if="getstatus() === 'Working'">
+                Stop
+                <i class="fa fa-arrow-circle-right right" aria-hidden="true"></i>
+            </button>
+      <button class="ui purple right icon button" ng-click="$state.go('Settings')">
+                Check loaded modules
+                <i class="fa fa-arrow-circle-right right" aria-hidden="true"></i>
+            </button>
+    </div>
+    <div class="row centered content" ng-if="getstatus() === 'End'">
+      <button class="positive ui button" ng-click="downloadFiles()">
+                Download
+                <i class="fa fa-download" aria-hidden="true"></i>
+            </button>
+    </div>
+    <div class="row centered content" ng-if="downloadError">
+      {{downloadError}}
+    </div>
+  </div>
+</div>

@@ -1,0 +1,92 @@
+<div class="ui grid column" id="settingsView">
+	<div class="fifteen wide column settingSection">
+		<div class="title">Sisyphe</div>
+		<div class="content">
+			
+			<div class="item">
+				<div class="description">
+					Host {{server_isLocal}}
+					<div class="sub">
+						Change the url to Redis server
+					</div>
+				</div>
+				<div class="action">
+					<form ng-submit="changeHost(settings.host)">
+						<div class="ui fluid right labeled input" ng-class="{ok: connections.redisConnection, ko: !connections.redisConnection}">
+							<input type="text" placeholder="Search..." ng-value="settings.host" ng-model="settings.host">
+							<div class="label">
+								<i class="fa fa-times" aria-hidden="true" ng-if="!connections.redisConnection"></i>
+								<i class="fa fa-check" aria-hidden="true" ng-if="connections.redisConnection"></i>
+							</div>
+						</div>
+					</form>
+				</div>
+      </div>
+			
+			<div class="item" ng-if="connections.serverConnection">
+				<div class="description">
+					Bundle
+					<div class="sub">
+						Regroup job in bundle
+					</div>
+				</div>
+				<div class="action">
+					<form ng-submit="saveSettings()">
+						<div class="ui fluid input">
+							<input type="text" placeholder="Number of jobs..." ng-value="settings.bundle" ng-model="settings.bundle">
+						</div>
+					</form>
+				</div>
+			</div>
+			<div class="item" ng-if="connections.serverConnection">
+				<div class="description">
+					Workers
+					<div class="sub">
+						Enable or disable Workers
+					</div>
+				</div>
+				<div class="action">
+					<ul class="workers" ui-sortable ui-sortable-update="updateOrder" ng-model="settings.workers">
+						<li ng-repeat="worker in settings.workers" ng-click="worker.disable = !worker.disable; saveSettings()" ng-class="{ok:!worker.disable, ko:worker.disable}">{{worker.name}}</li>
+					</ul>
+				</div>
+			</div>
+			<div class="item" ng-if="!connections.serverConnection">
+				<div class="description">
+					Workers
+					<div class="sub">
+						Run Sisyphe server to enable or disable Workers
+					</div>
+				</div>
+      </div>
+      
+      <div class="item" ng-if="connections.serverConnection">
+        <div class="description">
+          Debug
+          <div class="sub">
+            Enable or disable the output on the server
+          </div>
+        </div>
+        <div class="action">
+          <div class="ui fitted toggle checkbox">
+            <input ng-checked="debug()" type="checkbox" ng-click="debugSisyphe($event.target.checked)">
+            <label></label>
+          </div>
+        </div>
+			</div>
+			
+			<div class="item" ng-if="connections.serverConnection">
+				<div class="description">
+					Resync
+					<div class="sub">
+						Sync localstorage and server
+					</div>
+				</div>
+				<div class="action">
+					<div class="ui red button" ng-click="resync()">Clear all</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>

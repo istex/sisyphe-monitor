@@ -1,0 +1,29 @@
+#notificationsContainer{
+      .notification{
+          &.infos{background-color: #1e7abf}
+          &.warnings{background-color: #f59c16}
+          &.errors{background-color: #c92424}
+          padding: 10px;
+          animation: open 500ms;
+          animation-fill-mode: forwards;
+      }
+      .close{
+          right: 0;
+          position: absolute;
+          display: inline-block;
+          padding-right: 10px;
+          font-weight: bold;
+      }
+
+}
+
+@keyframes open {
+    0% {
+        opacity: 0;
+        transform: scaleY(0)
+    }
+    100% {
+        opacity: 1;
+        transform: scaleY(1)
+    }
+}

@@ -1,0 +1,26 @@
+{
+  "name": "quickstart",
+  "authors": [
+    "clabroche <corentinlabroche@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.6.1",
+    "angular-ui-router": "^0.4.2",
+    "jquery": "^3.1.1",
+    "semantic-ui-sass": "*",
+    "semantic": "semantic-ui#^2.2.13",
+    "font-awesome": "^4.7.0",
+    "angular-spotify": "^1.5.1",
+    "jquery-ui": "^1.12.1"
+  }
+}

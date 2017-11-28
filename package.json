@@ -1,0 +1,85 @@
+{
+    "name": "monitor-forge",
+    "productName": "monitor-forge",
+    "version": "1.0.0",
+    "description": "My Electron application description",
+    "main": "src/index.js",
+    "scripts": {
+        "start": "electron-forge start",
+        "package": "electron-forge package",
+        "make": "electron-forge make",
+        "publish": "electron-forge publish",
+        "lint": "eslint src --color",
+        "electron-rebuild": "electron-rebuild node_modules/sisyphe/src/worker/filetype && electron-rebuild node_modules/sisyphe/src/worker/xml &&electron-rebuild node_modules/sisyphe/src/worker/pdf && electron-rebuild node_modules/sisyphe/src/worker/nb && electron-rebuild node_modules/sisyphe/src/worker/multicat && electron-rebuild node_modules/sisyphe/src/worker/teeft && electron-rebuild node_modules/sisyphe/src/worker/skeeft && electron-rebuild node_modules/sisyphe/src/worker/lang"
+    },
+    "keywords": [],
+    "author": "labroche",
+    "license": "MIT",
+    "config": {
+        "forge": {
+            "make_targets": {
+                "win32": [
+                    "squirrel"
+                ],
+                "darwin": [
+                    "zip"
+                ],
+                "linux": [
+                    "deb",
+                    "rpm"
+                ]
+            },
+            "electronPackagerConfig": {
+                "packageManager": "npm"
+            },
+            "electronWinstallerConfig": {
+                "name": "monitor_forge"
+            },
+            "electronInstallerDebian": {},
+            "electronInstallerRedhat": {},
+            "github_repository": {
+                "owner": "",
+                "name": ""
+            },
+            "windowsStoreConfig": {
+                "packageName": "",
+                "name": "monitorforge"
+            }
+        }
+    },
+    "dependencies": {
+        "angular-ui-sortable": "^0.17.2",
+        "bluebird": "^3.5.1",
+        "bower": "^1.8.2",
+        "cheerio": "^1.0.0-rc.2",
+        "commander": "^2.11.0",
+        "electron-compile": "^6.4.2",
+        "electron-context-menu": "^0.9.1",
+        "electron-oauth2": "^3.0.0",
+        "electron-squirrel-startup": "^1.0.0",
+        "jquery-ui": "^1.12.1",
+        "lerna": "^2.5.1",
+        "localStorage": "^1.0.3",
+        "lodash": "^4.17.4",
+        "mkdirp": "^0.5.1",
+        "ncp": "^2.0.0",
+        "redis": "^2.8.0",
+        "request": "^2.83.0",
+        "request-progress": "^3.0.0",
+        "request-promise": "^4.2.2",
+        "sisyphe": "git+https://github.com/istex/sisyphe.git#verbose_error"
+    },
+    "devDependencies": {
+        "babel-plugin-transform-async-to-generator": "^6.24.1",
+        "babel-preset-env": "^1.6.1",
+        "babel-preset-react": "^6.24.1",
+        "electron-forge": "^4.1.5",
+        "electron-prebuilt-compile": "1.7.9",
+        "eslint": "^3.19.0",
+        "eslint-config-airbnb": "^15.1.0",
+        "eslint-plugin-import": "^2.8.0",
+        "eslint-plugin-jsx-a11y": "^5.1.1",
+        "eslint-plugin-react": "^7.5.1",
+        "npm": "^4.6.1"
+    }
+}

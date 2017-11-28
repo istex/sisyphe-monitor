@@ -1,0 +1,91 @@
+#settingsView {
+  .settingSection {
+    margin: auto;
+    padding: 0;
+    box-shadow: 24px 22px 10px -1px #142739 !important;
+    .title {
+      width: 100%;
+      background-color: $masterColor;
+      font-size: 2rem;
+      padding: 15px;
+    }
+    .content {
+      padding: 10px;
+      width: 100%;
+      background-color: #495868;
+      .item {
+        display: flex;
+        align-items: center;
+        .action {
+          margin-left: auto;
+          margin-right: 0;
+          width: 300px;
+          .input.ok{
+            border: 1px solid green;
+            input{
+              color: green;
+            }
+            .label {
+              padding-left: 5px;
+              padding-right: 5px;
+              background-color: green;
+            }
+          }
+          .input.ko{
+            border: 1px solid red;
+            input{
+              color: red;
+            }
+            .label{
+              padding-left: 5px;
+              padding-right: 5px;
+              background-color: red;
+            }
+          }
+          .workers{
+            display: flex;
+            width: 100%;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            li{
+              width: 100%;
+              font-size: 13px;
+              border: 1px solid grey;
+              line-height: 50px;
+              text-align: center;
+              margin: 3px;
+              text-transform: uppercase;
+              &.ok{
+                background: #008000;
+              }
+              &.ko{
+                background: #ff0000;
+              }
+            }
+          }
+        }
+        .description {
+          font-size: 1.2em;
+          .sub {
+              color: darken(#FFF, 40%)
+          }
+        }
+        & > * {
+          display: inline-block;
+        }
+        width: 100%;
+        padding: 10px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        border-collapse: collapse;
+        margin-top: -1px;
+        &:first-child {
+          border-top: none;
+        }
+        &:last-child {
+          border-bottom: none;
+        }
+      }
+    }
+  }
+}

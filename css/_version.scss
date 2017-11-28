@@ -1,0 +1,39 @@
+#versionView {
+  .moduleTag {
+    .tag {
+      width: 25%;
+    }
+  }
+  .branches {
+    display: flex;
+    flex-direction: row;
+    .containerTags {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+      .tag {
+        background-color: blue;
+        padding: 10px;
+        margin: 10px;
+        i {
+          background-color: yellow;
+        }
+        &.activeBranch {
+          background-color: green;
+        }
+      }
+    }
+    .branchStatus {
+      border: 1px solid #f59c16;
+      background-color: rgba(0, 0, 0, 0.3);
+      .title {
+        text-align: center;
+      }
+      & > .row {
+        margin-bottom: 20px;
+      }
+      flex-grow: 1;
+    }
+  }
+}
