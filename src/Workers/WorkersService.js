@@ -31,7 +31,7 @@ function WorkersService (ConfigService) {
     this.monitoring = await this.getMonitoring();
     this.getStatus();
     this.getTime();
-    if (!this.monitoring || !this.monitoring.hasOwnProperty('workers')) return;
+    if (!this.monitoring || !this.monitoring.hasOwnProperty('workers') || !this.monitoring.workers) return;
     this.monitoring.workers = this.monitoring.workers.split(',')
     const workers = await Promise.all(
       this.monitoring.workers
