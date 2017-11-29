@@ -24,9 +24,12 @@
     "sisyphe": "git+https://github.com/istex/sisyphe.git#electrontest"
   },
   "scripts": {
-    "electron-rebuild-all": "electron-rebuild node_modules/sisyphe/src/worker/filetype && electron-rebuild node_modules/sisyphe/src/worker/xml &&electron-rebuild node_modules/sisyphe/src/worker/pdf && electron-rebuild node_modules/sisyphe/src/worker/nb && electron-rebuild node_modules/sisyphe/src/worker/multicat && electron-rebuild node_modules/sisyphe/src/worker/teeft && electron-rebuild node_modules/sisyphe/src/worker/skeeft && electron-rebuild node_modules/sisyphe/src/worker/lang",
+    "electron-rebuild-win": "electron-rebuild node_modules/sisyphe/src/worker/filetype && electron-rebuild node_modules/sisyphe/src/worker/xml &&electron-rebuild node_modules/sisyphe/src/worker/pdf && electron-rebuild node_modules/sisyphe/src/worker/nb && electron-rebuild node_modules/sisyphe/src/worker/multicat && electron-rebuild node_modules/sisyphe/src/worker/teeft && electron-rebuild node_modules/sisyphe/src/worker/skeeft && electron-rebuild node_modules/sisyphe/src/worker/lang",
+    "electron-rebuild-unix": "electron-rebuild node_modules/sisyphe/",
     "electron": "electron .",
     "postinstall": "bower install",
+    "postinstall-unix": "cd node_modules/sisyphe && npm run postinstall-unix",
+    "postinstall-win": "cd node_modules/sisyphe && npm run postinstall-win",
     "orchestra": "node script/orchestra.js",
     "package-linux": "electron-packager . --overwrite --platform=linux --arch=all --out=build",
     "package-mac": "electron-packager . --icon=public/img/icon.icns --overwrite --platform=darwin --arch=all --out=build",
