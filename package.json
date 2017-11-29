@@ -10,7 +10,8 @@
         "make": "electron-forge make",
         "publish": "electron-forge publish",
         "lint": "eslint src --color",
-        "electron-rebuild": "prebuild -t 1.7.9 -r electron -p node_modules/sisyphe/node_modules/cld && prebuild -t 1.7.9 -r electron -p node_modules/sisyphe/node_modules/node-libxml && prebuild -t 1.7.9 -r electron -p node_modules/sisyphe/node_modules/mmmagic"
+        "electron-rebuild-unix": "prebuild -t 1.7.9 -r electron -p node_modules/sisyphe/node_modules/cld && prebuild -t 1.7.9 -r electron -p node_modules/sisyphe/node_modules/node-libxml && prebuild -t 1.7.9 -r electron -p node_modules/sisyphe/node_modules/mmmagic",
+        "electron-rebuild-win": "prebuild -t 1.7.9 -r electron -p node_modules/sisyphe/src/worker/nb/node_modules/cld && prebuild -t 1.7.9 -r electron -p node_modules/sisyphe/src/worker/lang/node_modules/cld && prebuild -t 1.7.9 -r electron -p node_modules/sisyphe/src/worker/xml/node_modules/node-libxml && prebuild -t 1.7.9 -r electron -p node_modules/sisyphe/src/worker/filetype/node_modules/mmmagic"
     },
     "keywords": [],
     "author": "labroche",
