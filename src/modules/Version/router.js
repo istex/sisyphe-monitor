@@ -15,7 +15,7 @@ function Router ($stateProvider, $urlRouterProvider, $httpProvider) {
       },
       "Version@Version": {
         parent: "Version",
-        templateUrl: "src/modules/Version/Version.html",
+        templateUrl: "modules/Version/Version.html",
         controller: "HomeCtrl"
       },
       "notifications@Version": {

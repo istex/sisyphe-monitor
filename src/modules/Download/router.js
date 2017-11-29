@@ -15,7 +15,7 @@ function Router ($stateProvider, $urlRouterProvider, $httpProvider) {
       },
       "Download@Download": {
         parent: "Download",
-        templateUrl: "src/modules/Download/Download.html",
+        templateUrl: "modules/Download/Download.html",
         controller: "DownloadController"
       },
       "notifications@Download": {

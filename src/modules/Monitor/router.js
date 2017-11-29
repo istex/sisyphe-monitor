@@ -20,27 +20,27 @@ function Router ($stateProvider, $urlRouterProvider, $httpProvider) {
       },
       'Monitor@Monitor': {
         parent: 'Monitor',
-        templateUrl: 'src/modules/Monitor/Monitor.html',
+        templateUrl: 'modules/Monitor/Monitor.html',
         controller: 'MonitorController'
       },
       'control@Monitor': {
         parent: 'home',
-        templateUrl: 'src/modules/Monitor/views/_control.html',
+        templateUrl: 'modules/Monitor/views/_control.html',
         controller: 'ControlController'
       },
       'infos@Monitor': {
         parent: 'Monitor',
-        templateUrl: 'src/modules/Monitor/views/_infos.html',
+        templateUrl: 'modules/Monitor/views/_infos.html',
         controller: 'InfoController'
       },
       'modules@Monitor': {
         parent: 'Monitor',
-        templateUrl: 'src/modules/Monitor/views/_modules.html',
+        templateUrl: 'modules/Monitor/views/_modules.html',
         controller: 'WorkersController'
       },
       'progression@Monitor': {
         parent: 'Monitor',
-        templateUrl: 'src/modules/Monitor/views/_progression.html',
+        templateUrl: 'modules/Monitor/views/_progression.html',
         controller: 'ProgressionController'
       },
       '': {

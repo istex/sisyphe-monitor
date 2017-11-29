@@ -15,7 +15,7 @@ function Router ($stateProvider, $urlRouterProvider, $httpProvider) {
       },
       '{{ModuleName}}@{{ModuleName}}': {
         parent: '{{ModuleName}}',
-        templateUrl: 'src/modules/{{ModuleName}}/{{ModuleName}}.html',
+        templateUrl: 'modules/{{ModuleName}}/{{ModuleName}}.html',
         controller: 'HomeCtrl'
       },
       '': {

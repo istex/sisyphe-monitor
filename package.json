@@ -10,7 +10,7 @@
         "make": "electron-forge make",
         "publish": "electron-forge publish",
         "lint": "eslint src --color",
-        "electron-rebuild": "electron-rebuild node_modules/sisyphe/src/worker/filetype && electron-rebuild node_modules/sisyphe/src/worker/xml &&electron-rebuild node_modules/sisyphe/src/worker/pdf && electron-rebuild node_modules/sisyphe/src/worker/nb && electron-rebuild node_modules/sisyphe/src/worker/multicat && electron-rebuild node_modules/sisyphe/src/worker/teeft && electron-rebuild node_modules/sisyphe/src/worker/skeeft && electron-rebuild node_modules/sisyphe/src/worker/lang"
+        "electron-rebuild": "prebuild -t 1.7.9 -r electron -p node_modules/sisyphe/node_modules/cld && prebuild -t 1.7.9 -r electron -p node_modules/sisyphe/node_modules/node-libxml && prebuild -t 1.7.9 -r electron -p node_modules/sisyphe/node_modules/mmmagic"
     },
     "keywords": [],
     "author": "labroche",
@@ -19,14 +19,13 @@
         "forge": {
             "make_targets": {
                 "win32": [
-                    "squirrel"
+                    "zip"
                 ],
                 "darwin": [
                     "zip"
                 ],
                 "linux": [
-                    "deb",
-                    "rpm"
+                    "zip"
                 ]
             },
             "electronPackagerConfig": {
@@ -63,10 +62,12 @@
         "lodash": "^4.17.4",
         "mkdirp": "^0.5.1",
         "ncp": "^2.0.0",
+        "prebuild": "^6.2.2",
         "redis": "^2.8.0",
         "request": "^2.83.0",
         "request-progress": "^3.0.0",
         "request-promise": "^4.2.2",
+        "require-rebuild": "^1.2.8",
         "sisyphe": "git+https://github.com/istex/sisyphe.git#verbose_error"
     },
     "devDependencies": {

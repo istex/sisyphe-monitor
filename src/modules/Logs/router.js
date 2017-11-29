@@ -15,7 +15,7 @@ function Router ($stateProvider, $urlRouterProvider, $httpProvider) {
       },
       "Logs@Logs": {
         parent: "Logs",
-        templateUrl: "src/modules/Logs/Logs.html",
+        templateUrl: "modules/Logs/Logs.html",
         controller: "LogsController"
       },
       "notifications@Logs": {

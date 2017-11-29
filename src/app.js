@@ -1,17 +1,17 @@
-const ConfigService = require('./src/ConfigService');
-const ModuleService = require('./src/ModuleService');
-const WorkersService = require('./src/Workers/WorkersService');
-const ConnectionService = require('./src/ConnectionService');
-const NotificationService = require('./src/NotificationService');
-const ModalService = require('./src/Modal/ModalService');
+const ConfigService = require('./ConfigService');
+const ModuleService = require('./ModuleService');
+const WorkersService = require('./Workers/WorkersService');
+const ConnectionService = require('./ConnectionService');
+const NotificationService = require('./NotificationService');
+const ModalService = require('./Modal/ModalService');
 
-const HomeController = require('./src/HomeController');
-const NavbarController = require('./src/NavbarController');
-const NotificationController = require('./src/NotificationController');
-const WorkersController = require('./src/Workers/WorkersController');
-const ModalController = require('./src/Modal/ModalController');
+const HomeController = require('./HomeController');
+const NavbarController = require('./NavbarController');
+const NotificationController = require('./NotificationController');
+const WorkersController = require('./Workers/WorkersController');
+const ModalController = require('./Modal/ModalController');
 
-const config = require('./src/config');
+const config = require('./config');
 const ang = angular
   .module('app', ['ui.router', 'ui.sortable'])
   .service('ConfigService', ConfigService)
@@ -31,22 +31,15 @@ const ang = angular
     '$state',
     function ($rootScope, $state) {
       $rootScope.$state = $state;
-      console.log("ON PASSE")
       setTimeout(function (argument) {
         // body...
         $state.go('Monitor');
-      },1000)
+      }, 1000);
     }
-  ]); 
+  ]);
 
-setInterval(function (argument) {
-  // body...
-  console.log(window.location);
-},3000)
-
-
-const Monitor = require('./src/modules/Monitor/app'); Monitor.init(ang);
-const Logs = require('./src/modules/Logs/app'); Logs.init(ang);
-const Settings = require('./src/modules/Settings/app'); Settings.init(ang);
-const Download = require('./src/modules/Download/app'); Download.init(ang);
-const Version = require('./src/modules/Version/app');Version.init(ang); 
+const Monitor = require('./modules/Monitor/app'); Monitor.init(ang);
+const Logs = require('./modules/Logs/app'); Logs.init(ang);
+const Settings = require('./modules/Settings/app'); Settings.init(ang);
+const Download = require('./modules/Download/app'); Download.init(ang);
+const Version = require('./modules/Version/app'); Version.init(ang);
