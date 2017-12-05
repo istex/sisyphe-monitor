@@ -4,6 +4,11 @@
 
 Sisyphe-monitor is an Electron app for the [Sisyphe](https://github.com/istex/sisyphe) application. It displays information about the progress of the analysis.
 
+Sisyphe-monitor comes with a bundled redis version & his own sisyphe version.
+
+
+### [TRY the new bundled Siyphe for your os](https://github.com/istex/sisyphe-monitor/releases/tag/2.0.0) nothing to install!
+
 
 ![sisyphe](./flow.gif)
 
